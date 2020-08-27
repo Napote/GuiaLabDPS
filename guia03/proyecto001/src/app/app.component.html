@@ -9,6 +9,8 @@
 <h1 style="text-align:center">
   Bienvenido a {{ title }}
 </h1>
+
+<!-- 
 <div>
   <p>Nombre del Empleado:{{nombre}}</p>
   <p>Edad:{{edad}}</p>
@@ -17,7 +19,8 @@
   <p>{{esActivo()}}</p>
   <p>El empleado dentro de 5 años tendra: {{edad+5}}</p>
 
-  <p *ngIf="edad>18"> Es mayor de edad.</p>
+  <p *ngIf="edad>18; else menor"> Es mayor de edad.</p>
+  <ng-template #menor><p>Es menor de edad</p></ng-template>
 
   <table border="1">
     <tr>
@@ -28,4 +31,10 @@
     </tr>
   </table>
   
+</div>
+-->
+
+<div>
+  <p>{{contador}}</p>
+  <button (click)="incrementar()">Sumar 1</button> <button (click)="decrementar()">Restar 1</button>
 </div>
