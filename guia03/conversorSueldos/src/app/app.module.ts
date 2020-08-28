@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { ValidadorMaxMinService } from './validador-max-min.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
@@ -18,7 +18,7 @@ import { RegistroComponent } from './registro/registro.component';
     BrowserModule,
     AppRoutingModule, FormsModule,ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ValidadorMaxMinService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

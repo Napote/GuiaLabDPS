@@ -7,14 +7,19 @@
 
 <section class="container">
         <form [formGroup]="formIngreso">
-
+            <p class="alert alert-danger" role="alert" *ngIf="!formIngreso.get('txtNombre').valid && (formIngreso.get('txtNombre').touched || formIngreso.get('txtNombre').dirty)" >
+                Ingrese el nombre del empleado.
+            </p> 
+            <p class="alert alert-danger" role="alert" *ngIf="!formIngreso.get('numSalarioBase').valid && (formIngreso.get('numSalarioBase').touched || formIngreso.get('numSalarioBase').dirty)" >
+                Ingrese un salario entre $100 y $10000.
+            </p> 
              <!--Nombre del empleado-->
             <label>Nombre del empleado</label>
-            <input formControlName="txtNombre" type="text" class="form-control"> 
+            <input formControlName="txtNombre" type="text" class="form-control" [(ngModel)]="nombreEmpleado"> 
             <!--Salario-->
-            <label>Salario base</label>
-            <input formControlName="numSalarioBase" type="number" class="form-control">   
-            
+            <label>Salario base ($)</label>
+            <input formControlName="numSalarioBase" type="number" class="form-control" [(ngModel)]="salarioBase">   
+           
 
             <button class="button" [disabled]="!formIngreso.valid" (click)="ingresar()">Calcular</button> 
         </form> 

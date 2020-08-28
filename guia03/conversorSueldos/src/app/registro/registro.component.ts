@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup} from '@angular/forms';
 import {FormControl, Validators, FormBuilder} from '@angular/forms';
 
+
+import { ValidadorMaxMinService } from './../validador-max-min.service';
+ 
+
 @Component({
   selector: 'app-registro', 
   templateUrl: './registro.component.html',
@@ -15,7 +19,6 @@ export class RegistroComponent implements OnInit {
   readonly descuentoISSS = 0.073;
   readonly descuentoAFP = 0.051;
   readonly descuentoRenta = 0.11;
-
 
   registro=[];
   empleado:any;
@@ -48,7 +51,8 @@ export class RegistroComponent implements OnInit {
 
   
 
-  ingresar(){
+  ingresar(){ 
+    
     this.valorRenta = this.salarioBase*this.descuentoRenta;
     this.valorISSS = +(this.salarioBase*this.descuentoISSS).toFixed(2);
     this.valorAFP = this.salarioBase*this.descuentoAFP;
@@ -56,13 +60,14 @@ export class RegistroComponent implements OnInit {
     this.empleado={"nombreEmpleado":this.nombreEmpleado,"salarioBase":this.salarioBase,"valorRenta":this.valorRenta,"valorAFP":this.valorAFP,"valorISSS":this.valorISSS,"salarioNeto":this.salarioNeto}; 
     this.registro.push(this.empleado);
     this.contador++;
+    this.reset();
 
   }
 
   createFormGroup(){
     return new FormGroup({
-      txtNombre: new FormControl('', [Validators.required]),
-      numSalarioBase: new FormControl('', [Validators.required])
+      txtNombre: new FormControl('', Validators.required),
+      numSalarioBase: new FormControl('', [Validators.required,ValidadorMaxMinService.max(10000),ValidadorMaxMinService.min(100)])
     }); 
   }
 
