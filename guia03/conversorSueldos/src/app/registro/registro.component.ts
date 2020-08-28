@@ -53,10 +53,11 @@ export class RegistroComponent implements OnInit {
 
   ingresar(){ 
     
-    this.valorRenta = this.salarioBase*this.descuentoRenta;
+    this.salarioBase=+(this.salarioBase.toFixed(2));
+    this.valorRenta = +(this.salarioBase*this.descuentoRenta).toFixed(2);
     this.valorISSS = +(this.salarioBase*this.descuentoISSS).toFixed(2);
-    this.valorAFP = this.salarioBase*this.descuentoAFP;
-    this.salarioNeto = this.salarioBase-(this.valorAFP+this.valorRenta+this.valorISSS);
+    this.valorAFP = +(this.salarioBase*this.descuentoAFP).toFixed(2);
+    this.salarioNeto = +(this.salarioBase-(this.valorAFP+this.valorRenta+this.valorISSS)).toFixed(2);
     this.empleado={"nombreEmpleado":this.nombreEmpleado,"salarioBase":this.salarioBase,"valorRenta":this.valorRenta,"valorAFP":this.valorAFP,"valorISSS":this.valorISSS,"salarioNeto":this.salarioNeto}; 
     this.registro.push(this.empleado);
     this.contador++;
