@@ -3,7 +3,7 @@
 .ng-valid[required], .ng-valid.required { border-left: 5px solid rgba(32, 77, 32, 0.623);
 }
 .ng-invalid:not(form) {
-    border-left: 5px solid rgb(148, 27, 27); }
+    border-left: 5px solid rgb(139, 49, 49); }
 
 
 html, body, section {
@@ -11,14 +11,16 @@ html, body, section {
   }
   
   body {
-    color: #fff;
+    color: white;
     font-family: sans-serif;
     font-size: 1.25rem;
     line-height: 150%;
     text-align: center; 
   }
   
-   
+   h3{
+     
+   }
 
   h1 {
     font-size: 1.75rem;

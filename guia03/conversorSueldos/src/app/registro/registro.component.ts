@@ -15,7 +15,7 @@ import { ValidadorMaxMinService } from './../validador-max-min.service';
 
 export class RegistroComponent implements OnInit {
   
-
+  /* Constantes */
   readonly descuentoISSS = 0.073;
   readonly descuentoAFP = 0.051;
   readonly descuentoRenta = 0.11;
