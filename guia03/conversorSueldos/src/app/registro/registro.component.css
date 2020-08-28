@@ -1,0 +1,126 @@
+/* Pen-specific styles */
+
+.ng-valid[required], .ng-valid.required { border-left: 5px solid rgba(32, 77, 32, 0.623);
+}
+.ng-invalid:not(form) {
+    border-left: 5px solid rgb(148, 27, 27); }
+
+
+html, body, section {
+    height: 100%;
+  }
+  
+  body {
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 1.25rem;
+    line-height: 150%;
+    text-align: center; 
+  }
+  
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  article{
+      display: flex;
+      flex-direction: column;  
+      
+  }
+
+
+  h1 {
+    font-size: 1.75rem;
+    margin: 0 0 0.75rem 0;
+  }
+  
+  /* Pattern styles */
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+     
+    
+  } 
+   
+  .left-half{
+    padding: 20px;
+  }
+  .right-half{
+      max-width: 500px;
+     
+  }
+
+.button {
+    background-color: #4CAF50; /* Green */ border: none;
+   width: 100%;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 auto;
+    }
+
+    input {
+    width: 100%;
+    margin: 0 auto;
+    padding: 12px 20px;
+    margin-bottom: 20px;  
+    box-sizing: border-box; 
+    font-size: 1.5vw;
+
+    
+    }
+
+    .button:hover{
+        background-color: darkgreen;
+        cursor: pointer;
+        
+    }
+
+
+    .button:disabled{
+        background-color: gray;
+    }
+    label{
+    font-size: 1.5vw;
+    margin-bottom: 15px;
+    }
+    .header {
+    padding: 30px; 
+    text-align: center; 
+    background: #1abc9c; 
+    color: white; 
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+table{ 
+
+    border-collapse: collapse;
+    max-width: 100%;   
+  }
+  
+ td,th { 
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+ tr:nth-child(even){background-color: #f2f2f2;}
+  
+ tr:hover {background-color: #ddd;}
+  
+ th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: normal;
+    text-align: center;
+}
+

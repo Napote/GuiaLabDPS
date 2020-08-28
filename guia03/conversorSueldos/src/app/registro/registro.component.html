@@ -1,0 +1,58 @@
+
+
+<div class="header">
+    <h1>Calculo de salarios netos</h1>
+    <p>Ingrese los datos solicitados para realizar el calculo de salario.</p>
+</div>
+
+<section class="container">
+    <div class="left-half"> 
+
+        <form [formGroup]="formIngreso">
+
+             <!--Nombre del empleado-->
+            <label>Nombre del empleado</label>
+            <input formControlName="txtNombre" type="text" class="form-control"> 
+            <!--Salario-->
+            <label>Salario base</label>
+            <input formControlName="numSalarioBase" type="number" class="form-control">   
+            
+
+            <button class="button" [disabled]="!formIngreso.form.valid" (click)="ingresar()">Calcular</button> 
+        </form> 
+
+
+
+
+    </div>
+    <div class="right-half">
+     
+        <table [hidden]="contador ==0">
+            <thead>
+                <tr>
+                    <th>Nombre del empleado</th>
+                    <th>Salario Base</th>
+                    <th>ISSS</th>
+                    <th>Renta</th>
+                    <th>AFP</th>
+                    <th>Salario Neto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let empleado of registro">
+                    <td>{{empleado.nombreEmpleado}}</td>
+                    <td>$ {{empleado.salarioBase}}</td>
+                    <td>$ -{{empleado.valorISSS}}</td>
+                    <td>$ -{{empleado.valorRenta}}</td>            
+                    <td>$ -{{empleado.valorAFP}}</td>
+                    <td>$ {{empleado.salarioNeto}}</td>
+                </tr>
+            </tbody>
+        </table> 
+    </div>
+  </section>
+
+ 
+ 
+
+
