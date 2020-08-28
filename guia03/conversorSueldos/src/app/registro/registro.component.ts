@@ -37,8 +37,8 @@ export class RegistroComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.nombreEmpleado="";
-    this.salarioBase=0;
+    this.nombreEmpleado="Juan Perez"; 
+    this.salarioBase=100;
     this.valorRenta=0;
     this.valorISSS=0;
     this.valorAFP=0;
