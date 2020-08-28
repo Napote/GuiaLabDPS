@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormControl } from 
-'@angular/forms';
-
+import { Component, OnInit } from '@angular/core'; 
+import { FormGroup} from '@angular/forms';
+import {FormControl, Validators, FormBuilder} from '@angular/forms';
 
 @Component({
-  selector: 'app-registro',
+  selector: 'app-registro', 
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
@@ -62,8 +61,8 @@ export class RegistroComponent implements OnInit {
 
   createFormGroup(){
     return new FormGroup({
-      txtNombre: new FormControl(''),
-      numSalarioBase: new FormControl('')
+      txtNombre: new FormControl('', [Validators.required]),
+      numSalarioBase: new FormControl('', [Validators.required])
     }); 
   }
 

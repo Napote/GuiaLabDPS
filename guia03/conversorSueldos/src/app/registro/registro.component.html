@@ -6,8 +6,6 @@
 </div>
 
 <section class="container">
-    <div class="left-half"> 
-
         <form [formGroup]="formIngreso">
 
              <!--Nombre del empleado-->
@@ -18,14 +16,9 @@
             <input formControlName="numSalarioBase" type="number" class="form-control">   
             
 
-            <button class="button" [disabled]="!formIngreso.form.valid" (click)="ingresar()">Calcular</button> 
+            <button class="button" [disabled]="!formIngreso.valid" (click)="ingresar()">Calcular</button> 
         </form> 
 
-
-
-
-    </div>
-    <div class="right-half">
      
         <table [hidden]="contador ==0">
             <thead>
@@ -49,9 +42,8 @@
                 </tr>
             </tbody>
         </table> 
-    </div>
-  </section>
 
+</section>
  
  
 

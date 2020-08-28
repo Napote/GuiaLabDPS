@@ -18,39 +18,26 @@ html, body, section {
     text-align: center; 
   }
   
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  article{
-      display: flex;
-      flex-direction: column;  
-      
-  }
-
+   
 
   h1 {
     font-size: 1.75rem;
     margin: 0 0 0.75rem 0;
   }
-  
-  /* Pattern styles */
+   
   .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
-     
+     width: 100%;
     
   } 
    
-  .left-half{
+  form{
     padding: 20px;
-  }
-  .right-half{
-      max-width: 500px;
-     
+    max-width: 600px;
+    margin: 0  auto;
   }
 
 .button {
@@ -100,9 +87,8 @@ html, body, section {
 }
 
 table{ 
-
-    border-collapse: collapse;
-    max-width: 100%;   
+    margin: 50px  auto;     
+        width: 100%;
   }
   
  td,th { 
