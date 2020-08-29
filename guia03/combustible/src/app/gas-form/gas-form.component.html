@@ -1,0 +1,17 @@
+<div class="header">
+    <h1>Gasolinera Chi Fros</h1> 
+</div>
+<form>
+    
+    <div class="form-group">
+        <label for="">Gasolina</label>
+        <select class="form-control" name="selectmake" [(ngModel)]="gasolinaSeleccionada">
+            <option *ngFor="let muscleCar of listaGasolina" [ngValue]="muscleCar">{{muscleCar.tipo}}</option>
+        </select>
+    </div> 
+    <label>Galones</label>
+    <input type="text" class="form-control" [(ngModel)]="numeroGalones"> 
+    <label>Total $</label>
+    <input type="text" readonly class="form-control"> 
+
+</form>
