@@ -1,18 +1,26 @@
-<div class="header">
-    <h1>{{title}}</h1>
-    <p>Ingrese los datos solicitados.</p>
-</div>
-<div class="form-group">
-    <label>Cantidad en galones</label>
-    <input type="number" step="0.05" [(ngModel)]="cantidad" (change)="calcularCostoTotal()" value="{{cantidad}}" class="form-control">
-</div>
-<div class="form-group">
-    <label>Tipo de gasolina:</label>
-    <select [(ngModel)]="tipoGasolina" (change)="calcularCostoTotal()" class="form-control">
-        <option value="Ninguno">-Seleccion-</option>
-        <option *ngFor="let u of listaGasolina" value="{{u}}">{{u}}</option>
-    </select>
-</div>
 
+ <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-<label [hidden]="tipoGasolina == 'Ninguno'">El total a pagar es ${{totalPagar}}</label>
+<div class="testbox"> 
+ <div class="formSection">
+    <div class="banner">
+        <h1>Gasolinera Jamoncito</h1>
+    </div>
+    <p>Ingrese los datos solicitados.</p> 
+    <div class="item">
+        <label>Cantidad en galones</label>
+        <input type="number" step="0.05" min="0.5" max="150" [(ngModel)]="cantidad" (change)="calcularCostoTotal()" value="{{cantidad}}" class="form-control" onKeyDown="return false">
+    </div> 
+    <div class="item">
+        <label>Tipo de gasolina:</label>
+        <select [(ngModel)]="tipoGasolina" (change)="calcularCostoTotal()" class="form-control">
+            <option value="Ninguno">-Seleccion-</option>
+            <option *ngFor="let u of listaGasolina" value="{{u}}">{{u}}</option>
+        </select>
+    </div>
+    <div class="btn-block">
+        <label [hidden]="tipoGasolina == 'Ninguno'">El total a pagar es ${{totalPagar}}</label>
+    </div>
+</div> 
+</div> 
