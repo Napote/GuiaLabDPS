@@ -9,34 +9,36 @@ import {FormsModule} from '@angular/forms';
 })
 export class GasFormComponent implements OnInit{
 
-  listaGasolina = ["Especial","Regular","Diesel"]; 
   title:string;
-  gasolinaSeleccionada: string;
-  numeroGalones: number;
-  costoFinal: number;
+  listaGasolina = ["Diesel", "Regular", "Especial"];
+  tipoGasolina:string;
+  cantidad:number;
+  totalPagar:number;
 
   constructor() { }
 
-  ngOnInit(): void { 
-    this.title = "Gasolinera CHI FROs";
-    this.gasolinaSeleccionada="Selecciona"; 
-    this.numeroGalones=0.5; 
-    this.costoFinal=0;
+  ngOnInit(): void {
+    this.title = "Gasolinera CHI FROS";    
+    this.tipoGasolina = "Ninguno";
+    this.cantidad = 0.05;
+    this.totalPagar = 0;
   }
 
-  costoGalonIngresado(){
-    switch(this.gasolinaSeleccionada){ 
-      case'Especial':
-        this.costoFinal=this.numeroGalones * 4.25; 
+  calcularCostoTotal(){
+    switch(this.tipoGasolina){
+      case "Diesel":
+        this.totalPagar = this.cantidad*3.96;
       break;
-      case'Regular': 
-        this.costoFinal=this.numeroGalones * 4.05;
-      break; 
-      case'Diesel':
-        this.costoFinal=this.numeroGalones * 3.96; 
+      case "Regular":
+        this.totalPagar = this.cantidad*4.05;
       break;
-  }
+      case "Especial":
+        this.totalPagar = this.cantidad*4.25;
+      break;
 
-}  
+    }
+
+    this.totalPagar=+(this.totalPagar).toFixed(2);
+  }
 
 }
