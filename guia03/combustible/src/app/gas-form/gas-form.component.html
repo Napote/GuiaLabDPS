@@ -1,17 +1,25 @@
+
+
 <div class="header">
     <h1>Gasolinera Chi Fros</h1> 
 </div>
 <form>
-    
+    <div class="form-group">
+        <label>Galones</label>
+        <input type="number" step="0.5" class="form-control" [(ngModel)]="numeroGalones"> 
+    </div>
     <div class="form-group">
         <label for="">Gasolina</label>
-        <select class="form-control" name="selectmake" [(ngModel)]="gasolinaSeleccionada">
-            <option *ngFor="let muscleCar of listaGasolina" [ngValue]="muscleCar">{{muscleCar.tipo}}</option>
+        <select [(ngModel)]="gasolinaSeleccionada" class="form-control" (change)="costoGalonIngresado()"> 
+            <option value="Selecciona">Selecciona</option>
+            <option *ngFor="let u of listaGasolina" value="{{u}}" >
+                {{u}}
+            </option>
         </select>
     </div> 
-    <label>Galones</label>
-    <input type="text" class="form-control" [(ngModel)]="numeroGalones"> 
-    <label>Total $</label>
-    <input type="text" readonly class="form-control"> 
 
+    
+    <div class="form-group">
+        <label [hidden]="gasolinaSeleccionada == 'Selecciona'">Su valor es: {{costoFinal}}</label>
+    </div>  
 </form>
