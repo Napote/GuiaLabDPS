@@ -1,12 +1,91 @@
-
-<div class="header">
-    <h1>Datos de Alumno</h1>
-    <p>Ingrese los datos de los alumnos</p>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12"> 
+            <!--Header de la pagina-->
+			<div class="page-header">
+				<h1>
+                    Veterinaria Dansin 
+                    <small>Sucursal San Marcos</small>
+				</h1>
+            </div> 
+            <br>
+            <!--Parte inferior-->
+			<div class="row">
+                <!--Formulario de cliente-->
+				<div class="col-md-3"> 
+                    <div class="text-center">
+                        <img  src="assets/img/2684410059_main_thumb.jpg" class="img-fluid rounded" >
+                      </div> <br>
+					<form role="form">
+                        <div class="col-6">
+                            <div class="form-group">							 
+                                <label for="exampleInputEmail1">
+                                    DUI
+                                </label>
+                                <input type="number" class="form-control" id=""/>
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="form-group">							 
+                                <label for="exampleInputEmail1">
+                                    Nombre completo de cliente
+                                </label>
+                                <input type="text" class="form-control" id=""/>
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="form-group">							 
+                                <label for="exampleInputPassword1">
+                                    Nombre de mascota
+                                </label>
+                                <input type="text" class="form-control" id=""/>
+                            </div>  
+						    <button type="submit" class="btn btn-primary">
+							    Crear cliente
+                            </button>
+                        </div>
+						
+						
+					</form>
+				</div>
+				<div class="text-center col-md-8">
+                    <br>
+                    <h5>LISTA DE CLIENTES</h5>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>
+									#
+								</th>
+								<th>
+									Nombre de cliente
+								</th>
+								<th>
+									Mascota
+								</th>
+								<th>
+									Número de visitas
+                                </th>
+                                <th>
+									-
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+                            <!--
+                            <tr *ngFor="let talumno of registro">
+                                <td>{{talumno.nombre}}</td>
+                                <td>{{talumno.edad}}</td>
+                                <td>{{talumno.mayor}}</td>
+                            </tr>-->
+						</tbody>
+                    </table> 
+				</div>
+			</div>
+			<ul class="nav">
+				<li class="nav-item">
+				</li><br />
+			</ul>
+		</div>
+	</div>
 </div>
-    <label>Nombre:</label>
-    <input type="text" [(ngModel)]="nombre">
-    <label>DUI:</label>
-    <input type="text" [(ngModel)]="dui">
-    <button class="button" (click)="guardar()">Ingresar</button>
-    <br/><br/>
-    
