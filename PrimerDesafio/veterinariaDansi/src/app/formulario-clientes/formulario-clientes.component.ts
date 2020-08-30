@@ -18,6 +18,8 @@ export class FormularioClientesComponent implements OnInit {
   tratamiento:string;
   costo:number;
 
+  clientesDatos=[];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -32,9 +34,8 @@ export class FormularioClientesComponent implements OnInit {
 
   guardar(){
     this.datos.guardarCliente(this.dui, this.nombre, this.mascota);
-    this.datos.guardarConsulta(this.dui, this.nombre, this.mascota, 89);
-    this.datos.numConsultas(this.dui);
-    this.datos.consultarUsuarios();
+    //this.datos.guardarConsulta(this.dui, this.nombre, this.mascota, 89);
+    this.clientesDatos = this.datos.consultarUsuarios();
   }
 
 

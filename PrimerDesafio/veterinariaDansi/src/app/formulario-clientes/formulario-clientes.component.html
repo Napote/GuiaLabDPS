@@ -72,12 +72,13 @@
 							</tr>
 						</thead>
 						<tbody>
-                            <!--
-                            <tr *ngFor="let talumno of registro">
-                                <td>{{talumno.nombre}}</td>
-                                <td>{{talumno.edad}}</td>
-                                <td>{{talumno.mayor}}</td>
-                            </tr>-->
+                            
+                            <tr *ngFor="let tdatos of clientesDatos">
+                                <td>{{tdatos.dui}}</td>
+                                <td>{{tdatos.nombre}}</td>
+                                <td>{{tdatos.mascota}}</td>
+                                <td>{{tdatos.numConsultas}}</td>
+                            </tr>
 						</tbody>
                     </table> 
 				</div>

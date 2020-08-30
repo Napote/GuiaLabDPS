@@ -51,11 +51,13 @@ export class Informacion {
     }
 
     consultarUsuarios(){
+        let cliObjeto = [];
+        let cliLLave:any;
         for (let llave in this.clientes){
-            console.log(this.clientes[llave][0]);
-            console.log(this.clientes[llave][1]);
-            console.log(this.clientes[llave][2]);
+            cliLLave = {"dui":llave, "nombre":this.clientes[llave][1], "mascota":this.clientes[llave][2], "numConsultas":this.numConsultas(llave)};
+            cliObjeto.push(cliLLave);
         }
+        return cliObjeto;
     
     }
     
