@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 
 export class Informacion {
 
@@ -50,7 +51,12 @@ export class Informacion {
     }
 
     consultarUsuarios(){
-        return this.clientes;
+        for (let llave in this.clientes){
+            console.log(this.clientes[llave][0]);
+            console.log(this.clientes[llave][1]);
+            console.log(this.clientes[llave][2]);
+        }
+    
     }
     
     numConsultas(duiBuscar:string){

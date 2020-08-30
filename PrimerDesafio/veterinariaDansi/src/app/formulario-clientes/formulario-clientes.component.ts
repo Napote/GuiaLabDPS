@@ -34,7 +34,7 @@ export class FormularioClientesComponent implements OnInit {
     this.datos.guardarCliente(this.dui, this.nombre, this.mascota);
     this.datos.guardarConsulta(this.dui, this.nombre, this.mascota, 89);
     this.datos.numConsultas(this.dui);
-    console.log(this.datos.consultarUsuarios());
+    this.datos.consultarUsuarios();
   }
 
 
