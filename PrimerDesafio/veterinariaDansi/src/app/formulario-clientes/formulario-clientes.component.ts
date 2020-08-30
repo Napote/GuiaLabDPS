@@ -30,6 +30,11 @@ export class FormularioClientesComponent implements OnInit {
     this.tratamiento = "";
     this.costo = 0;
 
+    this.datos.guardarCliente('12345678-9','Nathaly Palencia','Jamoncito');
+    this.datos.guardarCliente('00000000-6','Gerardo Moreno','Chispa');
+    this.datos.guardarCliente('00000000-8','Andrea Mamorra','Lucas');
+    this.clientesDatos = this.datos.consultarUsuarios();
+
   }
 
   guardar(){
@@ -37,6 +42,12 @@ export class FormularioClientesComponent implements OnInit {
     //this.datos.guardarConsulta(this.dui, this.nombre, this.mascota, 89);
     this.clientesDatos = this.datos.consultarUsuarios();
   }
+
+  agregarVisita(duiClienteSeleccionado){
+    console.log(duiClienteSeleccionado);
+  }
+
+
 
 
 
