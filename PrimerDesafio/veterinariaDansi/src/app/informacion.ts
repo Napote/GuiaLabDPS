@@ -1,3 +1,4 @@
+
 export class Informacion {
 
     clientes = new Array();
@@ -17,21 +18,34 @@ export class Informacion {
     }
 
     guardarCliente(duiC:string, nombreC:string, mascotaC:string){
-
+        console.log(this.clientes);
         this.clientes[duiC] = [duiC, nombreC, mascotaC]
-        //this.consultas = [duiC];
-        console.log(this.clientes)
+        //this.consultas[duiC];
+        console.log(this.clientes);
+        console.log(this.clientes[duiC].includes(duiC));
+        //console.log(this.consultas[duiC]);
         
     }
 
     guardarConsulta(dui:string, medicamentos:string, tratamiento:string, costo:number){
-        let nuevaconsulta = new Array();
-        nuevaconsulta = [medicamentos, tratamiento, costo];
-        this.consultas[dui];
-        this.consultas[dui].push(nuevaconsulta);
-        console.log(this.numConsultas(dui));
+
+        console.log('array al instanciar metodo');
         console.log(this.consultas);
-        console.log(this.consultas[dui]);
+        let nuevaconsulta= new Array();
+        if (this.consultas[dui]){
+            nuevaconsulta = [dui, medicamentos, tratamiento, costo];
+            this.consultas[dui].push(nuevaconsulta);
+            console.log("se agrego otra consulta");
+            console.log(this.consultas);
+        }
+        else{
+            nuevaconsulta = [dui, medicamentos, tratamiento, costo];
+            this.consultas[dui] = [];
+            this.consultas[dui].push(nuevaconsulta);
+            console.log("se agrego la primer consulta");
+            console.log(this.consultas);
+
+        }
 
     }
 
@@ -41,7 +55,15 @@ export class Informacion {
     
     numConsultas(duiBuscar:string){
         let num:number;
-        num = this.consultas[duiBuscar].length;
+
+        if (this.consultas[duiBuscar]){
+            num = this.consultas[duiBuscar].length;
+        }
+        else{
+            num = 0;
+        }
+
+        console.log('numero consultas: '+num)
         return num;
     }
 
