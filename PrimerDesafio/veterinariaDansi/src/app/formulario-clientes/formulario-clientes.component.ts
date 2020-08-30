@@ -17,8 +17,10 @@ export class FormularioClientesComponent implements OnInit {
   medicamentos:string;
   tratamiento:string;
   costo:number;
-
+  
+  duiClienteSeleccionado:string;
   clientesDatos=[];
+  clienteSeleccionado=[];
 
   constructor() { }
 
@@ -43,8 +45,12 @@ export class FormularioClientesComponent implements OnInit {
     this.clientesDatos = this.datos.consultarUsuarios();
   }
 
-  agregarVisita(duiClienteSeleccionado){
-    console.log(duiClienteSeleccionado);
+    prepararModal(clienteSeleccionado){
+     this.clienteSeleccionado=Object.keys(clienteSeleccionado).map(function(key){
+      return [clienteSeleccionado[key]];
+     });
+     console.log(this.clienteSeleccionado);
+     
   }
 
 
