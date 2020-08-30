@@ -32,7 +32,6 @@ export class FormularioClientesComponent implements OnInit {
 
   guardar(){
     this.datos.guardarCliente(this.dui, this.nombre, this.mascota);
-    console.log("hola");
   }
 
 

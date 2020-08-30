@@ -16,13 +16,13 @@
                     <div class="text-center">
                         <img  src="assets/img/2684410059_main_thumb.jpg" class="img-fluid rounded" >
                       </div> <br>
-					<form role="form">
+					<div role="form">
                         <div class="col-6">
                             <div class="form-group">							 
                                 <label for="exampleInputEmail1">
                                     DUI
                                 </label>
-                                <input type="number" class="form-control" id=""/>
+                                <input type="text" [(ngModel)]="dui" class="form-control" id=""/>
                             </div>
                         </div>
                         <div class="col-10">
@@ -30,7 +30,7 @@
                                 <label for="exampleInputEmail1">
                                     Nombre completo de cliente
                                 </label>
-                                <input type="text" class="form-control" id=""/>
+                                <input type="text" class="form-control" id="" [(ngModel)]="nombre"/>
                             </div>
                         </div>
                         <div class="col-10">
@@ -38,15 +38,15 @@
                                 <label for="exampleInputPassword1">
                                     Nombre de mascota
                                 </label>
-                                <input type="text" class="form-control" id=""/>
+                                <input type="text" [(ngModel)]="mascota" class="form-control" id=""/>
                             </div>  
-						    <button type="submit" class="btn btn-primary">
+						    <button type="submit" class="btn btn-primary" (click)="guardar()">
 							    Crear cliente
                             </button>
                         </div>
 						
 						
-					</form>
+					</div>
 				</div>
 				<div class="text-center col-md-8">
                     <br>
