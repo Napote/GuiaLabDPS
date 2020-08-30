@@ -1,1 +1,12 @@
-<p>formulario-clientes works!</p>
+
+<div class="header">
+    <h1>Datos de Alumno</h1>
+    <p>Ingrese los datos de los alumnos</p>
+</div>
+    <label>Nombre:</label>
+    <input type="text" [(ngModel)]="nombre">
+    <label>DUI:</label>
+    <input type="text" [(ngModel)]="dui">
+    <button class="button" (click)="guardar()">Ingresar</button>
+    <br/><br/>
+    
