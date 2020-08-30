@@ -8,7 +8,6 @@ export class Informacion {
     nombreCliente:string;
     nombreMascota:string;
     dui:string;
-
     medicamentos:string;
     tratamiento:string;
     costo:number;

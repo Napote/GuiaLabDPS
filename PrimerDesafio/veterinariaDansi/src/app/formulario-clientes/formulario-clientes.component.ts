@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Informacion} from '../informacion';
-import {FormsModule} from '@angular/forms';
-import {BrowserModule}from '@angular/platform-browser'
+import {FormsModule,FormGroup, FormBuilder} from '@angular/forms';
+import {BrowserModule}from '@angular/platform-browser';  
+
 
 @Component({
   selector: 'app-formulario-clientes',
@@ -10,10 +11,14 @@ import {BrowserModule}from '@angular/platform-browser'
 })
 export class FormularioClientesComponent implements OnInit {
   
-  datos = new Informacion();
+  datos = new Informacion(); 
   dui:string;
   nombre:string;
-  mascota:string;
+  mascota:string;  
+
+  medicamentosChecklist: FormGroup;
+
+  /*Variables para ordenes*/
   medicamentos:string;
   tratamiento:string;
   costo:number;
@@ -22,7 +27,18 @@ export class FormularioClientesComponent implements OnInit {
   clientesDatos=[];
   clienteSeleccionado=[];
 
-  constructor() { }
+  /*Arreglo de medicamentos para checkbox de visita*/
+  listaMedicamentos = [
+    { id: 1, name: 'Bravecto 1000mg', precio:34.99},
+    { id: 2, name: 'Collar ECTHOL razas pequeñas',precio:14.50 },
+    { id: 3, name: 'Gel antiplaca',precio:11.00 },
+    { id: 4, name: 'NexGard Desparasitante',precio:15.99 },
+    { id: 5, name: 'Total Full Desparasitante',precio:14.85 }
+  ];
+
+  constructor(private formBuilder: FormBuilder) {
+      orden: [] 
+  }
 
   ngOnInit(): void {
     this.dui = "";
@@ -51,12 +67,7 @@ export class FormularioClientesComponent implements OnInit {
      });
      console.log(this.clienteSeleccionado);
      
+    } 
+ 
+ 
   }
-
-
-
-
-
-}
-
-
