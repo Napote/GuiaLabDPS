@@ -127,7 +127,7 @@
                                 <!--Lista de medicamentos-->
                                 <label>Medicamentos</label>
                                 <div class="form-group col-md-10" *ngFor="let ticket of listaMedicamentos">
-                                    <label><input type="checkbox" id="ticket.id"  (change)="calcularCosto(ticket.precio,$event)" > {{ ticket.name }}</label>                                                                   
+                                    <label><input type="checkbox" id="{{ticket.id}}" value="{{ ticket.name }}" (change)="calcularCosto(ticket.precio,$event)" > {{ ticket.name }}</label>                                                                   
                                 </div> 
                                 <div class="form-group col-md-10"> 
                                     <h6>Monto total: ${{costoCrudo}}</h6>   

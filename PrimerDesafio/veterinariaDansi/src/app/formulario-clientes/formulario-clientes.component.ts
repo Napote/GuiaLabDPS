@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import {Informacion} from '../informacion'; 
 import {BrowserModule}from '@angular/platform-browser';  
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
@@ -39,8 +39,12 @@ export class FormularioClientesComponent implements OnInit {
     { id: 5, name: 'Total Full Desparasitante',precio:14.85 }
   ];
 
-  constructor() { 
-  }
+  /*Construyendo un formBuilder para controlar los checkbox*/
+  constructor(private fb: FormBuilder) { 
+    this.medicamentosChecklist=this.fb.group({
+      checkArray:this.fb.array([])
+    })
+  } 
 
   ngOnInit(): void {
     this.dui = "";
@@ -73,7 +77,9 @@ export class FormularioClientesComponent implements OnInit {
     this.clientesDatos = this.datos.consultarUsuarios();
   }
 
-  prepararModal(clienteSeleccionado, estaConsulta){      
+ 
+  
+  prepararModal(clienteSeleccionado, estaConsulta){       
      this.descuento=0;
 
      this.clienteSeleccionado=Object.keys(clienteSeleccionado).map(function(key){ 
@@ -91,9 +97,24 @@ export class FormularioClientesComponent implements OnInit {
   } 
 
   calcularCosto(precio:number, values:any){   
-    values.target.checked? this.costoCrudo=this.costoCrudo+precio:this.costoCrudo=this.costoCrudo-precio;    
+    const checkArray: FormArray = this.medicamentosChecklist.get('checkArray') as FormArray;
+    if (values.target.checked) {
+      checkArray.push(new FormControl(values.target.value));
+      this.costoCrudo=this.costoCrudo+precio;
+    } else {
+      this.costoCrudo=this.costoCrudo-precio;
+      let i: number = 0;
+      checkArray.controls.forEach((item: FormControl) => {
+        if (item.value == values.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    } 
     this.costoCrudo=+(this.costoCrudo).toFixed(2); 
     this.costo= +(this.costoCrudo-(this.descuento*this.costoCrudo)).toFixed(2);
+    console.log(this.medicamentosChecklist.value)
   }
 
   resetearCostos(){    
