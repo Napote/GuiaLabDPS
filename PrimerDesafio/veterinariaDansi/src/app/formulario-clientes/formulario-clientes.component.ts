@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Informacion} from '../informacion';
-import {FormsModule,FormGroup, FormBuilder} from '@angular/forms';
+import {Informacion} from '../informacion'; 
 import {BrowserModule}from '@angular/platform-browser';  
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-
+import { FormsModule,FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-clientes',
@@ -17,7 +16,8 @@ export class FormularioClientesComponent implements OnInit {
   nombre:string;
   mascota:string; 
 
-  medicamentosChecklist: FormGroup;
+  /*Formulario de medicamentos*/
+  medicamentosChecklist: FormGroup; 
 
   /*Variables para ordenes*/
   medicamentos:string;
@@ -48,11 +48,14 @@ export class FormularioClientesComponent implements OnInit {
     this.mascota = "";
     this.medicamentos = "";
     this.tratamiento = ""; 
-    this.resetearCostos();    
+    this.costoCrudo=5;
+    this.descuento=0;
+    this.costo=5;
 
     this.datos.guardarCliente('12345678-9','Nathaly Palencia','Jamoncito');
     this.datos.guardarCliente('00000000-6','Gerardo Moreno','Chispa');
     this.datos.guardarCliente('00000000-8','Andrea Mamorra','Lucas');
+    this.datos.guardarCliente('00000000-9','Rosario de Mora','Soledad');
 
     this.datos.guardarConsulta('12345678-9', 'No aplica', 'Tenia tos el perrito', 5)
     this.datos.guardarConsulta('12345678-9', 'No aplica', 'Tenia gripe el perrito', 5)
@@ -71,7 +74,8 @@ export class FormularioClientesComponent implements OnInit {
   }
 
   prepararModal(clienteSeleccionado, estaConsulta){      
-     this.resetearCostos();
+     this.descuento=0;
+
      this.clienteSeleccionado=Object.keys(clienteSeleccionado).map(function(key){ 
       return [clienteSeleccionado[key]];
      });  
@@ -81,6 +85,8 @@ export class FormularioClientesComponent implements OnInit {
      } 
      else if(estaConsulta>=4){
       this.descuento=0.1;}
+
+    this.resetearCostos();
     
   } 
 
@@ -91,9 +97,8 @@ export class FormularioClientesComponent implements OnInit {
   }
 
   resetearCostos(){    
-    this.costoCrudo=5;
-    this.descuento=0;
-    this.costo=5;
+    this.costoCrudo=5; 
+    this.costo= +(this.costoCrudo-(this.descuento*this.costoCrudo)).toFixed(2);
   }
  
  

@@ -98,7 +98,7 @@
                           <td> 
                             Agregando visita para <span id="pacienteActivo">{{clienteSeleccionado[2]}}</span>
                           </td>
-                          <small>Está es su visita número {{+clienteSeleccionado[3]+1}}</small>
+                          <small>Esta es la visita número {{+clienteSeleccionado[3]+1}} del cliente.</small>
                        </h5> 
                       
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -106,6 +106,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
+                        <form [formGroup]="medicamentosChecklist">
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="form-group col-md-6"> 
@@ -135,7 +136,8 @@
                                 </div> 
                             </div>
                             
-                        </div>      
+                        </div>  
+                        </form>    
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar</button>
