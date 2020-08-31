@@ -84,6 +84,7 @@ export class FormularioClientesComponent implements OnInit {
     console.log(mascota);
     console.log(this.costo);
     this.datos.guardarConsulta(dui, this.medicamentos, mascota, this.costo);
+    this.clientesDatos = this.datos.consultarUsuarios();
   }
   
   prepararModal(clienteSeleccionado, estaConsulta){       
