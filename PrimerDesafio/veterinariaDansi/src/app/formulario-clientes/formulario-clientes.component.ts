@@ -32,11 +32,11 @@ export class FormularioClientesComponent implements OnInit {
   clienteSeleccionado=[];
  
   listaMedicamentos = [
-    { id: 1, name: 'Bravecto 1000 mg', precio:34.99},
-    { id: 2, name: 'Collar ECTHOL razas pequeñas',precio:14.50 },
-    { id: 3, name: 'Gel antiplaca', precio:11.00 },
-    { id: 4, name: 'NexGard Desparasitante',precio:15.99 },
-    { id: 5, name: 'Total Full Desparasitante',precio:14.85 }
+    { id: 1, name: 'Bravecto 1000 mg', precio:34.99,checked:false },
+    { id: 2, name: 'Collar ECTHOL razas pequeñas',precio:14.50,checked:false },
+    { id: 3, name: 'Gel antiplaca', precio:11.00,checked:false },
+    { id: 4, name: 'NexGard Desparasitante',precio:15.99,checked:false },
+    { id: 5, name: 'Total Full Desparasitante',precio:14.85,checked:false }
   ];
 
   /*Construyendo un formBuilder para controlar los checkbox*/
@@ -72,14 +72,22 @@ export class FormularioClientesComponent implements OnInit {
   }
 
   guardar(){
-    this.datos.guardarCliente(this.dui, this.nombre, this.mascota);
-    //this.datos.guardarConsulta(this.dui, this.nombre, this.mascota, 89);
+    this.datos.guardarCliente(this.dui, this.nombre, this.mascota); 
     this.clientesDatos = this.datos.consultarUsuarios();
   }
 
- 
+  registrarVisita(dui,mascota){
+    const checkArray: FormArray = this.medicamentosChecklist.get('checkArray') as FormArray;     
+    this.medicamentos=checkArray.value;
+    console.log(this.medicamentos); 
+    console.log(dui);
+    console.log(mascota);
+    console.log(this.costo);
+    this.datos.guardarConsulta(dui, this.medicamentos, mascota, this.costo);
+  }
   
   prepararModal(clienteSeleccionado, estaConsulta){       
+     this.resetearCheckBox();
      this.descuento=0;
 
      this.clienteSeleccionado=Object.keys(clienteSeleccionado).map(function(key){ 
@@ -112,6 +120,7 @@ export class FormularioClientesComponent implements OnInit {
         i++;
       });
     } 
+
     this.costoCrudo=+(this.costoCrudo).toFixed(2); 
     this.costo= +(this.costoCrudo-(this.descuento*this.costoCrudo)).toFixed(2);
     console.log(this.medicamentosChecklist.value)
@@ -120,7 +129,20 @@ export class FormularioClientesComponent implements OnInit {
   resetearCostos(){    
     this.costoCrudo=5; 
     this.costo= +(this.costoCrudo-(this.descuento*this.costoCrudo)).toFixed(2);
-  }
- 
- 
+  } 
+  resetearCheckBox(){ 
+      this.listaMedicamentos.forEach((item) => {
+      item.checked = false;
+      const checkArray: FormArray = this.medicamentosChecklist.get('checkArray') as FormArray;
+      let i: number = 0;
+      checkArray.controls.forEach((item: FormControl) => {         
+          checkArray.removeAt(i); 
+        i++;
+      });
+    } )
+     
+    
+  
+  } 
+   
   }

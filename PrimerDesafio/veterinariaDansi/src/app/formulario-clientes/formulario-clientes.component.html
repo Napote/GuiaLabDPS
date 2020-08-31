@@ -120,14 +120,14 @@
 
                                 <div class="form-group col-md-12"> 
                                     <label>Tratamiento</label>
-                                    <textarea class="form-control" rows="3"></textarea> 
+                                    <textarea class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="tratamiento" rows="3"></textarea> 
                                 </div> 
                             </div> 
                             <div class="col-md-6">
                                 <!--Lista de medicamentos-->
                                 <label>Medicamentos</label>
                                 <div class="form-group col-md-10" *ngFor="let ticket of listaMedicamentos">
-                                    <label><input type="checkbox" id="{{ticket.id}}" value="{{ ticket.name }}" (change)="calcularCosto(ticket.precio,$event)" > {{ ticket.name }}</label>                                                                   
+                                    <label><input type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="ticket.checked" id="{{ticket.id}}" value="{{ ticket.name }}" (change)="calcularCosto(ticket.precio,$event)" > {{ ticket.name }}</label>                                                                   
                                 </div> 
                                 <div class="form-group col-md-10"> 
                                     <h6>Monto total: ${{costoCrudo}}</h6>   
@@ -141,7 +141,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar</button>
-                      <button type="button" class="btn btn-primary">Aceptar</button>
+                      <button type="button" class="btn btn-primary" (click)="registrarVisita(clienteSeleccionado[0],clienteSeleccionado[2])">Aceptar</button>
                     </div>
                   </div>
                 </div>
