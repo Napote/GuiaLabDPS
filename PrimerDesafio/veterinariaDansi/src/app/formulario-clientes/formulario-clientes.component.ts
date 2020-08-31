@@ -131,6 +131,11 @@ export class FormularioClientesComponent implements OnInit {
     this.costoCrudo=5; 
     this.costo= +(this.costoCrudo-(this.descuento*this.costoCrudo)).toFixed(2);
   } 
+
+  resetearEntradas(){
+    
+  }
+
   resetearCheckBox(){ 
       this.listaMedicamentos.forEach((item) => {
       item.checked = false;
