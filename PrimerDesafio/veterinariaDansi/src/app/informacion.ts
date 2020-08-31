@@ -18,12 +18,19 @@ export class Informacion {
     }
 
     guardarCliente(duiC:string, nombreC:string, mascotaC:string){
-        console.log(this.clientes);
-        this.clientes[duiC] = [duiC, nombreC, mascotaC]
-        //this.consultas[duiC];
-        console.log(this.clientes);
-        console.log(this.clientes[duiC].includes(duiC));
-        //console.log(this.consultas[duiC]);
+        if(!this.clientes[duiC]){
+            console.log('agregando cliente');
+            this.clientes[duiC] = [duiC, nombreC, mascotaC]
+            //this.consultas[duiC];
+            console.log(this.clientes);
+            //console.log(this.clientes[duiC].includes(duiC));
+            //console.log(this.consultas[duiC]);
+            return true;
+        }
+        else{
+            console.log('ya existe');
+            return false;
+        }
         
     }
 
@@ -47,7 +54,7 @@ export class Informacion {
 
         }
 
-        
+
 
     }
 

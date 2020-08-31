@@ -84,7 +84,7 @@ export class FormularioClientesComponent implements OnInit {
   }
 
   guardar(){
-    this.datos.guardarCliente(this.dui, this.nombre, this.mascota); 
+    this.datos.guardarCliente(this.dui.split(' ').join(''), this.nombre, this.mascota); 
     this.clientesDatos = this.datos.consultarUsuarios();
   }
 
