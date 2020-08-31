@@ -71,7 +71,7 @@ export class Informacion {
             num = 0;
         }
 
-        console.log('numero consultas: '+num)
+        console.log('numero consultas: '+ num);
         return num;
     }
 
