@@ -85,6 +85,7 @@ export class FormularioClientesComponent implements OnInit {
     console.log(this.costo);
     this.datos.guardarConsulta(dui, this.medicamentos, mascota, this.costo);
     this.clientesDatos = this.datos.consultarUsuarios();
+    this.tratamiento="";
   }
   
   prepararModal(clienteSeleccionado, estaConsulta){       
@@ -131,10 +132,7 @@ export class FormularioClientesComponent implements OnInit {
     this.costoCrudo=5; 
     this.costo= +(this.costoCrudo-(this.descuento*this.costoCrudo)).toFixed(2);
   } 
-
-  resetearEntradas(){
-    
-  }
+ 
 
   resetearCheckBox(){ 
       this.listaMedicamentos.forEach((item) => {
