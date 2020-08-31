@@ -13,11 +13,20 @@
              
 			<div class="row">
                 <!--Formulario de cliente-->
-				<div class="col-md-3"> 
+				<div class="col-md-4"> 
                    <br>
                    <!--Inicio de formulario-->
                    
 					<form  [formGroup]="nuevoFormulario"> 
+                        <p class="alert alert-danger" role="alert" *ngIf="!nuevoFormulario.get('nuevoDUI').valid && (nuevoFormulario.get('nuevoDUI').touched || nuevoFormulario.get('nuevoDUI').dirty)" >
+                            <small>DUI invalido. Ej: 12365487-9.</small> 
+                        </p>  
+                        <p class="alert alert-danger" role="alert" *ngIf="!nuevoFormulario.get('nuevoCliente').valid && (nuevoFormulario.get('nuevoCliente').touched || nuevoFormulario.get('nuevoCliente').dirty)" >
+                            <small>El campo nombre es requerido.</small> 
+                        </p>  
+                        <p class="alert alert-danger" role="alert" *ngIf="!nuevoFormulario.get('nuevoMascota').valid && (nuevoFormulario.get('nuevoMascota').touched || nuevoFormulario.get('nuevoMascota').dirty)" >
+                            <small>El campo mascota es requerido.</small> 
+                        </p>  
                         <h6>Agregar un nuevo cliente</h6>
                         <div class="col-6">
                             <div class="form-group">							 
@@ -26,12 +35,6 @@
                                 </label>
                                 <input type="text" formControlName="nuevoDUI" [(ngModel)]="dui" class="form-control" pattern="^\d{8}-\d{1}?$"/>
                                  
-                                <p class="alert alert-danger" role="alert" *ngIf="!nuevoFormulario.get('nuevoDUI').valid && (nuevoFormulario.get('nuevoDUI').touched || nuevoFormulario.get('numSalarioBase').dirty)" >
-                                    Ingrese un DUI con formato válido. Ej: 12365487-9.
-                                </p> 
-                                <span ng-show="nuevoFormulario.nuevoDUI.$invalid">
-                                    <div class="invalid-feedback">Ingrese un DUI con formato válido. Ej: 12365487-9</div>
-                                </span>
                                 
                                 
                             </div>
@@ -55,6 +58,8 @@
 						    <button type="submit" class="btn btn-success" [disabled]="!nuevoFormulario.valid" (click)="guardar()">
 							    Crear cliente
                             </button>
+                            
+                       
                         </div>
 						
 						
@@ -105,7 +110,6 @@
                 </div>
                 <div class="col-md-2"> 
                     <img  src="assets/img/2684410059_main_thumb.jpg" class="img-fluid rounded" > 
-                    <img  src="assets/img/hamster-main.jpg" class="img-fluid rounded" > 
                 </div>
             </div>
             <!--Modal de visitas-->
@@ -164,6 +168,7 @@
                     </div>
                   </div>
                 </div>
+               
               </div>
 
 		</div>
