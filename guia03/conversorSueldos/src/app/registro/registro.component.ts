@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core'; 
 import { FormGroup} from '@angular/forms';
 import {FormControl, Validators, FormBuilder} from '@angular/forms';
-
-
 import { ValidadorMaxMinService } from './../validador-max-min.service';
  
 

@@ -1,3 +1,10 @@
 #pacienteActivo{
     color: green;
 }
+
+.ng-valid[required], .ng-valid.required {
+    border-left: 5px solid green;
+    }
+    .ng-invalid:not(form) {
+    border-left: 5px solid #DB353E;
+    }

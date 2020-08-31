@@ -15,13 +15,25 @@
                 <!--Formulario de cliente-->
 				<div class="col-md-3"> 
                    <br>
-					<div role="form">
+                   <!--Inicio de formulario-->
+                   
+					<form  [formGroup]="nuevoFormulario"> 
+                        <h6>Agregar un nuevo cliente</h6>
                         <div class="col-6">
                             <div class="form-group">							 
                                 <label for="exampleInputEmail1">
                                     DUI
                                 </label>
-                                <input type="text" [(ngModel)]="dui" class="form-control" id=""/>
+                                <input type="text" formControlName="nuevoDUI" [(ngModel)]="dui" class="form-control" pattern="^\d{8}-\d{1}?$"/>
+                                 
+                                <p class="alert alert-danger" role="alert" *ngIf="!nuevoFormulario.get('nuevoDUI').valid && (nuevoFormulario.get('nuevoDUI').touched || nuevoFormulario.get('numSalarioBase').dirty)" >
+                                    Ingrese un DUI con formato válido. Ej: 12365487-9.
+                                </p> 
+                                <span ng-show="nuevoFormulario.nuevoDUI.$invalid">
+                                    <div class="invalid-feedback">Ingrese un DUI con formato válido. Ej: 12365487-9</div>
+                                </span>
+                                
+                                
                             </div>
                         </div>
                         <div class="col-10">
@@ -29,7 +41,8 @@
                                 <label for="exampleInputEmail1">
                                     Nombre completo de cliente
                                 </label>
-                                <input type="text" class="form-control" id="" [(ngModel)]="nombre"/>
+                                <input type="text" formControlName="nuevoCliente" required class="form-control" id="" [(ngModel)]="nombre"/>
+                            
                             </div>
                         </div>
                         <div class="col-10">
@@ -37,15 +50,16 @@
                                 <label for="exampleInputPassword1">
                                     Nombre de mascota
                                 </label>
-                                <input type="text" [(ngModel)]="mascota" class="form-control" id=""/>
+                                <input type="text" formControlName="nuevoMascota" required [(ngModel)]="mascota" class="form-control" id=""/>
                             </div>  
-						    <button type="submit" class="btn btn-primary" (click)="guardar()">
+						    <button type="submit" class="btn btn-success" [disabled]="!nuevoFormulario.valid" (click)="guardar()">
 							    Crear cliente
                             </button>
                         </div>
 						
 						
-                    </div>
+                    </form>
+                    <!--Finde formulario-->
                     
 				</div>
 				<div class="text-center col-md-7">

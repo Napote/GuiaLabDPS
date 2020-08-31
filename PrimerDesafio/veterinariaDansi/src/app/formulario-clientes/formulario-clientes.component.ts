@@ -2,7 +2,7 @@ import { Component, OnInit  } from '@angular/core';
 import {Informacion} from '../informacion'; 
 import {BrowserModule}from '@angular/platform-browser';  
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { FormsModule,FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { FormsModule,FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms'; 
 
 @Component({
   selector: 'app-formulario-clientes',
@@ -15,6 +15,8 @@ export class FormularioClientesComponent implements OnInit {
   dui:string;
   nombre:string;
   mascota:string; 
+  /* Formulario de registro de clientes*/
+  nuevoFormulario: FormGroup;
 
   /*Formulario de medicamentos*/
   medicamentosChecklist: FormGroup; 
@@ -56,6 +58,8 @@ export class FormularioClientesComponent implements OnInit {
     this.descuento=0;
     this.costo=5;
 
+    this.nuevoFormulario = this.createFormGroup();
+
     this.datos.guardarCliente('12345678-9','Nathaly Palencia','Jamoncito');
     this.datos.guardarCliente('00000000-6','Gerardo Moreno','Chispa');
     this.datos.guardarCliente('00000000-8','Andrea Mamorra','Lucas');
@@ -69,6 +73,14 @@ export class FormularioClientesComponent implements OnInit {
 
     this.clientesDatos = this.datos.consultarUsuarios();
 
+  }
+
+  createFormGroup(){
+    return new FormGroup({
+      nuevoCliente: new FormControl('', Validators.required),
+      nuevoMascota: new FormControl('', [Validators.required]),
+      nuevoDUI: new FormControl('', [Validators.required])
+    }); 
   }
 
   guardar(){
