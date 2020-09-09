@@ -22,8 +22,7 @@ export class AppComponent {
   openForEdit(alumno:Alumno):void{
     this.selectedAlumno=alumno;
   }
-
-  addOrEddit():void{
+  addOrEdit():void{
     if(this.selectedAlumno.id===0) //Se inserta un nuevo alumno
     {
       this.selectedAlumno.id=this.alumnoArray.length+1;
