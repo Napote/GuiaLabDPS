@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Alumno } from './models/alumno';
+import { FormGroup, FormControl, Validators, MinLengthValidator } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,24 @@ import { Alumno } from './models/alumno';
 })
 export class AppComponent {
   title = 'crudAngular';
+
+  /*Validacion de formulario*/  
+
+  alumnoForm = new FormGroup({
+    name: new FormControl('',[Validators.required]),
+    lastname: new FormControl('',[Validators.required]),
+    age: new FormControl('',[Validators.required, Validators.min(1), Validators.max(99)
+      ]),
+    address: new FormControl('',[Validators.required]),
+    phone: new FormControl('',[
+      Validators.required,
+      Validators.pattern(/^\d{4}-\d{4}$/) 
+    ]),
+    email: new FormControl('',[
+      Validators.required,
+      Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/   )
+    ])
+  });
 
   /* Arreglo de tipo Alumno*/
   alumnoArray: Alumno[]=[

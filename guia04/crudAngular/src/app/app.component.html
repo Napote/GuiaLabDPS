@@ -23,27 +23,82 @@
           <div class="card-title">
             <h3>{{selectedAlumno.id == 0 ? "Agregar Nuevo Alumno" : "Actualizar Alumno"}}</h3>
           </div>
-          <div class="form-group">
-            <input type="text" [(ngModel)]="selectedAlumno.name" placeholder="name" class="form-control">
-          </div>
-          <div class="form-group">
-            <input type="text" [(ngModel)]="selectedAlumno.lastname" placeholder="lastname" class="form-control">
-          </div>
-          <div class="form-group">
-            <input type="number" [(ngModel)]="selectedAlumno.age" placeholder="age"class="form-control">
-          </div>
-          <div class="form-group">
-            <input type="text" [(ngModel)]="selectedAlumno.address" placeholder="address" class="form-control">
-          </div>
-          <div class="form-group">
-            <input type="text" [(ngModel)]="selectedAlumno.phone" placeholder="phone" class="form-control">
-          </div>
-          <div class="form-group">
-            <input type="text" [(ngModel)]="selectedAlumno.email" placeholder="email" class="form-control">
-          </div>
-          <!--Botones-->
-          <button (click)="addOrEdit()" class="btn btn-primary btn-space"> Guardar </button>
-          <button *ngIf="selectedAlumno.id !== 0" class="btn btn-danger" (click)="delete()"> Eliminar</button>
+          <form [formGroup]="alumnoForm">
+
+            <!--Campo name-->
+            <div class="form-group">
+              <input type="text" formControlName="name"  [(ngModel)]="selectedAlumno.name" placeholder="name" name="name" class="form-control">
+            </div> 
+            <div *ngIf="(alumnoForm.controls['name'].dirty || alumnoForm.controls['name'].touched) && alumnoForm.controls['name'].invalid" class="alert-danger">
+              <p *ngIf="alumnoForm.controls['name'].errors && alumnoForm.controls['name'].errors.required">
+                Este campo es requerido
+              </p>
+            </div> 
+
+            <!--Campo lastname-->
+            <div class="form-group">
+              <input type="text" formControlName="lastname" [(ngModel)]="selectedAlumno.lastname" placeholder="lastname" name="lastname" class="form-control">
+            </div>
+            <div *ngIf="(alumnoForm.controls['lastname'].dirty || alumnoForm.controls['lastname'].touched) && alumnoForm.controls['lastname'].invalid" class="alert-danger">
+              <p *ngIf="alumnoForm.controls['lastname'].errors && alumnoForm.controls['lastname'].errors.required">
+                Este campo es requerido
+              </p>
+            </div> 
+
+            <!--Campo age-->
+            <div class="form-group">
+              <input type="number" formControlName="age" [(ngModel)]="selectedAlumno.age" placeholder="age" name="age" class="form-control">
+            </div>
+            <div *ngIf="alumnoForm.controls['age'].touched && alumnoForm.controls['age'].invalid" class="alert-danger">
+              <p *ngIf="alumnoForm.controls['age'].errors && (alumnoForm.controls['age'].errors.min || alumnoForm.controls['age'].errors.max)">
+                Introduzca un número entre 1 - 99
+              </p> 
+              <p *ngIf="alumnoForm.controls['age'].errors.required">
+                Este campo solo acepta números.
+              </p> 
+            </div> 
+
+            <!--Campo address-->
+            <div class="form-group">
+              <input type="text" formControlName="address" [(ngModel)]="selectedAlumno.address" placeholder="address" name="address" class="form-control">
+            </div>
+            <div *ngIf="(alumnoForm.controls['address'].dirty || alumnoForm.controls['address'].touched) && alumnoForm.controls['address'].invalid" class="alert-danger">
+              <p *ngIf="alumnoForm.controls['address'].errors && alumnoForm.controls['address'].errors.required">
+                Este campo es requerido
+              </p>
+            </div> 
+
+
+            <!--Telefono-->
+            <div class="form-group">
+              <input type="text" formControlName="phone"  [(ngModel)]="selectedAlumno.phone" placeholder="phone" name="phone" class="form-control">
+            </div>
+            <div *ngIf="(alumnoForm.controls['phone'].dirty || alumnoForm.controls['phone'].touched) && alumnoForm.controls['phone'].invalid" class="alert-danger">
+              <p *ngIf="alumnoForm.controls['phone'].errors && alumnoForm.controls['phone'].errors.required">
+                Este campo es requerido.
+              </p>
+              <p *ngIf="alumnoForm.controls['phone'].errors && alumnoForm.controls['phone'].errors.pattern">
+                Utilice un número de telefono valido. Ej: 2220-7710.
+              </p> 
+            </div> 
+
+            <div class="form-group">
+              <input type="email" formControlName="email" [(ngModel)]="selectedAlumno.email" placeholder="email" name="email" class="form-control">
+            </div>
+            <div *ngIf="(alumnoForm.controls['email'].dirty || alumnoForm.controls['email'].touched) && alumnoForm.controls['email'].invalid" class="alert-danger">
+              <p *ngIf="alumnoForm.controls['email'].errors && alumnoForm.controls['email'].errors.required">
+                Este campo es requerido.
+              </p>
+              <p *ngIf="alumnoForm.controls['email'].errors && alumnoForm.controls['email'].errors.pattern">
+                Utilice un correo valid. Ej: persona@gmail.com.
+              </p>
+            </div> 
+
+            <!--Botones-->
+            <button [disabled]="!alumnoForm.valid" (click)="addOrEdit()" class="btn btn-primary btn-space"> Guardar </button>
+            <button *ngIf="selectedAlumno.id !== 0" class="btn btn-danger" (click)="delete()"> Eliminar</button>
+          </form>
+          
         </div>
       </div>
     </div>
