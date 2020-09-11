@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Alumno } from './models/alumno';
 import { ArticulosService } from './articulos.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -16,6 +15,8 @@ articulos = null;
 art = {
 codigo: 0,
 descripcion: null,
+proveedor: null,
+fabricante: null,
 precio: null
 }
 constructor(private articulosServicio: ArticulosService) { }
@@ -30,7 +31,7 @@ alta() {
     if (datos['resultado'] == 'OK') {
       alert(datos['mensaje']);
       this.recuperarTodos();
-      this.art = {codigo: 0, descripcion: null, precio: null};
+      this.art = {codigo: 0, descripcion: null, proveedor: null, fabricante: null, precio: null};
     }
   });
 }
@@ -49,7 +50,7 @@ modificacion() {
     if (datos['resultado'] == 'OK') {
       alert(datos['mensaje']);
       this.recuperarTodos();
-      this.art = {codigo: 0, descripcion: null, precio: null};
+      this.art = {codigo: 0, descripcion: null, proveedor: null, fabricante: null, precio: null};
     }
   });
 }
