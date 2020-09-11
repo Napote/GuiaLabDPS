@@ -26,6 +26,7 @@ ngOnInit() {
 recuperarTodos() {
   this.articulosServicio.recuperarTodos().subscribe(result => this.articulos = result);
 }
+
 alta() {
   this.articulosServicio.alta(this.art).subscribe(datos => {
     if (datos['resultado'] == 'OK') {
@@ -35,6 +36,7 @@ alta() {
     }
   });
 }
+
 baja(codigo) {
   if (confirm('¿Esta seguro de elimiar el Registro?')) {
     this.articulosServicio.baja(codigo).subscribe(datos => {
@@ -45,6 +47,7 @@ baja(codigo) {
     });
   }
 }
+
 modificacion() {
   this.articulosServicio.modificacion(this.art).subscribe(datos => {
     if (datos['resultado'] == 'OK') {
