@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 // firebase
-import { environment } from '../environments/environment';
+import {environment} from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 //import { AngularFirestoreModule } from '@angular/fire/firestore';
