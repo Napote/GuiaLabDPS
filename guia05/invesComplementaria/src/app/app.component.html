@@ -1,0 +1,110 @@
+<style>
+  .btn-space { margin-right: 20px; }
+</style>
+
+
+<nav class="navbar navbar-dark bg-primary"> 
+  <a class="navbar-brand" href="/">
+    -- Primer Crud Angular --
+  </a>
+</nav>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-4">
+      <!-- mt-4 margintop: 1.5 --> 
+      <ul class="list-group">
+        <li *ngFor="let alumno of alumnoArray" class="list-group-item list-group-item- action" (click)="openForEdit(alumno)" [class.active]="alumno == selectedAlumno">
+          <span class="badge badge-primary">{{alumno.id}}</span> 
+          - {{alumno.name}} - {{alumno.lastname}}- {{alumno.age}} - {{alumno.address}} -- {{alumno.phone}} -- {{alumno.email}}</li> 
+      </ul>
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <h3>{{selectedAlumno.id == 0 ? "Agregar Nuevo Alumno" : "Actualizar Alumno"}}</h3>
+          </div>
+          <form [formGroup]="alumnoForm">
+
+            <!--Campo name-->
+            <div class="form-group">
+              <input type="text" formControlName="name"  [(ngModel)]="selectedAlumno.name" placeholder="name" name="name" class="form-control">
+            </div> 
+            <div *ngIf="(alumnoForm.controls['name'].dirty || alumnoForm.controls['name'].touched) && alumnoForm.controls['name'].invalid" class="alert-danger">
+              <p *ngIf="alumnoForm.controls['name'].errors && alumnoForm.controls['name'].errors.required">
+                Este campo es requerido
+              </p>
+            </div> 
+
+            <!--Campo lastname-->
+            <div class="form-group">
+              <input type="text" formControlName="lastname" [(ngModel)]="selectedAlumno.lastname" placeholder="lastname" name="lastname" class="form-control">
+            </div>
+            <div *ngIf="(alumnoForm.controls['lastname'].dirty || alumnoForm.controls['lastname'].touched) && alumnoForm.controls['lastname'].invalid" class="alert-danger">
+              <p *ngIf="alumnoForm.controls['lastname'].errors && alumnoForm.controls['lastname'].errors.required">
+                Este campo es requerido
+              </p>
+            </div> 
+
+            <!--Campo age-->
+            <div class="form-group">
+              <input type="number" formControlName="age" [(ngModel)]="selectedAlumno.age" placeholder="age" name="age" class="form-control">
+            </div>
+            <div *ngIf="alumnoForm.controls['age'].touched && alumnoForm.controls['age'].invalid" class="alert-danger">
+              <p *ngIf="alumnoForm.controls['age'].errors && (alumnoForm.controls['age'].errors.min || alumnoForm.controls['age'].errors.max)">
+                Introduzca un número entre 1 - 99
+              </p> 
+              <p *ngIf="alumnoForm.controls['age'].errors.required">
+                Este campo solo acepta números.
+              </p> 
+            </div> 
+
+            <!--Campo address-->
+            <div class="form-group">
+              <input type="text" formControlName="address" [(ngModel)]="selectedAlumno.address" placeholder="address" name="address" class="form-control">
+            </div>
+            <div *ngIf="(alumnoForm.controls['address'].dirty || alumnoForm.controls['address'].touched) && alumnoForm.controls['address'].invalid" class="alert-danger">
+              <p *ngIf="alumnoForm.controls['address'].errors && alumnoForm.controls['address'].errors.required">
+                Este campo es requerido
+              </p>
+            </div> 
+
+
+            <!--Telefono-->
+            <div class="form-group">
+              <input type="text" formControlName="phone"  [(ngModel)]="selectedAlumno.phone" placeholder="phone" name="phone" class="form-control">
+            </div>
+            <div *ngIf="(alumnoForm.controls['phone'].dirty || alumnoForm.controls['phone'].touched) && alumnoForm.controls['phone'].invalid" class="alert-danger">
+              <p *ngIf="alumnoForm.controls['phone'].errors && alumnoForm.controls['phone'].errors.required">
+                Este campo es requerido.
+              </p>
+              <p *ngIf="alumnoForm.controls['phone'].errors && alumnoForm.controls['phone'].errors.pattern">
+                Utilice un número de telefono valido. Ej: 2220-7710.
+              </p> 
+            </div> 
+
+            <div class="form-group">
+              <input type="email" formControlName="email" [(ngModel)]="selectedAlumno.email" placeholder="email" name="email" class="form-control">
+            </div>
+            <div *ngIf="(alumnoForm.controls['email'].dirty || alumnoForm.controls['email'].touched) && alumnoForm.controls['email'].invalid" class="alert-danger">
+              <p *ngIf="alumnoForm.controls['email'].errors && alumnoForm.controls['email'].errors.required">
+                Este campo es requerido.
+              </p>
+              <p *ngIf="alumnoForm.controls['email'].errors && alumnoForm.controls['email'].errors.pattern">
+                Utilice un correo valid. Ej: persona@gmail.com.
+              </p>
+            </div> 
+
+            <!--Botones-->
+            <button [disabled]="!alumnoForm.valid" (click)="addOrEdit()" class="btn btn-primary btn-space"> Guardar </button>
+            <button *ngIf="selectedAlumno.id !== 0" class="btn btn-danger" (click)="delete()"> Eliminar</button>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <!-- md-4 espacio en blanco vertical -->
+      <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciI HZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuO SA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBma WxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzM HoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxM S43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwL jl6IiAvPgogIDwvc3ZnPg==">
+    </div>
+  </div>
+</div>
