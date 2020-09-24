@@ -6,14 +6,14 @@ export const environment = {
   production: false,
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   firebase : {
-    apiKey: "AIzaSyDD6wPzi0KqMkBjxjmoQ5KxuYEqxKXRzaY",
-    authDomain: "crudangular-5e7ac.firebaseapp.com",
-    databaseURL: "https://crudangular-5e7ac.firebaseio.com",
-    projectId: "crudangular-5e7ac",
-    storageBucket: "crudangular-5e7ac.appspot.com",
-    messagingSenderId: "961713070234",
-    appId: "1:961713070234:web:2bb4651e908228ce477f23",
-    measurementId: "G-EXD0YGSX2C"
+    apiKey: "AIzaSyDjM8cnYXBGdNb5MSF4fiMFSzG6-1hMaOQ",
+  authDomain: "crudestudiantes-cf85d.firebaseapp.com",
+  databaseURL: "https://crudestudiantes-cf85d.firebaseio.com",
+  projectId: "crudestudiantes-cf85d",
+  storageBucket: "crudestudiantes-cf85d.appspot.com",
+  messagingSenderId: "450159482043",
+  appId: "1:450159482043:web:120ee2c8aab9cebe75059e",
+  measurementId: "G-WMNXFKRR7J"
   }
 };
 

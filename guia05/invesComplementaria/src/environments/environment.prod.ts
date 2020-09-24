@@ -1,13 +1,13 @@
 export const environment = {
   production: true,
   firebase : {
-    apiKey: "AIzaSyBq8c5wDPanLYIw15xwNnSkmf9sDCKs0sM",
-    authDomain: "dcompguia5.firebaseapp.com",
-    databaseURL: "https://dcompguia5.firebaseio.com",
-    projectId: "dcompguia5",
-    storageBucket: "dcompguia5.appspot.com",
-    messagingSenderId: "1069367110962",
-    appId: "1:1069367110962:web:002b874d5903e7c6c0bb2b",
-    measurementId: "G-R2FJ6RTDZZ"
+    apiKey: "AIzaSyDjM8cnYXBGdNb5MSF4fiMFSzG6-1hMaOQ",
+    authDomain: "crudestudiantes-cf85d.firebaseapp.com",
+    databaseURL: "https://crudestudiantes-cf85d.firebaseio.com",
+    projectId: "crudestudiantes-cf85d",
+    storageBucket: "crudestudiantes-cf85d.appspot.com",
+    messagingSenderId: "450159482043",
+    appId: "1:450159482043:web:120ee2c8aab9cebe75059e",
+    measurementId: "G-WMNXFKRR7J"
   }
 };
