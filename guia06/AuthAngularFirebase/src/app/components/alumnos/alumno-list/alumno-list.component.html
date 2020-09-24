@@ -1,0 +1,31 @@
+ <div class="card">
+  <div class="card-body">
+      <h4 class="text-center">
+          Lista de alumnos
+      </h4>
+      <table class="table table-sm table-hover">
+          <tbody>
+              <tr>
+                  <td>Id</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Edad</td>
+              </tr>
+              <tr *ngFor="let alumno of alumnoArray">
+                  <td>{{alumno.id}}</td>              
+                  <td>{{alumno.name}}</td>
+                  <td>{{alumno.lastname}}</td>
+                  <td>{{alumno.age}}</td>
+                  <td> 
+                      <a class="btn btn-secondary text-white" (click)="editar(alumno)">
+                          <i class="far fa-edit"></i>
+                      </a>
+                      <a class="btn btn-danger text-white" (click)="eliminar(alumno.id)">
+                          <i class="fas fa-trash-alt"></i>
+                      </a> 
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div> 

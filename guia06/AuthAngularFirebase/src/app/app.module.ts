@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { FormsModule } from '@angular/forms';
+
 // Firebase services + environments module
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth"; 
@@ -20,6 +22,14 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 
 //Servicio de autentificacion
 import {AuthService} from './services/auth.service';
+import { AlumnosComponent } from './components/alumnos/alumnos.component';
+import { AlumnoComponent } from './components/alumnos/alumno/alumno.component';
+import { AlumnoListComponent } from './components/alumnos/alumno-list/alumno-list.component';
+
+//Toastr, para notificaciones en angular
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +38,10 @@ import {AuthService} from './services/auth.service';
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    AlumnosComponent,
+    AlumnoComponent,
+    AlumnoListComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +49,7 @@ import {AuthService} from './services/auth.service';
     //Angular modulos
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule,
+    AngularFirestoreModule, FormsModule, ToastrModule.forRoot(), BrowserAnimationsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

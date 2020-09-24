@@ -1,0 +1,33 @@
+<style>
+    .btn-space {
+      margin-right: 20px;
+    }
+
+    h4{
+      color:darkslategrey;
+    }
+</style>
+
+<div class="card">
+    <div class="card-body">
+      <div class="card-title">
+        <h4>{{alumnoServicio.selectedAlumno.id == null ? "Agregar Nuevo Alumno" : "Actualizar Alumno"}}</h4>
+      </div>
+      <form #alumnoForm="ngForm" (ngSubmit)="onSubmit(alumnoForm)">
+
+        <input type="hidden" name="id" #id="ngModel" [(ngModel)]="alumnoServicio.selectedAlumno.id">
+
+        <div class="form-group">
+          <input type="text" name="name" #name="ngModel" [(ngModel)]="alumnoServicio.selectedAlumno.name" placeholder="nombre" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="lastname" #lastname="ngModel" [(ngModel)]="alumnoServicio.selectedAlumno.lastname" placeholder="lastname" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="number" name="age" #age="ngModel" [(ngModel)]="alumnoServicio.selectedAlumno.age" placeholder="age" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary btn-space">Guardar Alumno</button>
+        <button type="reset" class="btn btn-secondary" (click)="resetForm(alumnoForm)">Limpiar formulario</button>
+      </form>
+    </div>
+</div>
