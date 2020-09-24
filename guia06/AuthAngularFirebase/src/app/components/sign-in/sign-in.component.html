@@ -33,35 +33,28 @@
                       (click)="authService.SignIn(userName.value, userPassword.value)">
                   </div>
             
-                  <br> 
+                  <br> <br>
                   <!-- Calling GoogleAuth Api from AuthService -->
                   <div class="form-group">
-                    <button type="button" class="btn btn-primary btn-lg float-left" (click)="authService.GoogleAuth()">
+                    <button type="button" class="btn btn-primary" (click)="authService.GoogleAuth()">
                       <i class="fab fa-google-plus-g"></i>
                       Iniciar sesión con Google
                     </button>
-                  </div>
-                  <br> 
-
+                  </div>  
                   <!-- Login con FB -->
                   <div class="form-group">
-                    <button type="button" class="btn btn-secondary btn-lg float-left" (click)="authService.FacebookAuth()">
+                    <button type="button" class="btn btn-secondary" (click)="authService.FacebookAuth()">
                       <i class="fab fa-facebook"></i>
                       Iniciar sesión con Facebook
                     </button>
-                  </div>
-
+                  </div> 
                   <!-- Login con Twitter -->
                   <div class="form-group">
-                    <button type="button" class="btn btn-primary btn-lg float-left" (click)="authService.TwitterAuth()">
+                    <button type="button" class="btn btn-primary" (click)="authService.TwitterAuth()">
                       <i class="fab fa-twitter"></i>
                       Iniciar sesión con Twitter
                     </button>
-                  </div>
-
-                  <br> <br>
-
-
+                  </div>  
                 </div>
 
                 <br>

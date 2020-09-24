@@ -139,6 +139,10 @@ export class AuthService {
     })
   }
 
+  //Ir a estudiante
+  goTo(){
+    this.router.navigate(['sign-in']);
+  }
 
 
 }
