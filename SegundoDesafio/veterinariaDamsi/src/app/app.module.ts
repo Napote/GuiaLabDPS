@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //Router
 import { PreloadAllModules, RouterModule} from '@angular/router';  
 //Modulo para layout
@@ -24,6 +23,11 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   imports: [
     BrowserModule, 
+    //Otros modulos
+    ToastrModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     //Router
     RouterModule.forRoot([]),    
     LayoutModule, 
@@ -31,10 +35,7 @@ import { ToastrModule } from 'ngx-toastr';
     AngularFireModule.initializeApp(environment.firebase), 
     AngularFireDatabaseModule, 
 
-    //Otros modulos
-    ToastrModule.forRoot(),
-    FormsModule,
-    BrowserAnimationsModule
+    
 
   ],
   providers: [], 

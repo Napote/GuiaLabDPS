@@ -1,41 +1,47 @@
 <main class="page payment-page">
     <section class="payment-form">
         <div class="container">
-            <form> 
-                <div class="card-details  px-4">                   
+
+            <!--Formulario para crear/editar clientes-->
+            <form name="ClienteForm" #clienteForm="ngForm" (ngSubmit)="onSubmit(clienteForm)"> 
+                <div class="card-details  px-4">                  
                     
                     <div class="title"> 
-                        {{isSelectedCliente==false? "REGISTRAR UN CLIENTE":"DETALLES DE CLIENTE"}} 
-                        <div class="edit-btn-wrapper" *ngIf="isSelectedCliente==true">
-                            <a class="btn btn-delete py-1 px-2 mr-2 edit-actions" (click)="helloWorld();"><i class="fa fa-trash"></i></a>
-                            <a class="btn btn-edit py-1 px-2 edit-actions" (click)="helloWorld();"><i class="fa fa-pencil"></i></a>   
+                        {{!clienteServicio.abiertoEdicion? "REGISTRAR UN CLIENTE":"DETALLES DE CLIENTE"}} 
+                        
+                        <div class="edit-btn-wrapper" *ngIf="clienteServicio.abiertoEdicion==true">
+                            <a  name="borrarBtn" class="btn btn-delete py-1 px-2 mr-2 edit-actions"  (click)="eliminar()" ><i class="fa fa-trash"></i></a>
+                            <a  name="editarBtn" class="btn btn-edit py-1 px-2 edit-actions" (click)="actualizar()" ><i class="fa fa-save"></i></a>   
                         </div>
-                    </div>
-                    
+                          
+                        <p *ngIf="clienteServicio.abiertoEdicion">
+                            <small>Presione la tecla <span class="badge">ESC</span> para cancelar la selección</small>
+                        </p>
+                    </div> 
 
                     <div class="row ">
                         <div class="form-group col-sm-6">
                             <label for="">DUI</label>
-                            <input type="text" class="form-control" placeholder="00000000-1" aria-label="MM">
+                            <input type="text" name="dui" [attr.readonly]="clienteServicio.abiertoEdicion? true:null"  #dui="ngModel" [(ngModel)]="clienteServicio.clienteSeleccionado.dui" class="form-control" placeholder="00000000-1" aria-label="MM">
                         </div>
                         <div class="form-group col-sm-11">
                             <label  >Nombre del cliente</label>
-                            <input type="text" class="form-control" placeholder="Nombre del cliente" aria-label="Card Holder">
+                            <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="clienteServicio.clienteSeleccionado.nombre" class="form-control" placeholder="Nombre del cliente" aria-label="Card Holder">
                         </div> 
                         <div class="form-group col-sm-11">
                             <label>Paciente</label>
-                            <input   type="text" class="form-control" placeholder="Nombre del cliente" aria-label="Card Holder">
+                            <input   type="text" name="mascota" #mascota="ngModel" [(ngModel)]="clienteServicio.clienteSeleccionado.mascota" class="form-control" placeholder="Nombre del cliente" aria-label="Card Holder">
                         </div>                            
                     </div>
                     <div class="row justify-content-center"> 
                         <div class="form-group col-sm-10">
-                            <button type="button" class="btn btn-action btn-primary btn-block p-1 px-3">
-                                {{isSelectedCliente==false? "Crear cliente":"Nueva consulta"}} 
+                            <button type="button" type="submit" name="nuevoBtn" class="btn btn-action btn-primary btn-block p-1 px-3">
+                                {{!clienteServicio.abiertoEdicion? "Crear cliente":"Nueva visita"}} 
                             </button>
                         </div> 
                       </div>
                   </div>
-                </form>
-              </div>
-            </section>
-          </main>
+            </form>
+        </div>
+    </section>
+</main>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 //Service
 import { ClienteService } from '../../services/cliente.service';
 
@@ -31,20 +32,21 @@ export class ListaClientesComponent implements OnInit {
       this.clienteArray = [];
       item.forEach(element => {
         let x = element.payload.toJSON();
-        x["dui"] = element.key;
+        x["id"] = element.key;
         this.clienteArray.push(x as Cliente);
       });
     }); 
   }
 
-  //Funcion para editar, 
-  //por el momento solo asigna el objeto como el cliente que se ha abierto para editar
-
-  editar(cliente:Cliente){
-    this.clienteServicio.clienteSeleccionado= Object.assign({},cliente);
+  //Funcion para editar 
+  //Cuando se da click se asigna como clienteSeleccionado al cliente de la fila a la que se le ha dado click
+  //La propiedad abiertoEdicion se vuelve verdadera, ya que se ha dado click a un cliente
+  editar(cliente){ 
+     this.clienteServicio.abiertoEdicion=true;     
+     this.clienteServicio.clienteSeleccionado = Object.assign({},cliente); 
   }
 
-
-
+ 
+  
 
 }

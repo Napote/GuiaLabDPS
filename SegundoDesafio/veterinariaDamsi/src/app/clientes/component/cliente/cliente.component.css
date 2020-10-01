@@ -54,6 +54,15 @@
 	padding-bottom: 8px;
 }
 
+.payment-form .title p{
+	font-size: 0.9em;
+	color:#7B7C7C;
+}
+
+.payment-form .title .badge{
+	background-color: #E33490;
+	color: white;
+}
 .payment-form .edit-btn-wrapper{
 	overflow:hidden;
 	float:right;  
@@ -107,7 +116,7 @@
 }
 
 .btn-edit{
-	color: #F4A637; 
+	color: #606ED7; 
 	font-size: 18px;
 
 }

@@ -1,6 +1,7 @@
 import {Visitas} from './visitas';
 
-export class Cliente {
+export class Cliente {  
+    id:          string;
     dui:           string;
     nombre:        string;
     mascota:       string;
