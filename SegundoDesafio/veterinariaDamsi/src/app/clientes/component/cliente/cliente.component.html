@@ -5,8 +5,8 @@
                 <div class="card-details  px-4">                   
                     
                     <div class="title"> 
-                        DETALLES DE CLIENTE   
-                        <div class="edit-btn-wrapper">
+                        {{isSelectedCliente==false? "REGISTRAR UN CLIENTE":"DETALLES DE CLIENTE"}} 
+                        <div class="edit-btn-wrapper" *ngIf="isSelectedCliente==true">
                             <a class="btn btn-delete py-1 px-2 mr-2 edit-actions" (click)="helloWorld();"><i class="fa fa-trash"></i></a>
                             <a class="btn btn-edit py-1 px-2 edit-actions" (click)="helloWorld();"><i class="fa fa-pencil"></i></a>   
                         </div>
@@ -29,7 +29,9 @@
                     </div>
                     <div class="row justify-content-center"> 
                         <div class="form-group col-sm-10">
-                            <button type="button" class="btn btn-action btn-primary btn-block p-1 px-3">Nueva consulta</button>
+                            <button type="button" class="btn btn-action btn-primary btn-block p-1 px-3">
+                                {{isSelectedCliente==false? "Crear cliente":"Nueva consulta"}} 
+                            </button>
                         </div> 
                       </div>
                   </div>

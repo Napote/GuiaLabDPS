@@ -14,11 +14,17 @@
         <tbody>
           <tr class="row100">
             <td class="column100 column2" data-column="column2">05708518-2</td>
-            <td class="column100 column1" data-column="column1">Gerardo Moreno</td>
-            
+            <td class="column100 column1" data-column="column1">Gerardo Moreno</td>            
             <td class="column100 column3" data-column="column3">Chispa</td>
             <td class="column100 column4" data-column="column4">--</td>  
           </tr>
+          <tr *ngFor="let cliente of clienteArray">
+            <td class="column100 column2" data-column="column2">{{cliente.dui}}</td>
+            <td class="column100 column1" data-column="column1">{{cliente.nombre}}</td>            
+            <td class="column100 column3" data-column="column3">{{cliente.mascota}}</td>
+            <td class="column100 column4" data-column="column4">{{cliente.numerovisitas}}</td>  
+          </tr>
+
  
         </tbody>
       </table>

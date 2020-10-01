@@ -4,6 +4,7 @@
         "dui": "00000000-1",
         "nombre": "Alex Moreno",
         "mascota": "Chispa",
+        "numeroVisitas":3,
         "visitas": [
           {
             "codigo": 1,

@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+//Servicio
+import {ClienteService} from '../../services/cliente.service';
+
+//Modelo
+import {Cliente} from '../../../assets/models/cliente';
+
 
 @Component({
   selector: 'app-cliente',
@@ -7,11 +13,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClienteComponent implements OnInit {
 
-  constructor() { }
+  isSelectedCliente=false;
+  
+  constructor(private clienteServicio:ClienteService,) { }
 
   ngOnInit(): void {
   }
 
+ 
   helloWorld(){
     alert("asd");
   }
