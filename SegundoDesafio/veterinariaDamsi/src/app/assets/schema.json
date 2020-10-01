@@ -1,0 +1,52 @@
+{
+    "clientes": [
+      {
+        "dui": "00000000-1",
+        "nombre": "Alex Moreno",
+        "mascota": "Chispa",
+        "visitas": [
+          {
+            "codigo": 1,
+            "tratamiento": "Lo bañaron",
+            "medicamentos": [
+              {
+                "nombre": "Rabia ya no",
+                "precio": 12.2
+              },
+              {
+                "nombre": "Rabia ya no pofabo",
+                "precio": 122.2
+              }
+            ],
+            "costo": 144
+          },
+          {
+            "codigo": 2,
+            "tratamiento": "Pupusa de Queso",
+            "medicamentos": [
+              {
+                "nombre": "Rabia ya no",
+                "precio": 12.2
+              }
+            ],
+            "costo": 10
+          },
+          {
+            "codigo": 3,
+            "tratamiento": "Pupusa de Queso",
+            "medicamentos": [
+              {
+                "nombre": "Rabia ya no",
+                "precio": 12.2
+              },
+              {
+                "nombre": "Rabia ya no x2",
+                "precio": 12.2
+              }
+            ],
+            "costo": 30
+          }
+        ]
+      }
+    ]
+  }
