@@ -1,0 +1,35 @@
+<header role="banner">
+    <img id="logo-main" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/32877/logo-thing.png" width="200" alt="Logo Thing main logo"> 
+    
+    <nav class="navbar navbar-light navbar-expand-md bg-light justify-content-md-center justify-content-start">
+        <a class="navbar-brand d-md-none d-inline" href="">Menú</a>
+        <button class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#collapsingNavbar2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse  align-items-left w-100" id="collapsingNavbar2">
+            <ul class="navbar-nav mr-auto text-md-center text-left" >
+                <li class="nav-item" >
+                    
+                    <a class="nav-link" routerLink="/clientes" routerLinkActive="active-route"><i class="fa fa-paw"></i>Clientes</a> 
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/visitas" routerLinkActive="active-route"><i class="fa fa-bookmark"></i>Visitas</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/empleados" routerLinkActive="active-route"> <i class="fa fa-users"></i>Empleados</a> 
+                </li>
+            </ul>
+            <ul class="nav navbar-nav flex-row justify-content-md-center justify-content-start flex-nowrap" >
+                <li class="nav-item" id="logout">  
+                    <button type="button" class="btn btn-primary p-1 px-3" id="logout-btn"  >Logout</button>      
+                </li> 
+            </ul>
+        </div>
+    </nav>    
+  </header>
+  <!-- /EOF header--> 
+
+
+  <router-outlet></router-outlet>
+
+  

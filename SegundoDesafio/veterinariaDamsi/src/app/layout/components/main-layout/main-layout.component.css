@@ -1,0 +1,54 @@
+header #logo-main {
+  display: block;
+  margin: 20px auto;
+} 
+ 
+.container {
+  margin-top: 10px;
+}
+
+.nav.nav-center {
+  display: inline-block;
+  left: 0;
+  right: 0;
+  margin:0;
+  float:none;
+}
+
+.navbar-inner{
+  text-align:center;
+}
+
+.navbar-nav > li{ 
+  margin-right:40px; 
+}
+ 
+
+.active-route {
+  background: lightgray;
+  border-radius: 10px;
+
+}
+
+
+
+#logout{
+  margin:0;
+}
+.navbar-nav > li > a:hover { 
+  color: #F4A637;
+}
+
+.fa{
+  margin-right: 10px;
+}
+
+
+ #logout-btn{
+  background: #F4A637 !important;border-color: #F4A637;
+ }
+
+ #logout-btn:hover{
+  background: #F9BC74!important; 
+  border-color: #F9BC74 ;
+ }
