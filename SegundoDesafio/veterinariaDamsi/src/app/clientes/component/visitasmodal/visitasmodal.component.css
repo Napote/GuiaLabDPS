@@ -1,4 +1,6 @@
- 
+.close{
+	margin: 30px;
+}
 .payment-form{	 
 	font-family: 'Montserrat', sans-serif;	 
 }

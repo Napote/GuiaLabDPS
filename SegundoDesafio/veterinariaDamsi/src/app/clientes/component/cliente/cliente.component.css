@@ -86,12 +86,10 @@
 	font-size: 14px; 
 }
 
-.payment-form .card-details button{
-	margin-top: 0.6em;
-	padding:12px 0;
-	font-weight: 600;
-	
-} 
+
+ 
+
+
 @media (min-width: 576px) {
 	.payment-form .title {
 		font-size: 1.2em; 
@@ -108,6 +106,8 @@
 		text-align: center;
     } 
 }
+ 
+
 
 /*===================Botones====================*/
 

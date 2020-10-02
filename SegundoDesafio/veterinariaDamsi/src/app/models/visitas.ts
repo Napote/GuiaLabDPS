@@ -1,7 +1,7 @@
 import {Medicamentos} from './medicamentos';
 
-export interface Visitas {
-    codigo:       number;
+export class Visitas {
+    numero:       number;
     tratamiento:  string;
     medicamentos: Medicamentos[];
     costo:        number;

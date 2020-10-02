@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {  NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+//Service
+import { ClienteService } from '../services/cliente.service';
 
 import { ClientesRoutingModule } from './clientes-routing.module'; 
 import { ListaClientesComponent } from './component/lista-clientes/lista-clientes.component';
@@ -13,6 +14,9 @@ import { VisitasmodalComponent } from './component/visitasmodal/visitasmodal.com
 
 @NgModule({
   declarations: [ ListaClientesComponent, ClienteComponent, PrincipalComponent, VisitasmodalComponent],
+  providers:[
+    ClienteService
+  ],
   imports: [
     CommonModule,
     ClientesRoutingModule,

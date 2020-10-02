@@ -5,8 +5,9 @@ import {HostListener} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import{ VisitasmodalComponent } from '../visitasmodal/visitasmodal.component';
 
-//Servicio
-import {ClienteService} from '../../services/cliente.service';
+//Service
+import { ClienteService } from '../../../services/cliente.service';
+ 
  
 
 
@@ -50,6 +51,7 @@ export class ClienteComponent implements OnInit {
  abrirModal(cliente){ 
     const modalRef =this.modalService.open(VisitasmodalComponent, {size:<any>'lg', windowClass: 'payment-page'});
     modalRef.componentInstance.cliente=cliente; 
+    modalRef.componentInstance.id=this.clienteServicio.clienteSeleccionado.id;
  }
 
   //actualiza la informacion del cliente

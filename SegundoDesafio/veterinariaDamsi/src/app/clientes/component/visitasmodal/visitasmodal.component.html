@@ -1,11 +1,17 @@
-  
-        <section class="payment-form">
+       <section class="payment-form">
+            <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
             <div class="container">
-                <div class="card-details">             
+                
+                <div class="card-details">         
                     <!--Titulo de modal-->
-                    <div class="title"> 
-                        REGISTRANDO VISITA  
-                        <p><small>Esta es la visita #{{cliente.numerovisitas+1}} de <span style="color:#606ED7"> {{cliente.mascota}}</span></small></p>
+                    
+      
+                    <div class="title">                        
+                        NUEVA VISITA  
+                        <p><small>Esta es la visita número {{cliente.numerovisitas}} de <span style="color:#606ED7"> {{cliente.mascota}}</span></small></p>
+                        
                     <!--/EOF Titulo-->
                     </div> 
                 <div class="row "> 
@@ -34,7 +40,7 @@
                         <!--Tratamiento textarea-->
                         <div class="form-group col-md-12"> 
                             <label>Tratamiento</label>
-                            <textarea class="form-control" rows="3"></textarea> 
+                            <textarea [(ngModel)]="tratamiento" class="form-control" rows="3"></textarea> 
                         </div> 
                         <!--/EOF Tratamiento textarea-->
                     </div> 
@@ -51,7 +57,7 @@
                             <label style="margin-left: 25px;">Medicamentos</label>
                             <div class="medicamentos-container" *ngFor="let producto of listaMedicamentos"> 
                                 <p>
-                                    <input type="checkbox" id="{{producto.id}}" value="{{producto.nombre}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="producto.checked" (change)="calcularCosto(producto.precio,$event)">                                
+                                    <input type="checkbox" id="{{producto.id}}" value="{{producto.nombre}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="producto.checked" (change)="calcularCosto(producto,$event)">                                
                                     {{ producto.nombre }} 
                                 </p>                                    
                             </div>
@@ -64,8 +70,8 @@
                                   <span class="price">${{(descuento*costoCrudo).toFixed(2)}}</span>
                                   <p class="item-name">Descuento por visita</p> 
                             </div>
-                                <div class="total" >Total<span class="price">${{costo}}</span></div>
-                              </div>  
+                            <div class="total" >Total<span class="price">${{costo}}</span></div>
+                        </div>  
                         </div> 
                         <!--/EOF Precio por consulta--> 
                         
@@ -75,7 +81,7 @@
                 </div>
                 <div class="row justify-content-center"> 
                     <div class="form-group col-sm-8">
-                        <button type="button" type="submit" name="nuevoBtn" class="btn btn-action btn-primary btn-block p-1 px-3">
+                        <button type="button" type="submit" name="nuevoBtn" class="btn btn-action btn-primary btn-block p-1 px-3" (click)="guardarVisita();activeModal.dismiss('Visita terminada')">
                             Añadir visita                               
                         </button> 
                     </div> 

@@ -28,8 +28,14 @@
                             <input type="text" name="dui" [attr.readonly]="clienteServicio.abiertoEdicion? true:null"  #dui="ngModel" [(ngModel)]="clienteServicio.clienteSeleccionado.dui" class="form-control" placeholder="00000000-1" aria-label="MM">
                         </div>
                         <div class="form-group col-sm-5" *ngIf="clienteServicio.abiertoEdicion==true">
-                            <label for="">NUMERO DE VISITAS</label>
-                            <input type="text" name="numerovisitas" readonly  #numerovisitas="ngModel" [(ngModel)]="clienteServicio.clienteSeleccionado.numerovisitas" class="form-control" aria-label="MM">
+                            <!--<label for="">NUMERO DE VISITAS </label>-->
+
+                            <button *ngIf="clienteServicio.abiertoEdicion==true" type="button" type="button" name="redirect"  id="redirect-btn" class="btn btn-action btn-primary btn-block p-1 px-3" style="margin-top: 0px;">
+                                Ver visitas                                
+                            </button>
+
+                            <!--<input type="text" name="numerovisitas" readonly  #numerovisitas="ngModel" [(ngModel)]="clienteServicio.clienteSeleccionado.numerovisitas" class="form-control" aria-label="MM">
+                            -->
                         </div>
                         <div class="form-group col-sm-11">
                             <label  >Nombre del cliente</label>

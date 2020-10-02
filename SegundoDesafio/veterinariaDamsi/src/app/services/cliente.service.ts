@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 //Firebase
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 //Modelo
-import { Cliente } from '../../assets/models/cliente';
+import { Cliente } from '../models/cliente';
 
 const ESCAPE_KEYCODE = 27;
 
@@ -29,9 +29,6 @@ export class ClienteService {
     obtenerClientes(){
       return this.datosFirebase = this.firebase.list('clientes');
     }
-
-
-   
 
   
    

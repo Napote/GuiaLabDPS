@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {ListaVisitasComponent} from './components/lista-visitas/lista-visitas.component';
 const routes: Routes = [
-  {path:'', component:ListaVisitasComponent}
+  {path:':id/:cliente', component:ListaVisitasComponent}
 ];
 
 @NgModule({

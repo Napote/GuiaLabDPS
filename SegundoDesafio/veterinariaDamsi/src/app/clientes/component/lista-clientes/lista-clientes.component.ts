@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 
 //Service
-import { ClienteService } from '../../services/cliente.service';
+import { ClienteService } from '../../../services/cliente.service';
 
 //Model
-import { Cliente } from '../../../assets/models/cliente';
+import { Cliente } from '../../../models/cliente';
 
 //toastr
 import { ToastrService } from 'ngx-toastr';
@@ -46,6 +46,9 @@ export class ListaClientesComponent implements OnInit {
      this.clienteServicio.clienteSeleccionado = Object.assign({},cliente); 
   }
 
+    navegar(){ 
+      console.log("Navegando");
+    }
  
   
 
