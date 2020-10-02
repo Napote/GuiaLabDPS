@@ -1,13 +1,59 @@
- 
-<div class="modal-header">
-    <h4 class="modal-title">Hi there!</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p>Hello, {{name}}!</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-  </div>  
+  
+        <section class="payment-form">
+            <div class="container">
+                <div class="card-details">             
+                    <!--Titulo de modal-->
+                    <div class="title"> 
+                        REGISTRANDO VISITA    
+                        <p><small>Esta es la visita {{cliente.numerovisitas+1}} del cliente.</small>
+                    </p>
+                    <!--/EOF Titulo-->
+                </div> 
+                <div class="row "> 
+                    <!--Columna de la derecha-->
+                    <div class="col-md-6">
+                        <!--DUI-->
+                        <div class="form-group col-md-6"> 
+                            <label class="col-form-label">DUI</label>
+                            <input type="text" class="form-control" readonly value={{cliente.dui}}> 
+                        </div>
+                        <!--/EOF Dui-->
+
+                        <!--Nombre del cliente-->
+                        <div class="form-group col-md-10"> 
+                            <label class="col-form-label">Nombre completo del cliente</label>
+                            <input type="text" class="form-control" readonly value={{cliente.nombre}}>                            
+                        </div>
+                        <!--/EOF Nombre del cliente--> 
+                         <!--Nombre del cliente-->
+                         <div class="form-group col-md-10"> 
+                            <label class="col-form-label">Paciente</label>
+                            <input type="text" class="form-control" readonly value={{cliente.mascota}}>                            
+                        </div>
+                        <!--/EOF Nombre del cliente--> 
+
+                        <!--Tratamiento textarea-->
+                        <div class="form-group col-md-12"> 
+                            <label>Tratamiento</label>
+                            <textarea class="form-control" rows="3"></textarea> 
+                        </div> 
+                        <!--/EOF Tratamiento textarea-->
+                    </div> 
+                    <!--/EOF Columna de la derecha-->
+                    <!--Columna de la izquierda-->
+                    <div class="col-md-6">
+                        <!--Lista de medicamentos-->
+                        <label>Medicamentos</label>             
+                    </div>        
+                    <!--/EOF Columna de la izquierda-->
+                </div>
+                <div class="row justify-content-center"> 
+                    <div class="form-group col-sm-8">
+                        <button type="button" type="submit" name="nuevoBtn" class="btn btn-action btn-primary btn-block p-1 px-3">
+                            Añadir visita                               
+                        </button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        </section> 

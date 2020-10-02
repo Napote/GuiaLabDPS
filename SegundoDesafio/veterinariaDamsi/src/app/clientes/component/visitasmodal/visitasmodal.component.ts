@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap'; 
 
 @Component({
@@ -8,10 +8,19 @@ import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bo
 })
 export class VisitasmodalComponent implements OnInit {
 
+  @Input() cliente;
+
   constructor(private modalServicio: NgbModal, public activeModal: NgbActiveModal) { }
 
   motivoCierre='';
+
+  nombre='';
+  dui='';
+  mascota='';
+  numerovisitas='';
+
   ngOnInit(): void {
+    console.log(this.cliente);
   }
 
   open(content) {

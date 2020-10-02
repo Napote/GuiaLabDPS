@@ -40,18 +40,16 @@ export class ClienteComponent implements OnInit {
     //De lo contrario añade el cliente a la bd
   onSubmit(clienteForm:NgForm){
     if(this.clienteServicio.abiertoEdicion){ 
-      this.abrirModal();
-
-    }else{
-      this.clienteServicio.crearCliente(clienteForm.value);
-      clienteForm.reset();
+      this.abrirModal(clienteForm.value);
+    }else{ 
+      let cliente= this.clienteServicio.clienteSeleccionado;
+      this.clienteServicio.crearCliente(cliente); 
     }  
   }
    
- abrirModal(){
-   const modalRef =this.modalService.open(VisitasmodalComponent);
-   modalRef.componentInstance.name ="Hello";
-
+ abrirModal(cliente){ 
+    const modalRef =this.modalService.open(VisitasmodalComponent, {size:'lg', windowClass: 'page payment-page'});
+    modalRef.componentInstance.cliente=cliente; 
  }
 
   //actualiza la informacion del cliente
@@ -63,7 +61,6 @@ export class ClienteComponent implements OnInit {
 
   //Envia el cliente para su eliminacion
   eliminar(){ 
-
     this.clienteServicio.eliminarCliente();  
   }
  
