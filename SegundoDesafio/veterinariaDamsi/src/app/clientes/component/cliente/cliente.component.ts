@@ -48,7 +48,7 @@ export class ClienteComponent implements OnInit {
   }
    
  abrirModal(cliente){ 
-    const modalRef =this.modalService.open(VisitasmodalComponent, {size:'lg', windowClass: 'page payment-page'});
+    const modalRef =this.modalService.open(VisitasmodalComponent, {size:<any>'lg', windowClass: 'payment-page'});
     modalRef.componentInstance.cliente=cliente; 
  }
 

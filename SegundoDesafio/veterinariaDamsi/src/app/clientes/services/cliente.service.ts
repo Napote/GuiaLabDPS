@@ -43,6 +43,7 @@ export class ClienteService {
         mascota: cliente.mascota,
         numerovisitas:0
       });
+      this.clienteSeleccionado=new Cliente();
     }
 
     //Cancelar seleccion de tabla 

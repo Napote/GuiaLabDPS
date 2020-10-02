@@ -50,7 +50,7 @@
 	width:auto;
 	overflow:hidden;
     font-family: 'Open Sans', sans-serif;
-    font-size: 1em; 
+    font-size: 1.4em; 
 	border-bottom: 1px solid rgba(0,0,0,0.1);
 	margin-bottom: 0.8em;
 	font-weight: 600;
@@ -63,7 +63,7 @@
 }
 
 .payment-form .title .badge{
-	background-color: #E33490;
+	background-color: #A7AEE2;
 	color: white;
 }
 .payment-form .edit-btn-wrapper{
@@ -81,6 +81,9 @@
 	margin-bottom: 15px;
 	color: #79818a;
 	text-transform: uppercase;
+}
+.payment-form .card-details input[type="text"] {
+	font-size: 14px; 
 }
 
 .payment-form .card-details button{
@@ -117,16 +120,10 @@
 	border-color: #8A93DD;
 	background-color: #8A93DD;
 }
-
-.btn-edit{
-	color: #606ED7; 
+ 
+.btn-delete,.btn-edit{
 	font-size: 18px;
-
-}
-
-.btn-delete{
-	font-size: 18px;
-	color: #DD1C1A;
+	color: #666666;
 	
 }
 

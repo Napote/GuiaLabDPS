@@ -1,7 +1,4 @@
-.modal-lg {
-	max-width: 400px;
-  }
-
+ 
 .payment-form{	 
 	font-family: 'Montserrat', sans-serif;	 
 }
@@ -55,25 +52,69 @@
 	padding-bottom: 8px;
 }
 
-.payment-form .title p{
+.payment-form .products{
+	background-color: #FFEAD8;
+    padding: 25px;
+}
+
+.payment-form .products .item{
+	margin-bottom:1em;
+}
+
+.payment-form .products .item-name{
+	font-weight:600;
+	font-size: 0.9em;
+}
+
+.payment-form .products .item-description{
+	font-size:0.8em;
+	opacity:0.6;
+}
+
+.payment-form .medicamentos-list{
+	padding-top: 25px;
+	background-color: #FFEAD8;
+} 
+ 
+
+.payment-form .medicamentos-list p{
+	 
+	font-size: 0.9em;
+}
+
+.payment-form .medicamentos-container{
+	padding-left: 30px; 
+}
+
+.payment-form .products .item p{
+	margin-bottom:0.2em;
+}
+
+.payment-form .products .price{
+	float: right;
+	font-weight: 600;
+	font-size: 0.9em;
+}
+
+.payment-form .products .total{
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	margin-top: 10px;
+	padding-top: 19px;
+	font-weight: 600;
+	line-height: 1;
+}
+
+.payment-form .products .medicamentos{
 	font-size: 0.9em;
 	color:#7B7C7C;
 }
-
-.payment-form .title .badge{
-	background-color: #E33490;
-	color: white;
-}
-.payment-form .edit-btn-wrapper{
-	overflow:hidden;
-	float:right;  
-}
+ 
 
 .payment-form .card-details{
 	padding: 25px 25px 15px;
 }
 
-.payment-form .card-details label{
+.payment-form .card-details label {
 	font-size: 12px;
 	font-weight: 600;
 	margin-bottom: 15px;
@@ -81,12 +122,25 @@
 	text-transform: uppercase;
 }
 
+.payment-form .card-details input[type="text"],input[type="textarea"] {
+	font-size: 14px; 
+}
+
+
+.payment-form .card-details label 
 .payment-form .card-details button{
 	margin-top: 0.6em;
 	padding:12px 0;
 	font-weight: 600;
 	
 } 
+
+.payment-form .card-details .medicamentos p{
+	 
+	font-size: 0.9rem;
+}
+
+
 @media (min-width: 576px) {
 	.payment-form .title {
 		font-size: 1.2em; 

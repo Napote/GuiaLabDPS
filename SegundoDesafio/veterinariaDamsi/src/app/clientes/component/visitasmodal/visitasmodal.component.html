@@ -4,11 +4,10 @@
                 <div class="card-details">             
                     <!--Titulo de modal-->
                     <div class="title"> 
-                        REGISTRANDO VISITA    
-                        <p><small>Esta es la visita {{cliente.numerovisitas+1}} del cliente.</small>
-                    </p>
+                        REGISTRANDO VISITA  
+                        <p><small>Esta es la visita #{{cliente.numerovisitas+1}} de <span style="color:#606ED7"> {{cliente.mascota}}</span></small></p>
                     <!--/EOF Titulo-->
-                </div> 
+                    </div> 
                 <div class="row "> 
                     <!--Columna de la derecha-->
                     <div class="col-md-6">
@@ -41,9 +40,36 @@
                     </div> 
                     <!--/EOF Columna de la derecha-->
                     <!--Columna de la izquierda-->
+                    
                     <div class="col-md-6">
-                        <!--Lista de medicamentos-->
-                        <label>Medicamentos</label>             
+                        
+                         <!--Precio por consulta-->
+                         <div class="form-group medicamentos-list"> 
+                            <div class="title" style="text-align: center !important; "> 
+                                Ticket                                
+                            </div> 
+                            <label style="margin-left: 25px;">Medicamentos</label>
+                            <div class="medicamentos-container" *ngFor="let producto of listaMedicamentos"> 
+                                <p>
+                                    <input type="checkbox" id="{{producto.id}}" value="{{producto.nombre}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="producto.checked" (change)="calcularCosto(producto.precio,$event)">                                
+                                    {{ producto.nombre }} 
+                                </p>                                    
+                            </div>
+                            <div class="products"> 
+                                <div class="item">
+                                  <span class="price">${{costoCrudo}}</span>
+                                  <p class="item-name">Monto total</p> 
+                                </div>
+                                <div class="item">
+                                  <span class="price">${{(descuento*costoCrudo).toFixed(2)}}</span>
+                                  <p class="item-name">Descuento por visita</p> 
+                            </div>
+                                <div class="total" >Total<span class="price">${{costo}}</span></div>
+                              </div>  
+                        </div> 
+                        <!--/EOF Precio por consulta--> 
+                        
+                       
                     </div>        
                     <!--/EOF Columna de la izquierda-->
                 </div>
@@ -51,7 +77,7 @@
                     <div class="form-group col-sm-8">
                         <button type="button" type="submit" name="nuevoBtn" class="btn btn-action btn-primary btn-block p-1 px-3">
                             Añadir visita                               
-                        </button>
+                        </button> 
                     </div> 
                 </div>
             </div>
