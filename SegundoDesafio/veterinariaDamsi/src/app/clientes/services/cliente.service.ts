@@ -31,18 +31,9 @@ export class ClienteService {
     }
 
 
-    //Si el cliente se ha recuperado de la tabla agrega una nueva visita
-    //De lo contrario añade el cliente a la bd
+   
 
-    crearClienteOrCrearVisita(cliente:Cliente){
-
-      if(this.abiertoEdicion){
-        alert("Visita para "+ cliente.nombre)
-      }else{
-        this.crearCliente(cliente);
-      }
-
-    }
+  
    
     //Crea un nuevo cliente, recibe como parametro un objeto Cliente
     crearCliente(cliente:Cliente){
