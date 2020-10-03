@@ -3,11 +3,55 @@
       <div class="row justify-content-center">
         
         <div class="col py-4 px-4"> 
+          <!--============================================================================================================================================-->
             <a [routerLink]="['/clientes']"  style="font-weight: normal;">
                 <-- Regresar
             </a>  
+            <main class="page payment-page">
+              <section class="payment-form">
+                  <div class="content">                                  
+                    <div class="card-details  px-4">                
+                              
+                      <div class="title"> 
+                        VISITAS DEL CLIENTE                             
+                        <p><small>Se han obtenido resultados</small></p> 
+                      </div>  
+                      </div>                   
+                  </div>
+              </section>
+          </main>
+          <div class="wrap"> 
+            <div class="table100 ver3">
+              <table data-vertable="ver3">
+                <thead>
+                  <tr class="row100 head">
+                    <th class="column100 column2" data-column="column1">Visita</th> 
+                    <th class="column100 column1" data-column="column2">Tratamiento</th>                    
+                    <th class="column100 column4" data-column="column4">Productos</th> 
+                    <th class="column100 column4" data-column="column5">Costo de consulta</th>   
+                  </tr>
+                </thead>
+                <tbody> 
+                  
+                  <span let *ngFor="let cliente of clc">
+                    <tr class="row100" *ngFor="let visita of clc['visitas']"> 
+                      <td class="column100 column2" >{{visita['numero']}}</td>
+                      <td class="column100 column1" >{{visita['tratamiento']}}</td>            
+                      <td class="column100 column3" *ngFor="let producto of visita['productos']" >
+                        <span>{{producto['nombre']}},</span>
+                      </td>
+                      <td class="column100 column4" >{{visita['costo']}}</td>   
+                    </tr> 
+                  </span>                
+        
+         
+                </tbody>
+              </table>
+            </div> 
+          </div>  
 
-           
+
+          <!--============================================================================================================================================-->
 
         </div> 
       </div>
