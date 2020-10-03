@@ -3,8 +3,10 @@ import { Injectable, ɵCompiler_compileModuleSync__POST_R3__ } from '@angular/co
  
 //Firebase
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { merge } from 'rxjs';
 
+import { Observable} from 'rxjs';
+import { map } from 'rxjs/operators';
+ 
 //Modelos
 import { Cliente } from '../models/cliente';
 import { Medicamentos } from '../models/medicamentos';
@@ -17,6 +19,9 @@ import { Visitas} from '../models/visitas';
 export class VisitasService {
   
   datosFirebase:AngularFireList<any>;
+
+
+  datosCliente: Observable<Cliente[]> ;
 
   /*Se guardan los medicamentos que se lleva el cliente */
   medicamentosTiket: Medicamentos[] = [];
@@ -53,8 +58,43 @@ export class VisitasService {
       visitas:this.estaConsulta
     });  
   }
+  getSingleItem(id: string) { 
+    const itemPath =  `clientes/${id}`;
+    let item = this.firebase.list(itemPath);
+    return item
+  }
+
+  obtenerCliente(id){    
+    let itemPath =  `clientes/${id}`; 
+    return this.firebase.object(itemPath).snapshotChanges().pipe(map(res=>{
+      let x = res.payload.val();
+    }))
+    return this.firebase.list(itemPath).valueChanges(); 
+     
+  }
+
+  servicio2(id){      
+    let itemPath =  `clientes/${id}`; 
+    return this.datosFirebase = this.firebase.list(itemPath);
+  }
+  
 
 
+  servicio3(id):Observable<Cliente[]>{
+    let itemPath =  `clientes/${id}`; 
+    return this.firebase.list(itemPath).snapshotChanges()
+      .pipe(map(res=>{
+        return res.map(element=>{
+          let x = element.payload.toJSON();            
+          x["dui"] = element.key;
+          return x as Cliente;
+        });
+      }));
+    }
 
+  
 }
+
+ 
+
 

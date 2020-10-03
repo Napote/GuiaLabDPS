@@ -127,6 +127,16 @@
 	
 }
 
+#redirect-btn{
+	background-color: #F4A637;
+	border:#F4A637 ;
+}
+
+#redirect-btn:hover{
+	background-color: #F9BC74;
+}
+
+
 .btn-edit:hover,.btn-delete:hover {
 	color: white; 
 	background-color: #E33490;

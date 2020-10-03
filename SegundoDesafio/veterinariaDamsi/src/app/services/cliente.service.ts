@@ -26,7 +26,7 @@ export class ClienteService {
 
     //Trae todos los clientes registrados en la base de datos
     //Guarda los elementos en la variable clientes
-    obtenerClientes(){
+    obtenerClientes(){      
       return this.datosFirebase = this.firebase.list('clientes');
     }
 

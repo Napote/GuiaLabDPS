@@ -65,6 +65,10 @@ export class ClienteComponent implements OnInit {
   eliminar(){ 
     this.clienteServicio.eliminarCliente();  
   }
+
+  redireccionarHaciaVisitas(){
+    alert("Hola mundo");
+  }
  
   //Detectar la tecla ESC para cancelar seleccion actual
   
