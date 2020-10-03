@@ -23,7 +23,7 @@ export class ListaVisitasComponent implements OnInit {
    
   ngOnInit(){
       this.id=this._Activatedroute.snapshot.paramMap.get("id"); 
-      return this.visitasServicio.servicio3(this.id).subscribe(response=>{
+      return this.visitasServicio.getSingleItem(this.id).snapshotChanges().subscribe(item=>{this.
          this.clc=response;
          console.log(response);
       }) 

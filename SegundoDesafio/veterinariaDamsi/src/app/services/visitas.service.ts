@@ -60,8 +60,9 @@ export class VisitasService {
   }
   getSingleItem(id: string) { 
     const itemPath =  `clientes/${id}`;
-    let item = this.firebase.list(itemPath);
-    return item
+    
+    this.datosFirebase = this.firebase.list(itemPath);
+    return this.datosFirebase;
   }
 
   obtenerCliente(id){    
