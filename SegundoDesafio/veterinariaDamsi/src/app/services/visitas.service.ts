@@ -12,6 +12,7 @@ import { Cliente } from '../models/cliente';
 import { Medicamentos } from '../models/medicamentos';
 import { Visitas} from '../models/visitas';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -58,40 +59,10 @@ export class VisitasService {
       visitas:this.estaConsulta
     });  
   }
-  getSingleItem(id: string) { 
-    const itemPath =  `clientes/${id}`;
-    let item = this.firebase.list(itemPath);
-    return item
-  }
-
-  obtenerCliente(id){    
-    let itemPath =  `clientes/${id}`; 
-    return this.firebase.object(itemPath).snapshotChanges().pipe(map(res=>{
-      let x = res.payload.val();
-    }))
-    return this.firebase.list(itemPath).valueChanges(); 
-     
-  }
-
-  servicio2(id){      
-    let itemPath =  `clientes/${id}`; 
-    return this.datosFirebase = this.firebase.list(itemPath);
-  }
-  
-
-
-  servicio3(id):Observable<Cliente[]>{
-    let itemPath =  `clientes/${id}`; 
-    return this.firebase.list(itemPath).snapshotChanges()
-      .pipe(map(res=>{
-        return res.map(element=>{
-          let x = element.payload.toJSON();            
-          x["dui"] = element.key;
-          return x as Cliente;
-        });
-      }));
-    }
-
+   
+  obtenerClientes( ){      
+    return this.datosFirebase = this.firebase.list('clientes');
+  } 
   
 }
 

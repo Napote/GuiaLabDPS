@@ -31,7 +31,7 @@ export class ListaClientesComponent implements OnInit {
     return this.clienteServicio.obtenerClientes().snapshotChanges().subscribe(item => {
       this.clienteArray = [];
       item.forEach(element => {
-        
+        console.log(element)
         let x = element.payload.toJSON();
         x["id"] = element.key;
         this.clienteArray.push(x as Cliente);
