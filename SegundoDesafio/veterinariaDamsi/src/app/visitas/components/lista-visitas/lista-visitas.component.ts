@@ -23,7 +23,7 @@ export class ListaVisitasComponent implements OnInit {
               public visitasServicio:VisitasService) { }
   
    
-  /*ngOnInit(){
+   /*ngOnInit(){
       this.id=this._Activatedroute.snapshot.paramMap.get("id"); 
       return this.visitasServicio.obtenerClientes().snapshotChanges().subscribe(item => { 
         item.forEach(element => {          
@@ -35,9 +35,9 @@ export class ListaVisitasComponent implements OnInit {
             this.cliente = x as Cliente;          
           }           
         });
-      });  */
+      });   */
  
-
+      
       ngOnInit(){
         this.id=this._Activatedroute.snapshot.paramMap.get("id"); 
         return this.visitasServicio.obtenerClientes().snapshotChanges().subscribe(item => { 
@@ -46,11 +46,10 @@ export class ListaVisitasComponent implements OnInit {
             let x = element.payload.toJSON();
             if(element.key == this.id){
               x["id"]= element.key;               
-              this.clc.push(x as Cliente);    
-              console.log(this.clc);   
+              this.clc.push(x as Cliente);     
             }    
           });
-        });     
+        });      
       
 
   } 
