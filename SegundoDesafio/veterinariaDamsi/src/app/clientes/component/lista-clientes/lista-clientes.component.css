@@ -1,58 +1,23 @@
-
-/* ------------------------------------ */
-a {
-	margin: 0px;
-	transition: all 0.4s;
-	-webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:75px;
+	right:75px;
+	background-color:#F79C3E;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center; 
 }
 
-a:focus {
-	outline: none !important;
+.float:hover{
+  cursor: pointer;
+  background-color:#FCB46F; 
 }
 
-a:hover {
-	text-decoration: none;
+.my-float{
+  margin-top:22px;
 }
-
-/* ------------------------------------ */
-h1,h2,h3,h4,h5,h6 {margin: 0px;}
-
-p {margin: 0px;}
-
-ul, li {
-	margin: 0px;
-	list-style-type: none;
-}
-
-
-/* ------------------------------------ */
-input {
-  display: block;
-	outline: none;
-	border: none !important;
-}
-
-textarea {
-  display: block;
-  outline: none;
-}
-
-textarea:focus, input:focus {
-  border-color: transparent !important;
-}
-
-/* ------------------------------------ */
- 
-button:hover {
-	cursor: pointer;
-}
-
-iframe {
-	border: none !important;
-}
-
 
 
 /*//////////////////////////////////////////////////////////////////
@@ -153,4 +118,50 @@ th, td {
   background-color: #FFEAD8;
   color: #7B7C7C;
 
+  
  }
+
+
+ /*================*/
+ .dropdown.dropdown-lg .dropdown-menu {
+  margin-top: -1px;
+  padding: 6px 20px;
+}
+.input-group-btn .btn-group {
+  display: flex !important;
+}
+.btn-group .btn {
+  border-radius: 0;
+  margin-left: -1px;
+}
+.btn-group .btn:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.btn-group .form-horizontal .btn[type="submit"] {
+border-top-left-radius: 4px;
+border-bottom-left-radius: 4px;
+}
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+.form-group .form-control:last-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+  #adv-search {
+      width: 500px;
+      margin: 0 auto;
+  }
+  .dropdown.dropdown-lg {
+      position: static !important;
+  }
+  .dropdown.dropdown-lg .dropdown-menu {
+      min-width: 500px;
+  }
+}
+
+/* ------------------------------------ */
