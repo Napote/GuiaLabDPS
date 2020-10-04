@@ -1,10 +1,7 @@
 <main class="page payment-page">
     <section class="payment-form">
         <div class="container">
-            <!--Enlace a visitas-->
-            <a [routerLink]="['/visitas', this.clienteServicio.clienteSeleccionado.id]" style="font-weight: normal;">
-                Mostrar visitas ->
-            </a>  
+             
             <!--Formulario para crear/editar clientes-->
             <form name="ClienteForm" #clienteForm="ngForm" (ngSubmit)="onSubmit(clienteForm)">                 
                 <div class="card-details  px-4">                  
@@ -45,15 +42,19 @@
                             <input   type="text" name="mascota" #mascota="ngModel" [(ngModel)]="clienteServicio.clienteSeleccionado.mascota" class="form-control" placeholder="Nombre del cliente" aria-label="Card Holder">
                         </div>                            
                     </div>
-                    <div class="row justify-content-center"> 
+                    <div class="row justify-content-center">
+                        <!--Enlace a visitas-->
+            
                         <div class="form-group col-sm-10">
                             <button type="button" type="submit" name="nuevoBtn" class="btn btn-action btn-primary btn-block p-1 px-3">
                                 {{!clienteServicio.abiertoEdicion? "Crear cliente":"Nueva visita"}}                                  
                             </button>                                                           
                         </div> 
-                        
+                        <a *ngIf="clienteServicio.abiertoEdicion==true" [routerLink]="['/visitas', this.clienteServicio.clienteSeleccionado.id]" style="font-weight: normal;">
+                            Mostrar visitas -->
+                        </a>                          
                       </div>
-                  </div>
+                    </div>
             </form>
         </div>
     </section>

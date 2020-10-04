@@ -57,7 +57,8 @@
                             <label style="margin-left: 25px;">Medicamentos</label>
                             <div class="medicamentos-container" *ngFor="let producto of listaMedicamentos"> 
                                 <p>
-                                    <input type="checkbox" id="{{producto.id}}" value="{{producto.nombre}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="producto.checked" (change)="calcularCosto(producto,$event)">                                
+                                    <!--A este componente le quite la propiedad [(ngModel)]="producto.checked" -->
+                                    <input type="checkbox" id="{{producto.id}}" value="{{producto.nombre}}" [ngModelOptions]="{standalone: true}" (change)="calcularCosto(producto,$event)">                                
                                     {{ producto.nombre }} 
                                 </p>                                    
                             </div>
