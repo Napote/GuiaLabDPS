@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {HostListener} from '@angular/core';
+
 //Componentes para mostrar modal
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import{ VisitasmodalComponent } from '../visitasmodal/visitasmodal.component';
@@ -14,8 +15,6 @@ import { ClienteService } from '../../../services/cliente.service';
 //Validacion de formularios
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-//toastr
-import { ToastrService } from 'ngx-toastr'; 
 
 @Component({
   selector: 'app-cliente',
