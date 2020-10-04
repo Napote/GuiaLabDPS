@@ -122,7 +122,7 @@ export class VisitasmodalComponent implements OnInit {
 
     guardarVisita(){             
       this.visitasServicio.recibirCosto(this.costo);
-      this.visitasServicio.recibirTratamiento(this.tratamiento);
+      this.visitasServicio.recibirTratamiento(this.tratamiento); 
       this.visitasServicio.crearVisita(this.id,this.cliente);
     }
 

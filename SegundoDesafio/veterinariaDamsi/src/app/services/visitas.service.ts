@@ -21,7 +21,6 @@ export class VisitasService {
   
   datosFirebase:AngularFireList<any>;
 
-
   datosCliente: Observable<Cliente[]> ;
 
   /*Se guardan los medicamentos que se lleva el cliente */
@@ -49,17 +48,30 @@ export class VisitasService {
   //Recibe el costo de la consutla y asigna los medicamentos del ticket
   recibirCosto(costo:number){
     this.estaConsulta.costo=costo;
+    if (Object.keys(this.medicamentosTiket).length===0)
+      this.estaConsulta.listamedicamentos='---'
+    else{
+      this.estaConsulta.listamedicamentos=' ';
+      this.medicamentosTiket.forEach(elem=>{
+        this.estaConsulta.listamedicamentos += elem.nombre + ',';
+      }) 
+      Object.keys(this.medicamentosTiket).forEach(key=> delete this.medicamentosTiket[key]);
+      
+    }
+      
+
     this.estaConsulta.medicamentos =this.medicamentosTiket;
   }
+ 
 
-   crearVisita(id,cliente){     
-    this.estaConsulta.numero=cliente.numerovisitas; 
-    this.firebase.object('clientes/'+id).update({
-      numerovisitas: cliente.numerovisitas,
-      visitas:this.estaConsulta
-    });  
+    
+  //Añade una visita y actualiza el numero de las recibidas
+  crearVisita(id,cliente){     
+    this.estaConsulta.id=cliente.numerovisitas; 
+    this.firebase.object('clientes/'+id).update({ numerovisitas: cliente.numerovisitas});  
+    this.firebase.database.ref('clientes/'+id).child('visitas').push(this.estaConsulta);  
   }
-   
+  
   obtenerClientes( ){      
     return this.datosFirebase = this.firebase.list('clientes');
   } 
