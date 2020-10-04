@@ -43,7 +43,46 @@ export class ClienteComponent implements OnInit {
       this.abrirModal(clienteForm.value);
     }else{ 
       let cliente= this.clienteServicio.clienteSeleccionado;
-      this.clienteServicio.crearCliente(cliente); 
+      
+      Swal.fire({
+        title: '¿Agregar un nuevo cliente?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#606ED7',
+        confirmButtonText: 'Sí, Agregar'
+      }).then(result => {
+        if(result.value){
+          Swal.fire({
+            title: 'Cargando...',
+            didOpen(){
+              Swal.showLoading();
+            }
+            //si
+          })//.then(result => {
+          this.clienteServicio.crearCliente(cliente).then(result =>{
+          Swal.fire('¡Cliente Registrado!', 'Se ha registrado la información del cliente con exito', 'success')
+          //})
+        }).catch((error) => {
+            Swal.fire({
+              title: 'Error!',
+              text: 'No se pudo guardar',
+              icon:'error'
+            })
+          })
+        }
+        else{
+          Swal.fire({
+            position: 'top-end',
+            title: 'Acción Cancelada...',
+            text: `Acción crear nuevo usuario cancelada`,
+            icon: 'info',
+            heightAuto:true,
+            timer: 2000,
+            timerProgressBar: true
+        });
+        }
+        });
+       
     }  
   }
    
@@ -85,11 +124,10 @@ export class ClienteComponent implements OnInit {
       confirmButtonText: 'Sí, eliminar'
     }).then(result => {
       if(result.value){
-
+        this.clienteServicio.eliminarCliente(); 
         Swal.fire('¡Cliente Elimiando!', 'El cliente se ha eliminado con exito', 'success');
       }
-    })
-    //this.clienteServicio.eliminarCliente();  
+    }) 
   }
 
   redireccionarHaciaVisitas(){

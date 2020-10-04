@@ -34,12 +34,13 @@ export class ClienteService {
    
     //Crea un nuevo cliente, recibe como parametro un objeto Cliente
     crearCliente(cliente:Cliente){
-      this.datosFirebase.push({ 
+      
+      return this.datosFirebase.push({ 
         dui: cliente.dui,
         nombre: cliente.nombre,
         mascota: cliente.mascota,
         numerovisitas:0
-      });
+      })
       this.clienteSeleccionado=new Cliente();
     }
 

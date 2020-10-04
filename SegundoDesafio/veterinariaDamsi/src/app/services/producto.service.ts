@@ -27,7 +27,7 @@ export class ProductoService {
     }
  
     crearProducto(producto:Medicamentos){
-      this.datosFirebase.push({          
+      return this.datosFirebase.push({          
           nombre: producto.nombre,
           precio: producto.precio,
           checked: "false" 
