@@ -4,7 +4,8 @@ import { FormsModule,FormBuilder, FormGroup, FormArray, FormControl, Validators 
 
 //Service
 import { VisitasService } from '../../../services/visitas.service';
-
+import { RouteConfigLoadEnd } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-visitasmodal',
@@ -52,13 +53,12 @@ export class VisitasmodalComponent implements OnInit {
   motivoCierre=''; 
 
   ngOnInit(): void {       
-    this.cliente.numerovisitas= this.cliente.numerovisitas+1;
     //Aplica descuento segun el numero de visitas del cliente seleccionado
     this.costoCrudo=5;  
     this.descuento=0;
-    if(this.cliente.numerovisitas >= 2 && this.cliente.numerovisitas < 5) 
+    if(this.cliente.numerovisitas+1 >= 2 && this.cliente.numerovisitas+1 < 5) 
       this.descuento=0.05; 
-    else if(this.cliente.numerovisitas >= 5)    
+    else if(this.cliente.numerovisitas+1 >= 5)    
       this.descuento=0.08; 
     
 
@@ -69,6 +69,7 @@ export class VisitasmodalComponent implements OnInit {
    
 
   open(content) {
+    console.log('aqui en open/');
     this.modalServicio.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => 
     {
       this.motivoCierre = `Closed with: ${result}`;
@@ -82,6 +83,7 @@ export class VisitasmodalComponent implements OnInit {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      console.log('backdrop');
       return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
@@ -123,7 +125,33 @@ export class VisitasmodalComponent implements OnInit {
     guardarVisita(){             
       this.visitasServicio.recibirCosto(this.costo);
       this.visitasServicio.recibirTratamiento(this.tratamiento); 
-      this.visitasServicio.crearVisita(this.id,this.cliente);
+        Swal.fire({
+          title: '¿Agregar visita al cliente?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#606ED7',
+          confirmButtonText: 'Sí, Guardar'
+        }).then(result => {
+          if(result.value){
+            this.cliente.numerovisitas= this.cliente.numerovisitas+1;
+            this.activeModal.dismiss('Visita terminada');
+            Swal.fire({
+              title: 'Cargando...',
+              didOpen(){
+                Swal.showLoading()
+              },
+              didClose (){
+                Swal.hideLoading()
+              }
+            });
+            this.visitasServicio.crearVisita(this.id,this.cliente).then(result =>{
+            Swal.fire('¡Visita Registrada!', 'La visita se ha guardado con exito', 'success');
+          })
+        }
+        else{
+
+        }
+      });
     }
 
 

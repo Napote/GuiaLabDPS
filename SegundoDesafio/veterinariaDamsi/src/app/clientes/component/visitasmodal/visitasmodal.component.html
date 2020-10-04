@@ -10,7 +10,7 @@
       
                     <div class="title">                        
                         NUEVA VISITA  
-                        <p><small>Esta es la visita número {{cliente.numerovisitas}} de <span style="color:#606ED7"> {{cliente.mascota}}</span></small></p>
+                        <p><small>Esta es la visita número {{cliente.numerovisitas+1}} de <span style="color:#606ED7"> {{cliente.mascota}}</span></small></p>
                         
                     <!--/EOF Titulo-->
                     </div> 
@@ -81,7 +81,7 @@
                 </div>
                 <div class="row justify-content-center"> 
                     <div class="form-group col-sm-8">
-                        <button type="button" type="submit" name="nuevoBtn" class="btn btn-action btn-primary btn-block p-1 px-3" (click)="guardarVisita();activeModal.dismiss('Visita terminada')">
+                        <button type="button" type="submit" name="nuevoBtn" class="btn btn-action btn-primary btn-block p-1 px-3" (click)="guardarVisita();">
                             Añadir visita                               
                         </button> 
                     </div> 

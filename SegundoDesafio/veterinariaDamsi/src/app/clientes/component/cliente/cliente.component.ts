@@ -55,27 +55,22 @@ export class ClienteComponent implements OnInit {
  }
 
   //actualiza la informacion del cliente
-  actualizar(){ 
-    this.clienteServicio.actualizarCliente().then(result =>{
-      Swal.fire('¡Información actualizada!', 'Los datos se han actualizado con exito', 'success');
-    }); 
+  actualizar(){  
 
     Swal.fire({
       title: 'Cargando...',
-      onOpen(){
+      didOpen(){
         Swal.showLoading()
-        this.clienteServicio.actualizarCliente().then(result =>{
-          Swal.fire('¡Información actualizada!', 'Los datos se han actualizado con exito', 'success');
-          Swal.close();
-        });
       },
-      onAfterClose (){
+      didClose (){
         Swal.hideLoading()
       }
     });
+    this.clienteServicio.actualizarCliente().then(result =>{
+      Swal.fire('¡Información actualizada!', 'Los datos se han actualizado con exito', 'success');
+    });
 
     this.clienteServicio.cancelarSeleccion(); 
-
        
   }
 

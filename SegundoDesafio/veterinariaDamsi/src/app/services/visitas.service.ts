@@ -69,7 +69,7 @@ export class VisitasService {
   crearVisita(id,cliente){     
     this.estaConsulta.id=cliente.numerovisitas; 
     this.firebase.object('clientes/'+id).update({ numerovisitas: cliente.numerovisitas});  
-    this.firebase.database.ref('clientes/'+id).child('visitas').push(this.estaConsulta);  
+    return this.firebase.database.ref('clientes/'+id).child('visitas').push(this.estaConsulta);  
   }
   
   obtenerClientes( ){      
