@@ -18,11 +18,12 @@
                               <div class="card-details  px-4">                
                                       
                                 <div class="title"> 
-                                  <!--MOSTRANDO VISITAS DE: {{cliente.mascota}}  -->                                   
+                                  MOSTRANDO VISITAS                               
                                 <p><small>Se han obtenido {{cliente.numerovisitas}} resultados para el cliente {{cliente.nombre}}</small></p> 
                                 </div>  
+                                
                                 <div class="wrap"> 
-                                  <div class="table100 ver3">
+                                  <div class="table100 ver3" >
                                     <table data-vertable="ver3">
                                       <thead>
                                         <tr class="row100 head"> 
@@ -30,6 +31,7 @@
                                           <th class="column100 column2"  >Tratamiento</th>                     
                                           <th class="column100 column3"  >Costo de consulta</th>   
                                           <th class="column100 column4" >Productos comprados</th>   
+                                          <th class="column100 column4" >Ticket de compra</th>   
                                         </tr>
                                       </thead>
                                       <tbody> 
@@ -38,16 +40,24 @@
                                             <td class="column100 column2" >{{cliente.visitas[item].tratamiento}}</td>                      
                                             <td class="column100 column3" >${{cliente.visitas[item].costo}}</td>  
                                             <td class="column100 column4" >{{cliente.visitas[item].listamedicamentos}}</td> 
+                                            <td class="column100 column5" >
+                                              <button  name="nuevoBtn" class="btn btn-action btn-primary btn-block " (click)="exportar(item);">
+                                                Exportar                            
+                                              </button> 
+                                            </td>   
                                         </tr>
                                       </tbody>
                                     </table>
                                   </div> 
-                                </div>     
+                                </div>
                               </div>  
                                            
-                          </div>
+                          </div> 
                         </section>
                       </main>
+
+
+                         
                   </div>
                   <!--/EOF informacion de cliente--> 
                 </div>

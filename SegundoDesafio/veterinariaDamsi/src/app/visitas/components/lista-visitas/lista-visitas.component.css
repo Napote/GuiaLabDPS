@@ -46,7 +46,7 @@
 	overflow:hidden;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.4em; 
-	border-bottom: 1px solid rgba(0,0,0,0.1);
+	/*border-bottom: 1px solid rgba(0,0,0,0.1);*/
 	margin-bottom: 0.8em;
 	font-weight: 600;
 	padding-bottom: 8px;
@@ -95,13 +95,30 @@
     	padding: 40px 40px 30px; 
     }
 
-  	.payment-form .card-details button {
-		margin-top: 2em; 
+  	.payment-form .card-details button { 
+		font-size: 14px;
+		margin: 0;
+		padding:0;
+		font-family: "Open Sans", sans-serif;  
 		display: block;
 		text-align: center;
-    } 
+	} 
+
 }
  
+	/*===================Botones====================*/
+
+	.btn-action{
+		border-color: #F9BC74;
+		background-color: #F9BC74;
+	}
+	
+	.btn-action:hover{
+		border-color: #FFEAD8;
+		background-color: #FFEAD8;
+		color: #79818a;
+	}
+
 
 /* ------------------------------------ */
 a {
@@ -159,6 +176,7 @@ iframe {
 
 
 
+
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
  
@@ -166,7 +184,6 @@ iframe {
 .container-table100 { 
   min-height: 100vh;
   background: #d1d1d1;
-
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -184,6 +201,7 @@ iframe {
 table {
   width: 100%;
   background-color: #fff;
+  
 }
 
 th, td {
@@ -225,20 +243,17 @@ ESTILOS DE TABLA
 
 .table100.ver3 td {
   font-family: Montserrat-Regular;
-
   font-size: 14px;
   color: #808080;
   line-height: 1.4;
 }
 
 .table100.ver3 th {
-  font-family: 'Open Sans', sans-serif;
-   
+  font-family: 'Open Sans', sans-serif;   
   font-size: 14px;
   color: #fff;
   line-height: 1;
   text-transform: uppercase;
-
   background-color: #6c7ae0;
 }
 

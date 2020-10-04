@@ -54,15 +54,14 @@
                             <div class="title" style="text-align: center !important; "> 
                                 Ticket                                
                             </div> 
-                            <label style="margin-left: 25px;">Medicamentos</label>
-                            <div class="medicamentos-container" *ngFor="let producto of listaMedicamentos"> 
-                                <p>
-                                    <!--A este componente le quite la propiedad [(ngModel)]="producto.checked" -->
+                            <label style="margin-left: 25px;">Productos disponibles</label>
+                            <div class="medicamentos-container"> 
+                                <p *ngFor="let producto of listaMedicamentos"> 
                                     <input type="checkbox" id="{{producto.id}}" value="{{producto.nombre}}" (change)="calcularCosto(producto,$event)">                                
                                     {{ producto.nombre }} 
-                                </p>                                    
+                                </p>         
                             </div>
-                            <div class="products"> 
+                            <div class="products checkout"> 
                                 <div class="item">
                                   <span class="price">${{costoCrudo}}</span>
                                   <p class="item-name">Monto total</p> 

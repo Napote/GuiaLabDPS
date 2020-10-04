@@ -27,14 +27,12 @@ export class ProductoService {
     }
  
     crearProducto(producto:Medicamentos){
+      this.productoSeleccionado=new Medicamentos();
       return this.datosFirebase.push({          
           nombre: producto.nombre,
           precio: producto.precio,
-          checked: "false" 
+          checked: "false"
       });
-
-      console.log(producto);
-      this.productoSeleccionado=new Medicamentos();
     }
 
     //Cancelar seleccion de tabla 

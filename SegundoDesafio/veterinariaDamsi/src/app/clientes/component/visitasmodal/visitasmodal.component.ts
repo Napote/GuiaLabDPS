@@ -72,8 +72,7 @@ export class VisitasmodalComponent implements OnInit {
       item.forEach(element=>{
         let x = element.payload.toJSON();
         x["id"]=element.key;
-        this.listaMedicamentos.push(x as Medicamentos);
-        console.log(x);
+        this.listaMedicamentos.push(x as Medicamentos); 
       });
     }); 
  

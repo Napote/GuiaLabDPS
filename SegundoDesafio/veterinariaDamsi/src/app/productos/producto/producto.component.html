@@ -7,6 +7,10 @@
                 <div class="card-details  px-4">     
                     <div class="title"> 
                         {{!productoServicio.abiertoEdicion? "NUEVO PRODUCTO":"DETALLES DE PRODUCTO"}}  
+                        <div class="edit-btn-wrapper" *ngIf="productoServicio.abiertoEdicion">                           
+                            <a  name="borrarBtn" class="btn btn-delete py-1 px-1 mr-2 edit-actions"  (click)="eliminar()" ><i class="fa fa-trash"></i></a>
+                            <a  name="editarBtn" class="btn btn-edit py-1 px-1 edit-actions" (click)="actualizar()" ><i class="fa fa-save"></i></a>   
+                        </div>
                         <p *ngIf="productoServicio.abiertoEdicion">
                             <small>Presione la tecla <span class="badge">ESC</span> para cancelar la selección</small>
                         </p>

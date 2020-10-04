@@ -53,7 +53,7 @@ export class VisitasService {
     else{
       this.estaConsulta.listamedicamentos=' ';
       this.medicamentosTiket.forEach(elem=>{
-        this.estaConsulta.listamedicamentos += elem.nombre + ',';
+        this.estaConsulta.listamedicamentos += ' [' + elem.nombre + ']';
       }) 
       Object.keys(this.medicamentosTiket).forEach(key=> delete this.medicamentosTiket[key]);
       

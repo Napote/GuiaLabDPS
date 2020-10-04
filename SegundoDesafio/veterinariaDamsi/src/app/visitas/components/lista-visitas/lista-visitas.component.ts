@@ -28,13 +28,16 @@ export class ListaVisitasComponent implements OnInit {
           let x = element.payload.toJSON();
           if(element.key == this.id){
             x["id"]= element.key; 
-            this.cliente = x as Cliente; 
-            console.log(x);
+            this.cliente = x as Cliente;  
             this.elements = Object.keys(this.cliente.visitas);    
           }           
         });
       });   
-    }   
+    }
+    
+    exportar(id){
+      alert(id);
+    }
 }
 
  
