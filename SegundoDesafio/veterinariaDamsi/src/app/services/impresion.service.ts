@@ -35,34 +35,38 @@ export class ImpresionService {
  }
 
  getDocumentDefinition() {
-  return {
-    content: [
-    {
-      text: 'DETALLES DE VISITA',
-      bold: true,
-      fontSize: 20,
-      alignment: 'center',
-      margin: [0, 0, 0, 20]
-    },
-    {
-    columns: [
-      [ { text: 'DUI: ' + this.cliente.dui },
-        { text: 'Nombre del cliente: ' + this.cliente.nombre },
-        { text: 'Mascota: ' + this.cliente.mascota },
-        { text: 'Código de visita: ' + this.idvisita},  
-        { text: 'Tratamiento: ' + this.cliente.visitas[this.idvisita].tratamiento},
-        { text: 'Costo de consulta: $' + this.cliente.visitas[this.idvisita].costo},
-        { text: 'Medicamentos recetados: ' + this.cliente.visitas[this.idvisita].listamedicamentos}
-      ] 
-    ]
-    }],
-    styles: {
-      name: {
-        fontSize: 16,
-        bold: true
+  if(this.cliente.visitas[this.idvisita].listamedicamentos==="---"){
+    return {
+      content: [
+      {
+        text: 'DETALLES DE VISITA',
+        bold: true,
+        fontSize: 20,
+        alignment: 'center',
+        margin: [0, 0, 0, 20]
+      },
+      {
+      columns: [
+        [ { text: 'DUI: ' + this.cliente.dui },
+          { text: 'Nombre del cliente: ' + this.cliente.nombre },
+          { text: 'Mascota: ' + this.cliente.mascota },
+          { text: 'Código de visita: ' + this.idvisita},  
+          { text: 'Tratamiento: ' + this.cliente.visitas[this.idvisita].tratamiento},
+          { text: 'Costo de consulta: $' + this.cliente.visitas[this.idvisita].costo},
+          { text: 'Medicamentos recetados: No se recetaron medicamentos.'}
+        ] 
+      ]
+      }],
+      styles: {
+        name: {
+          fontSize: 16,
+          bold: true
+      }
     }
+    };
+
   }
-};
+  
 }
  
 
