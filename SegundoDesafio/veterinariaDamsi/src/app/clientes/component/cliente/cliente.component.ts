@@ -8,7 +8,7 @@ import{ VisitasmodalComponent } from '../visitasmodal/visitasmodal.component';
 //Service
 import { ClienteService } from '../../../services/cliente.service';
  
- 
+import Swal from 'sweetalert2';
 
 
 //Validacion de formularios
@@ -56,14 +56,46 @@ export class ClienteComponent implements OnInit {
 
   //actualiza la informacion del cliente
   actualizar(){ 
-    this.clienteServicio.actualizarCliente(); 
-    this.clienteServicio.cancelarSeleccion();    
+    this.clienteServicio.actualizarCliente().then(result =>{
+      Swal.fire('¡Información actualizada!', 'Los datos se han actualizado con exito', 'success');
+    }); 
+
+    Swal.fire({
+      title: 'Cargando...',
+      onOpen(){
+        Swal.showLoading()
+        this.clienteServicio.actualizarCliente().then(result =>{
+          Swal.fire('¡Información actualizada!', 'Los datos se han actualizado con exito', 'success');
+          Swal.close();
+        });
+      },
+      onAfterClose (){
+        Swal.hideLoading()
+      }
+    });
+
+    this.clienteServicio.cancelarSeleccion(); 
+
+       
   }
 
 
   //Envia el cliente para su eliminacion
   eliminar(){ 
-    this.clienteServicio.eliminarCliente();  
+    Swal.fire({
+      title: '¿Está seguro que desea eliminar el cliente seleccionado?',
+      text: `¡Esta acción no se puede deshacer!`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#606ED7',
+      confirmButtonText: 'Sí, eliminar'
+    }).then(result => {
+      if(result.value){
+
+        Swal.fire('¡Cliente Elimiando!', 'El cliente se ha eliminado con exito', 'success');
+      }
+    })
+    //this.clienteServicio.eliminarCliente();  
   }
 
   redireccionarHaciaVisitas(){
