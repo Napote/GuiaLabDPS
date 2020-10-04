@@ -4,7 +4,10 @@ import { FormsModule,FormBuilder, FormGroup, FormArray, FormControl, Validators 
 
 //Service
 import { VisitasService } from '../../../services/visitas.service';
+import { ProductoService} from '../../../services/producto.service';
 
+//Modelo
+import { Medicamentos } from '../../../models/medicamentos';
 
 @Component({
   selector: 'app-visitasmodal',
@@ -30,6 +33,7 @@ export class VisitasmodalComponent implements OnInit {
     private modalServicio: NgbModal, 
     public visitasServicio:VisitasService,
     public activeModal: NgbActiveModal,
+    private productoServicio:ProductoService,
     private fb: FormBuilder
   ) { 
       this.medicamentosChecklist=this.fb.group({
@@ -38,35 +42,42 @@ export class VisitasmodalComponent implements OnInit {
   }
 
 
-  listaMedicamentos = [
-    { id: 1, nombre: 'Bravecto 1000 mg', precio:34.99,checked:false },
-    { id: 2, nombre: 'Collar ECTHOL razas pequeñas',precio:14.50,checked:false },
-    { id: 3, nombre: 'Gel antiplaca', precio:11.00,checked:false },
-    { id: 4, nombre: 'NexGard Desparasitante',  precio:15.99,checked:false },
-    { id: 5, nombre: 'Total Full Desparasitante', precio:14.85,checked:false },
-    { id: 6, nombre: 'Collar antipulgas para gatos',  precio:11.85,checked:false}
-  ];
-
-  
+  listaMedicamentos=[];  
 
   motivoCierre=''; 
 
   ngOnInit(): void {       
     this.cliente.numerovisitas= this.cliente.numerovisitas+1;
-    //Aplica descuento segun el numero de visitas del cliente seleccionado
-    this.costoCrudo=5;  
-    this.descuento=0;
-    if(this.cliente.numerovisitas >= 2 && this.cliente.numerovisitas < 5) 
-      this.descuento=0.05; 
-    else if(this.cliente.numerovisitas >= 5)    
-      this.descuento=0.08; 
-    
-
-    this.costo=5;  
-    this.costo= +(this.costoCrudo-(this.descuento*this.costoCrudo)).toFixed(2); 
-    
+    this.costosIniciales(); 
+    this.obtenerProductos();
   }
-   
+
+  costosIniciales(){
+     //Aplica descuento segun el numero de visitas del cliente seleccionado
+     this.costoCrudo=5;  
+     this.descuento=0;
+     if(this.cliente.numerovisitas >= 2 && this.cliente.numerovisitas < 5) 
+       this.descuento=0.05; 
+     else if(this.cliente.numerovisitas >= 5)    
+       this.descuento=0.08; 
+     
+ 
+     this.costo=5;  
+     this.costo= +(this.costoCrudo-(this.descuento*this.costoCrudo)).toFixed(2);
+  }
+  
+  obtenerProductos(){
+    return this.productoServicio.obtenerProductos().snapshotChanges().subscribe(item=>{
+      //this.listaMedicamentos=[];
+      item.forEach(element=>{
+        let x = element.payload.toJSON();
+        x["id"]=element.key;
+        this.listaMedicamentos.push(x as Medicamentos);
+        console.log(x);
+      });
+    }); 
+ 
+  }
 
   open(content) {
     this.modalServicio.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => 
