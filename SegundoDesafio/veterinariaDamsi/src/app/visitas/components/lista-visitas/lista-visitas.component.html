@@ -11,7 +11,7 @@
               <div class="container-fluid">
                 <div class="row justify-content-center">
                   <!--Información de cliente-->
-                  <div class="col-xl-8 py-4"> 
+                  <div class="col-xl-9 py-4"> 
                       <main class="page payment-page">
                         <section class="payment-form">
                             <div class="content">                                  
@@ -26,18 +26,18 @@
                                     <table data-vertable="ver3">
                                       <thead>
                                         <tr class="row100 head"> 
-                                          <th class="column100 column4" data-column="column5">Número de visita</th>   
-                                          <th class="column100 column2" data-column="column4">Tratamiento</th>                     
-                                          <th class="column100 column3" data-column="column5">Costo de consulta</th>   
-                                          <th class="column100 column3" data-column="column5">Ticket de consulta</th>   
+                                          <th class="column100 column1"  >Número</th>   
+                                          <th class="column100 column2"  >Tratamiento</th>                     
+                                          <th class="column100 column3"  >Costo de consulta</th>   
+                                          <th class="column100 column4" >Productos comprados</th>   
                                         </tr>
                                       </thead>
                                       <tbody> 
-                                        <tr class="row100" *ngFor="let item of elements ">      
-                                           
-                                            <td class="column100 column4" >{{cliente.visitas[item].id}} </td>
+                                        <tr class="row100" *ngFor="let item of elements ">                                                 
+                                            <td class="column100 column1" >{{cliente.visitas[item].id}} </td>
                                             <td class="column100 column2" >{{cliente.visitas[item].tratamiento}}</td>                      
                                             <td class="column100 column3" >${{cliente.visitas[item].costo}}</td>  
+                                            <td class="column100 column4" >{{cliente.visitas[item].listamedicamentos}}</td> 
                                         </tr>
                                       </tbody>
                                     </table>
