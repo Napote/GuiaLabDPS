@@ -1,6 +1,10 @@
 import { Injectable, ɵCompiler_compileModuleSync__POST_R3__ } from '@angular/core';
 
- 
+//pdfmake
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 //Firebase
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
@@ -18,9 +22,11 @@ import { Visitas} from '../models/visitas';
 })
 
 export class VisitasService {
+
+  //Libreria para crear los pdf
+  pdfmake;
   
   datosFirebase:AngularFireList<any>;
-
   datosCliente: Observable<Cliente[]> ;
 
   /*Se guardan los medicamentos que se lleva el cliente */
@@ -30,7 +36,12 @@ export class VisitasService {
 
   constructor(private firebase:AngularFireDatabase) { }
 
-  ngOnInit(): void {       
+  ngOnInit(): void {        
+  }
+ 
+  generatePdf(){
+    const documentDefinition = { content: "Prueba de pdf" };
+    pdfMake.createPdf(documentDefinition).open();
   }
 
   /*Se guardan los datos del cliente */ 
@@ -62,9 +73,7 @@ export class VisitasService {
 
     this.estaConsulta.medicamentos =this.medicamentosTiket;
   }
- 
 
-    
   //Añade una visita y actualiza el numero de las recibidas
   crearVisita(id,cliente){     
     this.estaConsulta.id=cliente.numerovisitas; 
@@ -72,9 +81,11 @@ export class VisitasService {
     return this.firebase.database.ref('clientes/'+id).child('visitas').push(this.estaConsulta);  
   }
   
-  obtenerClientes( ){      
+  //Recupera la lista de clientes
+  obtenerClientes(){      
     return this.datosFirebase = this.firebase.list('clientes');
   } 
+  
   
 }
 

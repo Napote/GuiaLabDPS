@@ -3,10 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 
 //Service
 import { VisitasService } from '../../../services/visitas.service';
+import {ImpresionService } from '../../../services/impresion.service';
 //Model
 import { Cliente } from '../../../models/cliente';  
-import {Medicamentos} from '../../../models/medicamentos';
-import {Visitas} from '../../../models/visitas';
 
 @Component({
   selector: 'app-lista-visitas',
@@ -18,8 +17,8 @@ export class ListaVisitasComponent implements OnInit {
   cliente:Cliente = new Cliente();  
   elements: any ;  
   constructor(private _Activatedroute:ActivatedRoute,
-              public visitasServicio:VisitasService) { }
-  
+              public visitasServicio:VisitasService,
+              public impresionServicio:ImpresionService) { }  
    
     ngOnInit(){
       this.id=this._Activatedroute.snapshot.paramMap.get("id"); 
@@ -29,14 +28,17 @@ export class ListaVisitasComponent implements OnInit {
           if(element.key == this.id){
             x["id"]= element.key; 
             this.cliente = x as Cliente;  
-            this.elements = Object.keys(this.cliente.visitas);    
+            this.elements = Object.keys(this.cliente.visitas);   
+            console.log(this.cliente); 
           }           
         });
       });   
     }
     
-    exportar(id){
-      alert(id);
+    exportar(id){ 
+      this.impresionServicio.cliente = this.cliente;
+      this.impresionServicio.idvisita = id;
+      this.impresionServicio.generatePdf();
     }
 }
 
