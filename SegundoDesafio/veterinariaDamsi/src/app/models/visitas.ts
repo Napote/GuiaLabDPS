@@ -1,7 +1,7 @@
 import {Medicamentos} from './medicamentos';
 
 export class Visitas {
-    numero:       number;
+    id: string; 
     tratamiento:  string;
     medicamentos: Medicamentos[];
     costo:        number;

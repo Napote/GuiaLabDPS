@@ -20,8 +20,6 @@ import { Visitas} from '../models/visitas';
 export class VisitasService {
   
   datosFirebase:AngularFireList<any>;
-
-
   datosCliente: Observable<Cliente[]> ;
 
   /*Se guardan los medicamentos que se lleva el cliente */
@@ -52,14 +50,14 @@ export class VisitasService {
     this.estaConsulta.medicamentos =this.medicamentosTiket;
   }
 
-   crearVisita(id,cliente){     
-    this.estaConsulta.numero=cliente.numerovisitas; 
-    this.firebase.object('clientes/'+id).update({
-      numerovisitas: cliente.numerovisitas,
-      visitas:this.estaConsulta
-    });  
+    
+  //Añade una visita y actualiza el numero de las recibidas
+  crearVisita(id,cliente){     
+    this.estaConsulta.id=cliente.numerovisitas; 
+    this.firebase.object('clientes/'+id).update({ numerovisitas: cliente.numerovisitas});  
+    this.firebase.database.ref('clientes/'+id).child('visitas').push(this.estaConsulta); 
   }
-   
+  
   obtenerClientes( ){      
     return this.datosFirebase = this.firebase.list('clientes');
   } 
