@@ -16,9 +16,46 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ProductoComponent implements OnInit {
 
-  constructor() { }
+
+  //Formulario de productos
+  productoForm = new FormGroup({      
+    nombre: new FormControl(''),
+    precio: new FormControl('') 
+  });
+
+
+  constructor(public productoServicio:ProductoService) { }
 
   ngOnInit(): void {
   }
+
+     
+    //Añade el producto a la bd
+    onSubmit(productoForm:NgForm){ 
+        let producto= this.productoServicio.productoSeleccionado;
+        this.productoServicio.crearProducto(producto);        
+    }
+   
+     //actualiza la informacion del producto
+    actualizar(){ 
+      this.productoServicio.actualizarProducto();
+      this.productoServicio.cancelarSeleccion(); 
+    }
+
+    //Envia el cliente para su eliminacion
+    eliminar(){ 
+      this.productoServicio.eliminarProducto();
+    }
+
+    @HostListener('document:keydown', ['$event'])
+    handleKeyboardEvent(event: KeyboardEvent): void {   
+      if (event.key === 'Escape') {
+        this.productoServicio.cancelarSeleccion();
+        
+      }  
+      
+    }
+
+    
 
 }

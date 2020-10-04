@@ -1,1 +1,24 @@
-<p>lista-productos works!</p>
+ 
+  <div class="wrap"> 
+    <div class="table100 ver3">
+      <table data-vertable="ver3">
+        <thead>
+          <tr class="row100 head">
+            <th class="column100 column1" data-column="column1">ID</th> 
+            <th class="column100 column1" data-column="column2">Nombre del producto</th>            
+            <th class="column100 column4" data-column="column4">Precio unitario</th> 
+            
+          </tr>
+        </thead>
+        <tbody> 
+          <tr class="row100" *ngFor="let producto of productoArray" (click)="editar(producto);"> 
+            <td class="column100 column2" >{{producto.id}}</td>
+            <td class="column100 column1" >{{producto.nombre}}</td>            
+            <td class="column100 column3" >$ {{producto.precio}}</td> 
+          </tr>
+
+ 
+        </tbody>
+      </table>
+    </div> 
+  </div> 

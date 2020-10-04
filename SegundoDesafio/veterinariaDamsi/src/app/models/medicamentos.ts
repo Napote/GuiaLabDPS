@@ -1,4 +1,4 @@
-export interface Medicamentos {
+export class Medicamentos {
     id:     string;
     nombre: string;
     precio: number;
