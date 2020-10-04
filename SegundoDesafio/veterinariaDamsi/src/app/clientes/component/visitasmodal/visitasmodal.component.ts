@@ -110,7 +110,6 @@ export class VisitasmodalComponent implements OnInit {
       if (values.target.checked) {
         checkArray.push(new FormControl(values.target.value)); 
         this.costoCrudo=this.costoCrudo+producto.precio;
-
         this.visitasServicio.medicamentosTiket.push(producto);
 
       } else {

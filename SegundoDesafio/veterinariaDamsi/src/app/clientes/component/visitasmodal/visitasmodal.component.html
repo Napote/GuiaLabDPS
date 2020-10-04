@@ -57,7 +57,7 @@
                             <label style="margin-left: 25px;">Productos disponibles</label>
                             <div class="medicamentos-container"> 
                                 <p *ngFor="let producto of listaMedicamentos"> 
-                                    <input type="checkbox" id="{{producto.id}}" value="{{producto.nombre}}" (change)="calcularCosto(producto,$event)">                                
+                                    <input type="checkbox" id="{{producto.id}}" value="{{producto.nombre}}"  value="{{ producto.name }}"  (change)="calcularCosto(producto,$event)">                                
                                     {{ producto.nombre }} 
                                 </p>         
                             </div>

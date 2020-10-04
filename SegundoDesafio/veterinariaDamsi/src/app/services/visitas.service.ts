@@ -62,21 +62,19 @@ export class VisitasService {
     if (Object.keys(this.medicamentosTiket).length===0)
       this.estaConsulta.listamedicamentos='---'
     else{
+      this.estaConsulta.medicamentos=[];
       this.estaConsulta.listamedicamentos=' ';
-      this.medicamentosTiket.forEach(elem=>{
+      this.medicamentosTiket.forEach(elem=>{ 
+        this.estaConsulta.medicamentos.push(elem);
         this.estaConsulta.listamedicamentos += ' [' + elem.nombre + ']';
-      }) 
+        })   
       Object.keys(this.medicamentosTiket).forEach(key=> delete this.medicamentosTiket[key]);
-      
-    }
-      
-
-    this.estaConsulta.medicamentos =this.medicamentosTiket;
+    }  
+    
   }
 
   //Añade una visita y actualiza el numero de las recibidas
   crearVisita(id,cliente){     
-    this.estaConsulta.id=cliente.numerovisitas; 
     this.firebase.object('clientes/'+id).update({ numerovisitas: cliente.numerovisitas});  
     return this.firebase.database.ref('clientes/'+id).child('visitas').push(this.estaConsulta);  
   }
