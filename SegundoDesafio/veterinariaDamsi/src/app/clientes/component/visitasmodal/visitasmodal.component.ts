@@ -47,7 +47,7 @@ export class VisitasmodalComponent implements OnInit {
   motivoCierre=''; 
 
   ngOnInit(): void {       
-    this.cliente.numerovisitas= this.cliente.numerovisitas+1;
+    
     this.costosIniciales(); 
     this.obtenerProductos();
   }
@@ -56,9 +56,9 @@ export class VisitasmodalComponent implements OnInit {
      //Aplica descuento segun el numero de visitas del cliente seleccionado
      this.costoCrudo=5;  
      this.descuento=0;
-     if(this.cliente.numerovisitas >= 2 && this.cliente.numerovisitas < 5) 
+     if(this.cliente.numerovisitas+1 >= 2 && this.cliente.numerovisitas+1 < 5) 
        this.descuento=0.05; 
-     else if(this.cliente.numerovisitas >= 5)    
+     else if(this.cliente.numerovisitas+1 >= 5)    
        this.descuento=0.08; 
      
  
