@@ -58,25 +58,7 @@ export class AuthService {
       })
   }                                                                                
 
-  // Enviar verificación por correo electrónico cuando se registre un nuevo usuario
-  SendVerificationMail() {
-    return this.afAuth.currentUser.then(u => u.sendEmailVerification())
-    .then(() => {
-    this.router.navigate(['clientes']);
-    })
-    }
-
-  // Restablecer contraseña olvidada
-  ForgotPassword(passwordResetEmail) {
-    return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
-    .then(() => {
-      window.alert('Password reset email sent, check your inbox.');
-    }).catch((error) => {
-      window.alert(error)
-    })
-  }
-
-  // Devuelve verdadero cuando el usuario está conectado y 
+    // Devuelve verdadero cuando el usuario está conectado y 
   // el correo electrónico está verificado
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));

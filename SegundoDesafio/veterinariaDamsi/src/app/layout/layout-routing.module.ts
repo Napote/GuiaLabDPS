@@ -13,7 +13,7 @@ import { AuthGuard } from  "../guard/auth.guard";
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',  
+    redirectTo: '/clientes',   //path: '/login'
     pathMatch: 'full'
   },
   {
@@ -34,7 +34,7 @@ const routes: Routes = [
     path: '',
     component: OnlyHeaderComponent,
     children: [
-      { path: 'login', 
+      { path: 'login',
         loadChildren:()=>import('../login/login.module').then(mod =>mod.LoginModule)},
           ]
   }

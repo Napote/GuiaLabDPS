@@ -13,8 +13,7 @@ import Swal from 'sweetalert2';
 
 
 //Validacion de formularios
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms'; 
 
 @Component({
   selector: 'app-cliente',
