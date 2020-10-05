@@ -23,14 +23,14 @@ const routes: Routes = [
     children: [
       { path: 'clientes', 
         loadChildren: ()=> import('../clientes/clientes.module').then(mod => mod.ClientesModule),
-        canActivate: [AuthGuard]},  
+        canActivateChild: [AuthGuard]},  
       { path: 'visitas', 
         loadChildren: ()=> import('../visitas/visitas.module').then(mod => mod.VisitasModule),
-        canActivate: [AuthGuard]},  
+        canActivateChild: [AuthGuard]},  
       
      { path: 'productos', 
         loadChildren: ()=> import('../productos/productos.module').then(mod => mod.ProductosModule),
-        canActivate: [AuthGuard]}
+        canActivateChild: [AuthGuard]}
 
     ]
   },
