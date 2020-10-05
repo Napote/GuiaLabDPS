@@ -16,22 +16,24 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/productos" routerLinkActive="active-route"><i class="fa fa-bookmark"></i>Productos</a>
-                </li> 
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/empleados" routerLinkActive="active-route"> <i class="fa fa-users"></i>Empleados</a> 
-                </li>
+                </li>  
             </ul>
-            <ul class="nav navbar-nav flex-row justify-content-md-center justify-content-start flex-nowrap" >
-                <li class="nav-item" id="logout">  
-                    <button type="button" class="btn btn-primary p-1 px-3" id="logout-btn"  >Logout</button>      
-                </li> 
-            </ul>
+            
+            <div class="pull-right" *ngIf="authService.userData as user">
+                <ul class="nav pull-right pr-2">
+                    <li class="dropdown"><a href="#" id="bienvenida" class="dropdown-toggle" data-toggle="dropdown">Bienvenido!, {{user.email}} <b class="caret"></b></a>
+                        <ul class="dropdown-menu"> 
+                            <li ><a href="#" class="mx-2" (click)="authService.SignOut()"> Cerrar sesión <i class="fa fa-sign-out"></i></a></li>
+                        </ul>
+                    </li>
+                </ul>
+              </div>
+              
         </div>
     </nav>    
   </header>
   <!-- /EOF header--> 
-
+   <!--Everyone floats here Georgie-->
+ 
 
   <router-outlet></router-outlet>
-
-  

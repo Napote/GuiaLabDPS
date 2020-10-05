@@ -6,11 +6,15 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { OnlyHeaderComponent } from './components/only-header/only-header.component';
 
 
+import { AuthService } from "../services/auth.service";
+
 @NgModule({
   declarations: [MainLayoutComponent, OnlyHeaderComponent],
   imports: [
     CommonModule,
     LayoutRoutingModule
-  ]
+    //,
+  ],
+  providers:[/*AuthService*/]
 })
 export class LayoutModule { }

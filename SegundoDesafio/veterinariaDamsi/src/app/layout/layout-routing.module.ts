@@ -6,11 +6,15 @@ import {MainLayoutComponent} from './components/main-layout/main-layout.componen
 //Layout para inicio de sesion
 import {OnlyHeaderComponent} from './components/only-header/only-header.component';
  
+//Autentificacion de angular
+import { AngularFireAuthModule } from "@angular/fire/auth";
+
+import { AuthGuard } from "../guard/auth.guard";
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/clientes', //Posiblemente esto se deba cambiar por el login
+    redirectTo: '/login',   //path: '/login'
     pathMatch: 'full'
   },
   {
@@ -18,17 +22,25 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: 'clientes', 
-        loadChildren: ()=> import('../clientes/clientes.module').then(mod => mod.ClientesModule)},  
+        loadChildren: ()=> import('../clientes/clientes.module').then(mod => mod.ClientesModule),
+        canActivateChild: [AuthGuard]},  
       { path: 'visitas', 
-        loadChildren: ()=> import('../visitas/visitas.module').then(mod => mod.VisitasModule)},  
-      
-     { path: 'empleados', 
-        loadChildren: ()=> import('../empleados/empleados.module').then(mod => mod.EmpleadosModule)},  
+        loadChildren: ()=> import('../visitas/visitas.module').then(mod => mod.VisitasModule),
+        canActivateChild: [AuthGuard]},  
       
      { path: 'productos', 
-        loadChildren: ()=> import('../productos/productos.module').then(mod => mod.ProductosModule)}
+        loadChildren: ()=> import('../productos/productos.module').then(mod => mod.ProductosModule),
+        canActivateChild: [AuthGuard]}
 
     ]
+  },
+  {
+    path: '',
+    component: OnlyHeaderComponent,
+    children: [
+      { path: 'login',
+        loadChildren:()=>import('../login/login.module').then(mod =>mod.LoginModule)},
+        ]
   }
 ];
 

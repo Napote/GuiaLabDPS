@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import {HostListener} from '@angular/core';
 
 //Servicio
-import { ProductoService } from '../../services/producto.service';
+import { ProductoService } from '../../services/producto.service'; 
 
 //Validacion de formularios
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -16,24 +16,16 @@ import Swal from 'sweetalert2';
   templateUrl: './producto.component.html',
   styleUrls: ['./producto.component.css']
 })
-export class ProductoComponent implements OnInit {
-
-
-  //Formulario de productos
-  productoForm = new FormGroup({      
-    nombre: new FormControl(''),
-    precio: new FormControl('') 
-  });
-
+export class ProductoComponent implements OnInit { 
 
   constructor(public productoServicio:ProductoService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
 
      
     //Añade el producto a la bd
-    onSubmit(productoForm:NgForm){ 
+    onSubmit(productoForm:NgForm){  
         let producto= this.productoServicio.productoSeleccionado;
         
         Swal.fire({
@@ -78,7 +70,9 @@ export class ProductoComponent implements OnInit {
     }
    
      //actualiza la informacion del producto
-    actualizar(){ 
+    actualizar(condition){ 
+      if(!condition)
+        return
       Swal.fire({
         title: 'Cargando...',
         didOpen(){

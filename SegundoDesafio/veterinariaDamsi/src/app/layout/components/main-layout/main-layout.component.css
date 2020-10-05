@@ -1,3 +1,5 @@
+
+/*///////////////////////////////*/
 header #logo-main {
   display: block;
   margin: 20px auto;
@@ -28,10 +30,7 @@ header #logo-main {
   background: lightgray;
   border-radius: 10px;
 
-}
-
-
-
+} 
 #logout{
   margin:0;
 }
@@ -45,10 +44,16 @@ header #logo-main {
 
 
  #logout-btn{
-  background: #F4A637 !important;border-color: #F4A637;
+  background: #F4A637 !important;
+  border-color: #F4A637;
  }
 
  #logout-btn:hover{
   background: #F9BC74!important; 
   border-color: #F9BC74 ;
  }
+
+ #bienvenida{ 
+	color:#F79C3E;
+}
+ 

@@ -1,1 +1,59 @@
-<p>login works!</p>
+<div class="row justify-content-center">      
+    <div class="col-md-5">
+        <main class="page payment-page">
+            <section class="payment-form">
+                <div class="container"> 
+                    <!------FORMULARIO PARA INICIAR SESION--------->
+                    <form [formGroup]="loginForm">                 
+                        <div class="card-details  px-4">                  
+                            
+                            <div class="title"> 
+                                INICIAR SESIÓN
+                            </div>                           
+                            <!---Alertas--->
+                            <p class="alert alert-danger" role="alert" *ngIf="!loginForm.get('usuario').valid && (loginForm.get('usuario').touched || loginForm.get('usuario').dirty)" >
+                                <small>El campo correo electronico es requerido.</small> 
+                            </p>  
+                            <p class="alert alert-danger" role="alert" *ngIf="!loginForm.get('pwd').valid && (loginForm.get('pwd').touched || loginForm.get('pwd').dirty)" >
+                                <small>El campo contraseña es requerido.</small> 
+                            </p> 
+
+
+                            <div class="row justify-content-center ">                        
+                                <div class="form-group col-sm-10">
+                                    <label for="">Correo electronico</label>
+                                    <input type="email" name="email" class="form-control" formControlName="usuario" placeholder="correo@gmail.com" [(ngModel)]="usuariocorreo"  required>
+                                </div>
+                                <div class="form-group col-sm-10">
+                                    <label  >Contraseña</label>
+                                    <input type="password" class="form-control"formControlName="pwd"   [(ngModel)]="usuariopwd" required>
+                                     
+                                </div>                                                     
+                            </div>
+                            <div class="row justify-content-center"> 
+                                <!--Enlace a visitas-->
+                    
+                                <div class="form-group col-sm-10">
+                                    <button type="submit" class="btn btn-action btn-primary btn-block p-1 px-3"  (click)="login()">
+                                       Iniciar sesión                          
+                                    </button>                                                                       
+                                </div>     
+                                <a  style="font-weight: normal;" (click)="authService.GoogleAuth()"  >
+                                    <i class="fa fa-google"></i>
+                                    Iniciar sesión con Google                                   
+                                </a> 	 
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+    <div class="col-md-1 my-auto mx-auto">
+        <h4>- O -</h4>
+    </div>
+    <div class="col-md-5">
+        <app-signup></app-signup>
+    </div>
+</div>
+<p class="mt-5 mb-3 text-muted text-center">© 2020 Creado por Gerardo Alexander y Nathaly Palencia.</p>

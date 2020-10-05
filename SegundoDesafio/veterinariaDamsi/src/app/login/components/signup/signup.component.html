@@ -1,0 +1,47 @@
+
+        <main class="page payment-page">
+            <section class="payment-form">
+                <div class="container"> 
+                    <!------FORMULARIO PARA REGISTRARSE--------->
+                    <form [formGroup]="signupForm">                 
+                        <div class="card-details  px-4">                  
+                            
+                            <div class="title"> 
+                                REGISTRARSE
+                            </div>              
+                            <!---Alertas--->
+                            <p class="alert alert-danger" role="alert" *ngIf="!signupForm.get('nusuario').valid && (signupForm.get('nusuario').touched || signupForm.get('nusuario').dirty)" >
+                                <small>El campo correo electronico es requerido.</small> 
+                            </p>  
+                            <p class="alert alert-danger" role="alert" *ngIf="!signupForm.get('npwd').valid && (signupForm.get('npwd').touched || signupForm.get('npwd').dirty)" >
+                                <small>El campo contraseña es requerido.</small> 
+                            </p>               
+                            <div class="row justify-content-center ">                        
+                                <div class="form-group col-sm-10">
+                                    <label for="">Correo electronico</label>
+                                    <input type="email" name="email" class="form-control" formControlName="nusuario" placeholder="correo@gmail.com" [(ngModel)]="nuevousuariocorreo"  required>
+                                </div>
+                                <div class="form-group col-sm-10">
+                                    <label  >Contraseña</label>
+                                    <input type="password" class="form-control"formControlName="npwd"   [(ngModel)]="nuevousuariopwd" required>
+                                     
+                                </div>                                                     
+                            </div>
+                            <div class="row justify-content-center"> 
+                                <!--Enlace a visitas-->
+                    
+                                <div class="form-group col-sm-10">
+                                    <button type="button"  name="nuevoBtn" class="btn btn-action btn-primary btn-block p-1 px-3" (click)="signup()">
+                                       Registrarse                          
+                                    </button>                                                                       
+                                </div>     
+                                <a style="font-weight: normal;" (click)="authService.GoogleAuth()">
+                                    <i class="fa fa-google"></i>
+                                    Registrarse con Google                                   
+                                </a>    
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
