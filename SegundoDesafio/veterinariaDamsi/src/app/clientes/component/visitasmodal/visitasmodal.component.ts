@@ -132,7 +132,7 @@ export class VisitasmodalComponent implements OnInit {
   }
 
     guardarVisita(){             
-      this.visitasServicio.recibirCosto(this.costo);
+      this.visitasServicio.recibirCosto(this.costo,this.descuento,this.costoCrudo);
       this.visitasServicio.recibirTratamiento(this.tratamiento); 
         Swal.fire({
           title: '¿Agregar visita al cliente?',
