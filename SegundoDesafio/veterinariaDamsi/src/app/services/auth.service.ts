@@ -51,9 +51,6 @@ export class AuthService {
   SignUp(email, password) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        /* Llame a la función SendVerificaitonMail () cuando un nuevo usuario firme
-        y vuelve la funcion*/
-        //this.SendVerificationMail();
         window.alert("Usuario registrado con exito");
         this.SetUserData(result.user);
       }).catch((error) => {
