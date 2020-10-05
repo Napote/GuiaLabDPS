@@ -17,11 +17,14 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 // Toastr, para notificaciones en angular
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { ToastrModule } from 'ngx-toastr';
+import { ClientePipe } from './pipes/cliente.pipe';
+import { ProductoPipe } from './pipes/producto.pipe';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductoPipe
   ],
   imports: [
     BrowserModule, 

@@ -11,6 +11,7 @@ import { Cliente } from '../../../models/cliente';
 import { ToastrService } from 'ngx-toastr';
 
 
+
 @Component({
   selector: 'app-lista-clientes',
   templateUrl: './lista-clientes.component.html',
@@ -24,6 +25,7 @@ export class ListaClientesComponent implements OnInit {
     private toastr:ToastrService
   ) { }
 
+  filtroCliente= '';
   //Array para almacenar los clientes que se van a mostrar en la base de datos
   clienteArray:Cliente[];
 
