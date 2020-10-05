@@ -1,15 +1,18 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Usuario } from "../models/usuario";
-import { auth } from 'firebase/app';
+import { auth, firestore } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
+
   userData: any; // Guardar datos de usuario registrados
 
   constructor(
@@ -33,6 +36,8 @@ export class AuthService {
     })
   }
 
+
+
   // Iniciar sesión con correo electrónico / contraseña
   SignIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password).then((result) => {
@@ -43,7 +48,13 @@ export class AuthService {
         this.SetUserData(result.user);
       }).catch((error) => {
        // window.alert("Por favor revisar credenciales")
-         window.alert(error.message)
+       Swal.fire({
+        title:"Error al iniciar sesión", 
+        text: error.message,
+        icon: "error",
+        timerProgressBar: true,
+        timer: 2000
+      });
       })
   }
 
@@ -51,10 +62,22 @@ export class AuthService {
   SignUp(email, password) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        window.alert("Usuario registrado con exito");
+        Swal.fire({
+          title:"Usuario registrado con exito", 
+          icon: "success",
+          timerProgressBar: true,
+          timer: 2000
+        });
         this.SetUserData(result.user);
       }).catch((error) => {
-        window.alert(error.message)
+        Swal.fire({
+          title:"Oops", 
+          text: error.message,
+          icon: "error",
+          timerProgressBar: true,
+          timer: 2000
+        });
+        //window.alert(error.message)
       })
   }                                                                                
 
@@ -62,7 +85,7 @@ export class AuthService {
   // el correo electrónico está verificado
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null && user.emailVerified !== false) ? true : true;
+    return (user !== null && user.emailVerified !== null ) ? true : false;
   } 
 
   // Iniciar sesión usando Google
@@ -79,7 +102,13 @@ export class AuthService {
         })
       this.SetUserData(result.user);
     }).catch((error) => {
-      window.alert(error)
+      Swal.fire({
+        title:"Error al iniciar sesión", 
+        text: error.message,
+        icon: "error",
+        timerProgressBar: true,
+        timer: 3000
+      });
     })
   }
 

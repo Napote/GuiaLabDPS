@@ -3,8 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {PrincipalComponent} from './component/principal/principal.component';
 
+import { AuthGuard} from '../guard/auth.guard';
 const routes: Routes = [
-  { path: '', component: PrincipalComponent }
+  { path: '', component: PrincipalComponent, canActivateChild: [AuthGuard] }
 ];
 
 
