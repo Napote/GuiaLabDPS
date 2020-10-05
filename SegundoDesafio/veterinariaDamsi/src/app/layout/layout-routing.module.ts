@@ -6,11 +6,14 @@ import {MainLayoutComponent} from './components/main-layout/main-layout.componen
 //Layout para inicio de sesion
 import {OnlyHeaderComponent} from './components/only-header/only-header.component';
  
+//Autentificacion de angular
+import { AngularFireAuthModule } from "@angular/fire/auth";
 
+import { AuthGuard } from  "../guard/auth.guard";
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/clientes', //Posiblemente esto se deba cambiar por el login
+    redirectTo: '/login',  
     pathMatch: 'full'
   },
   {
@@ -26,6 +29,14 @@ const routes: Routes = [
         loadChildren: ()=> import('../productos/productos.module').then(mod => mod.ProductosModule)}
 
     ]
+  },
+  {
+    path: '',
+    component: OnlyHeaderComponent,
+    children: [
+      { path: 'login', 
+        loadChildren:()=>import('../login/login.module').then(mod =>mod.LoginModule)},
+          ]
   }
 ];
 

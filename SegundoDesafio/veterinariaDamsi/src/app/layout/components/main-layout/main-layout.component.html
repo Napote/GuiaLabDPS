@@ -20,15 +20,14 @@
             </ul>
             <ul class="nav navbar-nav flex-row justify-content-md-center justify-content-start flex-nowrap" >
                 <li class="nav-item" id="logout">  
-                    <button type="button" class="btn btn-primary p-1 px-3" id="logout-btn"  >Logout</button>      
+                    <button type="button" class="btn btn-primary p-1 px-3" id="logout-btn" (click)="authService.SignOut()" >Logout</button>      
                 </li> 
             </ul>
         </div>
     </nav>    
   </header>
   <!-- /EOF header--> 
-
+   <!--Everyone floats here Georgie-->
+ 
 
   <router-outlet></router-outlet>
-
-  
