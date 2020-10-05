@@ -11,10 +11,11 @@ import { ListaClientesComponent } from './component/lista-clientes/lista-cliente
 import { ClienteComponent } from './component/cliente/cliente.component';
 import { PrincipalComponent } from './component/principal/principal.component';
 import { VisitasmodalComponent } from './component/visitasmodal/visitasmodal.component';
+import { ClientePipe } from '../pipes/cliente.pipe';
 
 
 @NgModule({
-  declarations: [ ListaClientesComponent, ClienteComponent, PrincipalComponent, VisitasmodalComponent],
+  declarations: [ ListaClientesComponent, ClienteComponent, PrincipalComponent, VisitasmodalComponent, ClientePipe],
   providers:[
     ClienteService
   ],

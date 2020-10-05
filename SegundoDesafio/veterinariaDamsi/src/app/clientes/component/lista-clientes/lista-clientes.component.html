@@ -3,6 +3,10 @@
   <i class="fa fa-search my-float"></i>
   </a>
 
+  <div class="form-group">
+    <input type="text" class="form-control" name="filtroCliente" [(ngModel)]="filtroCliente" placeholder="Buscar cliente...">
+  </div>
+
  <!--Tabla de clientes-->
   <div class="wrap"> 
     <div class="table100 ver3">
@@ -17,7 +21,7 @@
           </tr>
         </thead>
         <tbody> 
-          <tr class="row100" *ngFor="let cliente of clienteArray" (click)="editar(cliente);"> 
+          <tr class="row100" *ngFor="let cliente of clienteArray | cliente:filtroCliente" (click)="editar(cliente);"> 
             <td class="column100 column2" >{{cliente.dui}}</td>
             <td class="column100 column1" >{{cliente.nombre}}</td>            
             <td class="column100 column3" >{{cliente.mascota}}</td>
