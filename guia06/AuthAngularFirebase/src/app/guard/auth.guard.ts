@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate {
     public router: Router
   ){ }
 
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
@@ -26,5 +27,4 @@ export class AuthGuard implements CanActivate {
   }
   
 }
-
-
+ 

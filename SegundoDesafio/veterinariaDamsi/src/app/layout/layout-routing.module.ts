@@ -9,11 +9,12 @@ import {OnlyHeaderComponent} from './components/only-header/only-header.componen
 //Autentificacion de angular
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
-import { AuthGuard } from  "../guard/auth.guard";
+import { AuthGuard } from "../guard/auth.guard";
+
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/clientes',   //path: '/login'
+    redirectTo: '/login',   //path: '/login'
     pathMatch: 'full'
   },
   {
@@ -21,12 +22,15 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: 'clientes', 
-        loadChildren: ()=> import('../clientes/clientes.module').then(mod => mod.ClientesModule)},  
+        loadChildren: ()=> import('../clientes/clientes.module').then(mod => mod.ClientesModule),
+        canActivate: [AuthGuard]},  
       { path: 'visitas', 
-        loadChildren: ()=> import('../visitas/visitas.module').then(mod => mod.VisitasModule)},  
+        loadChildren: ()=> import('../visitas/visitas.module').then(mod => mod.VisitasModule),
+        canActivate: [AuthGuard]},  
       
      { path: 'productos', 
-        loadChildren: ()=> import('../productos/productos.module').then(mod => mod.ProductosModule)}
+        loadChildren: ()=> import('../productos/productos.module').then(mod => mod.ProductosModule),
+        canActivate: [AuthGuard]}
 
     ]
   },
@@ -36,7 +40,7 @@ const routes: Routes = [
     children: [
       { path: 'login',
         loadChildren:()=>import('../login/login.module').then(mod =>mod.LoginModule)},
-          ]
+        ]
   }
 ];
 
