@@ -92,8 +92,9 @@ export class ClienteComponent implements OnInit {
  }
 
   //actualiza la informacion del cliente
-  actualizar(){  
-
+  actualizar(condition){  
+    if (!condition)
+      return
     Swal.fire({
       title: 'Cargando...',
       didOpen(){

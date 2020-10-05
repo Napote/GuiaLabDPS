@@ -3,13 +3,13 @@
         <div class="container">
              
             <!--Formulario para crear/editar clientes-->
-            <form name="productoForm" #productoForm="ngForm" (ngSubmit)="onSubmit(productoForm)">                 
+            <form name="productoForm" #productoForm="ngForm"  (ngSubmit)="onSubmit(productoForm)">                 
                 <div class="card-details  px-4">     
                     <div class="title"> 
                         {{!productoServicio.abiertoEdicion? "NUEVO PRODUCTO":"DETALLES DE PRODUCTO"}}  
                         <div class="edit-btn-wrapper" *ngIf="productoServicio.abiertoEdicion">                           
                             <a  name="borrarBtn" class="btn btn-delete py-1 px-1 mr-2 edit-actions"  (click)="eliminar()" ><i class="fa fa-trash"></i></a>
-                            <a  name="editarBtn" class="btn btn-edit py-1 px-1 edit-actions" (click)="actualizar()" ><i class="fa fa-save"></i></a>   
+                            <a  name="editarBtn" class="btn btn-edit py-1 px-1 edit-actions" (click)="actualizar(productoForm.valid)" ><i class="fa fa-save"></i></a>   
                         </div>
                         <p *ngIf="productoServicio.abiertoEdicion">
                             <small>Presione la tecla <span class="badge">ESC</span> para cancelar la selección</small>
@@ -21,7 +21,7 @@
                     <div class="row">                        
                         <div class="form-group col-sm-11">
                             <label for="">Nombre de producto</label>
-                            <input name="nombre" #name="ngModel" [(ngModel)]="productoServicio.productoSeleccionado.nombre" type="text" class="form-control" placeholder="Desparasitante" aria-label="MM">
+                            <input name="nombre" #name="ngModel" [(ngModel)]="productoServicio.productoSeleccionado.nombre" type="text" class="form-control" placeholder="Desparasitante" required minlength="8">
                         </div>
                     </div>
                     <div class="row">
@@ -31,14 +31,14 @@
                                 <div class="input-group-prepend">
                                   <span class="input-group-text" id="dolar-adon">$</span>
                                 </div>
-                                <input name="precio" #name="ngModel" [(ngModel)]="productoServicio.productoSeleccionado.precio" type=number class="form-control" placeholder="0.00" aria-label="0.00" >
+                                <input name="precio" #name="ngModel"   [(ngModel)]="productoServicio.productoSeleccionado.precio"  onkeyup="if(this.value<0){this.value= this.value * -1}" type=number class="form-control" placeholder="0.00">
                             </div>                            
                         </div>   
                     </div>  
                     <div class="row justify-content-center">
                         <!--Enlace a visitas-->            
                         <div class="form-group col-sm-9"  >
-                            <button type="button" type="submit" name="nuevoBtn" class="btn btn-action btn-primary btn-block p-1 px-3">
+                            <button type="button" type="submit" name="nuevoBtn" class="btn btn-action btn-primary btn-block p-1 px-3" [disabled]="!productoForm.valid">
                                 Crear producto                           
                             </button>                                                           
                         </div>  

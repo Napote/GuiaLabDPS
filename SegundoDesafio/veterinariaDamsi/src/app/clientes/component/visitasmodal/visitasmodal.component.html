@@ -1,28 +1,21 @@
-       <section class="payment-form">
-            <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <div class="container">
-                
-                <div class="card-details">         
-                    <!--Titulo de modal-->
-                    
-      
-                    <div class="title">                        
-                        NUEVA VISITA  
-                        <p><small>Esta es la visita número {{cliente.numerovisitas+1}} de <span style="color:#606ED7"> {{cliente.mascota}}</span></small></p>
-                        
-                    <!--/EOF Titulo-->
-                    </div> 
-                <div class="row "> 
-                    <!--Columna de la derecha-->
-                    <div class="col-md-6">
-                        <!--DUI-->
-                        <div class="form-group col-md-6"> 
-                            <label class="col-form-label">DUI</label>
-                            <input type="text" class="form-control" readonly value={{cliente.dui}}> 
-                        </div>
-                        <!--/EOF Dui-->
+<form class="payment-form" name="visitaForm" #visitaForm="ngForm">
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="container">                
+        <div class="card-details">         
+            <!--Titulo de modal-->      
+            <div class="title">                        
+                NUEVA VISITA  
+                <p><small>Esta es la visita número {{cliente.numerovisitas+1}} de <span style="color:#606ED7"> {{cliente.mascota}}</span></small></p>
+            </div>  <!--/EOF Titulo-->
+            <div class="row "> 
+            <!--Columna de la derecha-->
+                <div class="col-md-6">                
+                    <div class="form-group col-md-6"> <!--DUI-->
+                        <label class="col-form-label">DUI</label>
+                        <input type="text" class="form-control" readonly value={{cliente.dui}}> 
+                    </div> <!--/EOF DUI-->
 
                         <!--Nombre del cliente-->
                         <div class="form-group col-md-10"> 
@@ -40,7 +33,7 @@
                         <!--Tratamiento textarea-->
                         <div class="form-group col-md-12"> 
                             <label>Tratamiento</label>
-                            <textarea [(ngModel)]="tratamiento" class="form-control" rows="3"></textarea> 
+                            <textarea [(ngModel)]="tratamiento" class="form-control" rows="3" name="tratamiento" required minlength="10"></textarea> 
                         </div> 
                         <!--/EOF Tratamiento textarea-->
                     </div> 
@@ -81,11 +74,11 @@
                 </div>
                 <div class="row justify-content-center"> 
                     <div class="form-group col-sm-8">
-                        <button type="button" type="submit" name="nuevoBtn" class="btn btn-action btn-primary btn-block p-1 px-3" (click)="guardarVisita();">
+                        <button type="button" type="submit" name="nuevoBtn" class="btn btn-action btn-primary btn-block p-1 px-3" [disabled]="!visitaForm.valid" (click)="guardarVisita();">
                             Añadir visita                                
                         </button> 
                     </div> 
                 </div>
             </div>
         </div>
-        </section> 
+    </form> 
