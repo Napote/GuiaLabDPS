@@ -57,7 +57,10 @@ export class VisitasService {
   }
 
   //Recibe el costo de la consutla y asigna los medicamentos del ticket
-  recibirCosto(costo:number){
+  recibirCosto(costo:number, descuento:number, crudo:number){
+    this.estaConsulta.descuento=descuento*crudo;
+    
+    this.estaConsulta.crudo=crudo;
     this.estaConsulta.costo=costo;
     if (Object.keys(this.medicamentosTiket).length===0)
       this.estaConsulta.listamedicamentos='---'

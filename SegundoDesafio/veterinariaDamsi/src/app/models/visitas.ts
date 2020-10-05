@@ -5,5 +5,8 @@ export class Visitas {
     tratamiento:  string;
     listamedicamentos: string;
     medicamentos: Medicamentos[];
+    crudo:number;
+    descuento: number;
     costo:        number;
+    
 }
