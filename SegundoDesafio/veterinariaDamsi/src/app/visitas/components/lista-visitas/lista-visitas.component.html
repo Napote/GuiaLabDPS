@@ -35,8 +35,8 @@
                                         </tr>
                                       </thead>
                                       <tbody> 
-                                        <tr class="row100" *ngFor="let item of elements ">                                                 
-                                            <td class="column100 column1" >{{cliente.visitas[item].id}} </td>
+                                        <tr class="row100" *ngFor="let item of elements; let i = index">                                                 
+                                            <td class="column100 column1" >{{i+1}} </td>
                                             <td class="column100 column2" >{{cliente.visitas[item].tratamiento}}</td>                      
                                             <td class="column100 column3" >${{cliente.visitas[item].costo}}</td>  
                                             <td class="column100 column4" >{{cliente.visitas[item].listamedicamentos}}</td> 
