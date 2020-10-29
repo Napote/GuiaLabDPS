@@ -29,12 +29,9 @@ export class ClienteService {
     obtenerClientes(){      
       return this.datosFirebase = this.firebase.list('clientes');
     }
-
-  
    
     //Crea un nuevo cliente, recibe como parametro un objeto Cliente
-    crearCliente(cliente:Cliente){
-      
+    crearCliente(cliente:Cliente){      
       return this.datosFirebase.push({ 
         dui: cliente.dui,
         nombre: cliente.nombre,

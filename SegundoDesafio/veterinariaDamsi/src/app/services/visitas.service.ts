@@ -8,8 +8,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 //Firebase
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
-import { Observable} from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable} from 'rxjs'; 
  
 //Modelos
 import { Cliente } from '../models/cliente';
