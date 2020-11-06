@@ -1,6 +1,8 @@
 import React from 'react';
 import {NavLink, withRouter}  from 'react-router-dom'
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'  
+
+import './Navbar.css';
 
 class Navbar extends React.Component {
     
@@ -10,19 +12,30 @@ class Navbar extends React.Component {
     render() {
         return (
           <> 
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <a class="navbar-brand" href="#">Tercer desafio practico</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a className="navbar-brand" href="#">Tercer desafio practico</a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarToggle">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"> 
-                            <Link className="nav-link" to="/signin">Cerrar sesión</Link> 
-                        </li>  
-                    </ul>
-     
+                <div className="collapse navbar-collapse" id="navbarToggle">
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-item dropdown" id="navbarAccount">
+                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                
+                                <img src="https://placekitten.com/30/30" className="mr-2 img-circle" height="30px" width="30px"/>  
+                                Mi cuenta 
+                            </a>
+                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a className="dropdown-item">
+                                    Mostrar información
+                                </a>
+                                <Link className="dropdown-item" to="/signin">
+                                    Cerrar sesión
+                                </Link>            
+                            </div>
+                        </li> 
+                    </ul>                  
                 </div>
             </nav>
           </>
