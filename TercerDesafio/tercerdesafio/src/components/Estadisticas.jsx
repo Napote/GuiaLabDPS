@@ -49,7 +49,9 @@ import {useEffect, useState} from "react";
         <div className="row">   
             <div className="col-md-5">
                 <div className="counter">
-                    <i className="fa fa-code fa-2x"></i>
+                    <h6 className="text-center">
+                        {mayorSalario.nombre}
+                    </h6>
                     <h2 className="timer count-title count-number">
                         ${(Math.round(mayorSalario.sueldoNeto * 100) / 100).toFixed(2)}  
                     </h2>
@@ -58,6 +60,9 @@ import {useEffect, useState} from "react";
             </div>   
             <div className="col-md-5">
                 <div className="counter"> 
+                    <h6 className="text-center">
+                        {menorSalario.nombre}
+                    </h6>
                     <h2 className="timer count-title count-number">
                         ${(Math.round(menorSalario.sueldoNeto * 100) / 100).toFixed(2)}  
                     </h2>
