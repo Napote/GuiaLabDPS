@@ -1,9 +1,15 @@
 import React from 'react'
 
-export default function Estadisticas() {
-    return (
-        <div>
-            Estas son las estadisticas
-        </div>
-    )
+import { db } from "../Firebase"; import CanvasJSReact from './canvasjs.react';
+
+const Estadisticas = () => {
+
+    return ( 
+        <>
+        </>
+    ) 
+
 }
+ 
+export default Estadisticas;
+    

@@ -13,21 +13,56 @@ export const IdContext = React.createContext();
 const Empleado = () => {    
 
     const [idSeleccionado, setIdSeleccionado] = useState('');
- 
+    
+    const eliminarEmpleado = async (id) => {
+        if (window.confirm("Esta acción eliminara permanentemente el registro. ¿Desea continuar?")) {
+          await db.collection("Empleados").doc(id).delete();
+          toast("Registro eliminado.", {
+            type: "error",
+            //autoClose: 2000
+          });
+        }
+    };
+
+
+    const crearOActualizarEmpleado = async (EmpleadoObjeto) => {
+        try {
+          if (idSeleccionado === "") {
+            await db.collection("Empleados").doc().set(EmpleadoObjeto);
+            toast("Se ha creado un nuevo registro. Código de empleado E-"+EmpleadoObjeto.codigo+".", {
+              type: "success",
+            });
+          } else {
+            await db.collection("Empleados").doc(idSeleccionado).update(EmpleadoObjeto);
+            toast("Se han actualizado los datos del empleado " + EmpleadoObjeto.nombre, {
+              type: "info",
+            });
+            setIdSeleccionado("");
+          }
+        } catch (error) {
+          console.error(error);
+        }
+    };
+
     return (
           
         <div className="container py-4 px-0">
             <div className="row py-4">                             
                 <h2>Directorio de empleados</h2> 
             </div>
-            
             <div className="row">     
                 <IdContext.Provider value={{ idSeleccionado , setIdSeleccionado }}>
-                    <div className="col-md-8 pr-4"> 
-                        <ListaEmpleados/>
+                    <div className="col-md-8 pr-4">  
+                        <ListaEmpleados {...{eliminarEmpleado}}/>    
+                        <div className="row py-4">                                    
+                            <Estadisticas/>
+                        </div>             
                     </div>
                     <div className="col-md-4 ">
-                        <FormularioEmpleado/>
+
+                        <FormularioEmpleado {...{crearOActualizarEmpleado}} />
+
+                       
                     </div>                
                 </IdContext.Provider>
             </div>
