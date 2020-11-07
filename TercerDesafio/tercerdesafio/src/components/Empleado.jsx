@@ -46,24 +46,20 @@ const Empleado = () => {
 
     return (
           
-        <div className="container py-4 px-0">
-            <div className="row py-4">                             
-                <h2>Directorio de empleados</h2> 
-            </div>
+        <div className="container py-4 px-0">           
+
             <div className="row">     
                 <IdContext.Provider value={{ idSeleccionado , setIdSeleccionado }}>
-                    <div className="col-md-8 pr-4">  
-                        <ListaEmpleados {...{eliminarEmpleado}}/>    
-                        <div className="row py-4">                                    
-                            <Estadisticas/>
-                        </div>             
+                    <div className="col-md-8 pr-4">     
+                        <ListaEmpleados {...{eliminarEmpleado}}/>  
+
+                        <Estadisticas/>     
                     </div>
-                    <div className="col-md-4 ">
+                    <div className="col-md-4 py-4"  > 
+                        <FormularioEmpleado {...{crearOActualizarEmpleado}} /> 
+                    </div>             
 
-                        <FormularioEmpleado {...{crearOActualizarEmpleado}} />
-
-                       
-                    </div>                
+                 
                 </IdContext.Provider>
             </div>
         </div>

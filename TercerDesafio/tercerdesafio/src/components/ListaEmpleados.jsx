@@ -29,6 +29,9 @@ const ListaEmpleados = (props) => {
     }, []);     
 
     return (
+      <>
+                  
+        <h2 className="py-4">Directorio de empleados</h2>  
         <div className="table-responsive"> 
             <table className="table table-hover" >            
                 <thead>
@@ -61,6 +64,7 @@ const ListaEmpleados = (props) => {
             </tbody>
           </table>
         </div>
+        </>
     )
 }
 
