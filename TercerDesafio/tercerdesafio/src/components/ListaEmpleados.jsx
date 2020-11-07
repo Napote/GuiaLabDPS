@@ -1,19 +1,18 @@
 import React from 'react'
-import {useEffect, useState } from "react";
+import {useEffect, useState, useContext } from "react";
 
-import { db } from "../Firebase";
-import { toast } from "react-toastify"; 
+import { db } from "../Firebase"; 
+
+import { IdContext } from "./Empleado";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons'; 
 import { faPenAlt } from '@fortawesome/free-solid-svg-icons';
 
-import {FormularioEmpleado} from './FormularioEmpleado';
-
-export default function ListaEmpleados() {
+const ListaEmpleados = () => {
 
     const [Empleados, setEmpleados] = useState([]);
-
+    const { setIdSeleccionado } = useContext(IdContext);
 
     const recuperarEmpleados = async () => {
         db.collection("Empleados").onSnapshot((querySnapshot) => {
@@ -27,42 +26,42 @@ export default function ListaEmpleados() {
 
     useEffect(() => {
         recuperarEmpleados();
-    }, []);
-    
-
+    }, []);     
 
     return (
-        <div> 
-            <table class="table table-hover">            
+        <div className="table-responsive"> 
+            <table className="table table-hover" >            
                 <thead>
-                    <tr>
+                    <tr className="text-center">
+                        <th>Código</th>
                         <th>Empleado</th>
-                        <th>Horas mensuales</th>
+                        <th>Horas</th>
                         <th>Sueldo neto</th>
                         <th colspan="2" >Aciones disponibles</th>
                     </tr>
-            </thead>
-            <tbody>
-              {Empleados.map((Empleado) => (
-                <tr key={Empleado.id}>
-                  <td>{Empleado.nombre}</td>
-                  <td>{Empleado.horasMes} horas</td>
-                  <td>$ {Empleado.sueldoNeto} </td>
-                  <td> 
-                    <button className="btn btn-info">Reporte</button> 
-                  </td>
-                  <td> 
-                    <button className="btn btn-primary mx-1"> 
-                        <FontAwesomeIcon icon={faPenAlt}/>
-                    </button> 
-                    <button className="btn btn-danger">
-                        <FontAwesomeIcon icon={faTrash}/>
-                    </button> 
-                  </td>
-                </tr>
-              ))}
+                </thead>
+                <tbody>
+                  {Empleados.map((Empleado) => (
+                    <tr key={Empleado.id}>
+                      <td>E-{Empleado.codigo}</td>
+                      <td>{Empleado.nombre}</td>
+                      <td>{Empleado.horasMes} horas</td>
+                      <td>$ {Empleado.sueldoNeto} </td> 
+                      <td>  
+                        <button className="btn btn-info mr-2" id="show-report-btn"> Reporte</button> 
+                        <button className="btn btn-primary mx-1" id="edit-btn" onClick={() => setIdSeleccionado(Empleado.id)}> 
+                          <FontAwesomeIcon icon={faPenAlt}/>
+                        </button>  
+                        <button className="btn btn-danger" id="delete-btn">
+                          <FontAwesomeIcon icon={faTrash}/>
+                        </button> 
+                      </td>
+                    </tr>
+                  ))}
             </tbody>
           </table>
         </div>
     )
 }
+
+export default  ListaEmpleados; 
