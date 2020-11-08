@@ -44,6 +44,10 @@ const Empleado = () => {
         }
     };
 
+    const cancelarSeleccion = () => {
+      setIdSeleccionado("");
+    }
+
     return (
           
         <div className="container py-4 px-0">           
@@ -52,11 +56,11 @@ const Empleado = () => {
                 <IdContext.Provider value={{ idSeleccionado , setIdSeleccionado }}>
                     <div className="col-md-8 pr-4">     
                         <ListaEmpleados {...{eliminarEmpleado}}/>  
-
+                        <h2 className="py-2">Estadisticas</h2>   
                         <Estadisticas/>     
                     </div>
                     <div className="col-md-4 py-4"  > 
-                        <FormularioEmpleado {...{crearOActualizarEmpleado}} /> 
+                        <FormularioEmpleado {...{crearOActualizarEmpleado, cancelarSeleccion}} /> 
                     </div>             
 
                  

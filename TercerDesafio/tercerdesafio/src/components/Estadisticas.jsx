@@ -18,22 +18,24 @@ import {useEffect, useState} from "react";
         nombre: "-",
         horasMes: 0,
         sueldoNeto: 0 
-    };
-    
+    }; 
+
     const [mayorSalario, setMaximo] = useState(mejor);
     const [menorSalario, setMinimo] = useState(peor);
 
     const recuperarEmpleados = async () => { 
         var referencia = db.collection("Empleados");
+
         referencia.orderBy("sueldoNeto","desc").limit(1).onSnapshot((querySnapshot) =>{
             querySnapshot.forEach((doc) => { 
-                //console.log(doc.id, ' => ', doc.data());   
-                setMaximo({ ...doc.data() });        
+                if(doc.exists)
+                    setMaximo({ ...doc.data() }); 
               });
         }) 
         referencia.orderBy("sueldoNeto","asc").limit(1).onSnapshot((querySnapshot) =>{
             querySnapshot.forEach((doc) => {  
-                setMinimo({ ...doc.data() });    
+                if(doc.exists)
+                    setMinimo({ ...doc.data() });    
               });
         }) 
     };
@@ -45,7 +47,7 @@ import {useEffect, useState} from "react";
     
     return ( 
         <> 
-        <h2 className="py-2">Estadisticas</h2>   
+        <br/>
         <div className="row">   
             <div className="col-md-5">
                 <div className="counter">
@@ -55,7 +57,7 @@ import {useEffect, useState} from "react";
                     <h2 className="timer count-title count-number">
                         ${(Math.round(mayorSalario.sueldoNeto * 100) / 100).toFixed(2)}  
                     </h2>
-                    <p className="count-text ">Mejor salario</p>
+                    <p className="count-text">Mejor salario</p>
                 </div>
             </div>   
             <div className="col-md-5">
@@ -63,7 +65,7 @@ import {useEffect, useState} from "react";
                     <h6 className="text-center">
                         {menorSalario.nombre}
                     </h6>
-                    <h2 className="timer count-title count-number">
+                    <h2 className="timer count-title count-number" >
                         ${(Math.round(menorSalario.sueldoNeto * 100) / 100).toFixed(2)}  
                     </h2>
                     <p className="count-text ">Peor salario</p>

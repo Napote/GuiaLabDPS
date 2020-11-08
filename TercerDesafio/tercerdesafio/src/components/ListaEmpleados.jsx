@@ -9,6 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons'; 
 import { faPenAlt } from '@fortawesome/free-solid-svg-icons';
 
+import './ListaEmpleados.css';
+
 const ListaEmpleados = (props) => {
 
     const [Empleados, setEmpleados] = useState([]);

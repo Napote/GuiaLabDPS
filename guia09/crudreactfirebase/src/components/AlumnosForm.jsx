@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../Firebase";
-//import { toast } from "react-toastify";
+import { db } from "../Firebase"; 
 
 const AlumnosForm = (props) => {
 
