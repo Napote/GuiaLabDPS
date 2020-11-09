@@ -5,7 +5,7 @@ import validate from './FormularioEmpleadoReglasValidacion';
 import { IdContext } from "./Empleado";
 
 
-const FormularioEmpleado = ({props}) => {
+const FormularioEmpleado = (props) => {
     
     const ISSS = 0.0525;
     const AFP = 0.0688;
