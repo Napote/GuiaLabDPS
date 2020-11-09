@@ -48,6 +48,9 @@ const Empleado = () => {
       setIdSeleccionado("");
     }
 
+    const comprobarCodigoUnico = async (codigo) => { 
+    }
+
     return (
           
         <div className="container py-4 px-0">           
@@ -60,7 +63,7 @@ const Empleado = () => {
                         <Estadisticas/>     
                     </div>
                     <div className="col-md-4 py-4"  > 
-                        <FormularioEmpleado {...{crearOActualizarEmpleado, cancelarSeleccion}} /> 
+                        <FormularioEmpleado {...{crearOActualizarEmpleado, cancelarSeleccion, comprobarCodigoUnico}} /> 
                     </div>             
 
                  

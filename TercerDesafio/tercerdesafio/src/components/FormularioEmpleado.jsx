@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { db } from "../Firebase";
-
-import validate from './FormularioEmpleadoReglasValidacion';
+ 
 import { IdContext } from "./Empleado";
-
+import {ValidacionCampos, validarCampos} from "./validation";
 
 const FormularioEmpleado = (props) => {
     
@@ -14,30 +13,62 @@ const FormularioEmpleado = (props) => {
     const valoresPorDefecto = {
         codigo: "",
         nombre: "",
-        horasMes: 0,
+        horasMes: 1,
         sueldoNeto: 0
     };  
+
+    const mensajesError= {
+      codigo: '',
+      nombre: '',
+      horasMes: '',
+    };
+
 
     const context = React.useContext(IdContext);
     
     const [values, setValues] = useState(valoresPorDefecto);
+    const [log, setErrors] = useState(mensajesError);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setValues({ ...values, [name]: value });
+        let errores = mensajesError;
+        switch(name){
+          case 'nombre':
+            errores.nombre =validarCampos.validarNombre(value);
+          break;
+          case 'codigo':
+            errores.codigo = validarCampos.validarCodigo(value);
+          break;          
+          case 'horasMes':
+            errores.horasMes = validarCampos.validarHoras(value);
+          break;
+          default:
+            break;
+        }
+        setErrors({...errores}) 
+        
+        setValues({ ...values, [name]: value });  
+      
     };
+ 
 
-    const handleBlur = () => {
+    const handleSubmit = (e) => {        
+       
+        e.preventDefault();              
+        if(!validarCampos.validarFormulario(log)) 
+          return; 
 
-    }
-
-    const handleSubmit = (e) => {      
-        e.preventDefault();    
         calcularSueldoNeto();
         props.crearOActualizarEmpleado(values); 
         setValues({ ...valoresPorDefecto });
     };
 
+    const handleBlur = (e) => {
+      const { name, value } = e.target;
+      if(value)
+        props.comprobarCodigoUnico(value);
+    }
+ 
 
     const calcularSueldoNeto = () =>{
       let sueldoLiquido;
@@ -85,8 +116,19 @@ const FormularioEmpleado = (props) => {
               <div className="input-group-prepend">
                 <span className="input-group-text">E-</span>
               </div>
-              <input type="number" className="form-control" placeholder="000" value={values.codigo} name="codigo" onChange={handleInputChange}/> 
+              <input 
+                type="number" 
+                className="form-control" 
+                placeholder="000" 
+                value={values.codigo} 
+                name="codigo" 
+                onChange={handleInputChange}
+                onBlur={handleBlur}
+                required
+                /> 
+                
             </div>
+            <span className='invalid-feedback' style={{display: log.codigo ? 'block' : 'none' }}>{log.codigo}</span>
           </div>  
           
           <div className="form-group">
@@ -98,7 +140,11 @@ const FormularioEmpleado = (props) => {
               value={values.nombre} 
               name="nombre" 
               onChange={handleInputChange}
-            /> 
+              required
+            />            
+             
+            <span className='invalid-feedback' style={{display: log.nombre ? 'block' : 'none' }}>{log.nombre}</span>
+            
           </div>  
 
           <div className="form-group">
@@ -108,9 +154,11 @@ const FormularioEmpleado = (props) => {
               className="form-control"  
               value={values.horasMes} 
               name="horasMes" 
-              onChange={handleInputChange} 
-              min="1"
+              onChange={handleInputChange}  
+              required
             />
+
+              <span className='invalid-feedback' style={{display: log.horasMes ? 'block' : 'none' }}>{log.horasMes}</span>
           </div>   
 
           <button className="btn btn-primary btn-block my-1">
@@ -118,7 +166,10 @@ const FormularioEmpleado = (props) => {
           </button> 
 
           {context.idSeleccionado && 
-            <button type="button" className="btn btn-outline-secondary my-2 " onClick={() =>  props.cancelarSeleccion()} >            
+            <button 
+              type="button" 
+              className="btn btn-outline-secondary my-2 " 
+              onClick={() =>  props.cancelarSeleccion()} >            
               Cancelar
             </button>
           }  
