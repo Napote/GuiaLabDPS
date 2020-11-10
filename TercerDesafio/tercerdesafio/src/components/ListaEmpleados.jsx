@@ -57,7 +57,7 @@ const ListaEmpleados = (props) => {
                         <button className="btn btn-primary mx-1" id="edit-btn" onClick={() => setIdSeleccionado(Empleado.id)}> 
                           <FontAwesomeIcon icon={faPenAlt}/>
                         </button>  
-                        <button className="btn btn-danger" id="delete-btn" onClick={() => props.eliminarEmpleado(Empleado.id)}>
+                        <button className="btn btn-danger" id="delete-btn" onClick={() => props.eliminarEmpleado(Empleado.id, Empleado.codigo)}>
                           <FontAwesomeIcon icon={faTrash}/>
                         </button> 
                       </td>

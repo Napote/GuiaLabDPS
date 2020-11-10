@@ -43,8 +43,8 @@ class ValidacionCampos {
             return 'Código invalido.';
         else if (codigo%1 !== 0)
             return 'Código invalido, no se aceptan decimales.';
-        else if (codigo < 1)
-            return 'Código invalido, se detecto negativo.'; 
+        else if (codigo < 100)
+            return 'Código invalido, debe de tener 3 cifras como minimo'; 
     }
 
 

@@ -10,6 +10,8 @@ const FormularioEmpleado = (props) => {
     const AFP = 0.0688;
     const RENTA = 0.1;  
 
+    const idExiste = useState(false);
+
     const valoresPorDefecto = {
         codigo: "",
         nombre: "",
@@ -19,8 +21,9 @@ const FormularioEmpleado = (props) => {
 
     const mensajesError= {
       codigo: '',
+      codigoUnico: '',
       nombre: '',
-      horasMes: '',
+      horasMes: ''
     };
 
 
@@ -31,22 +34,21 @@ const FormularioEmpleado = (props) => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        let errores = mensajesError;
+        let error;
         switch(name){
           case 'nombre':
-            errores.nombre =validarCampos.validarNombre(value);
+            error =validarCampos.validarNombre(value);
           break;
           case 'codigo':
-            errores.codigo = validarCampos.validarCodigo(value);
+            error = validarCampos.validarCodigo(value);
           break;          
           case 'horasMes':
-            errores.horasMes = validarCampos.validarHoras(value);
+            error = validarCampos.validarHoras(value);
           break;
           default:
             break;
         }
-        setErrors({...errores}) 
-        
+        setErrors({...log, [name]:error}) 
         setValues({ ...values, [name]: value });  
       
     };
@@ -56,19 +58,34 @@ const FormularioEmpleado = (props) => {
        
         e.preventDefault();              
         if(!validarCampos.validarFormulario(log)) 
-          return; 
+          return;  
 
         calcularSueldoNeto();
         props.crearOActualizarEmpleado(values); 
         setValues({ ...valoresPorDefecto });
-    };
-
-    const handleBlur = (e) => {
-      const { name, value } = e.target;
-      if(value)
-        props.comprobarCodigoUnico(value);
-    }
+    }; 
  
+
+    const esUnicoCodigo = async (e) => { 
+      const { name, value } = e.target;     
+      
+      if(!value)
+        return;
+        
+      let error;
+      await db
+      .collection('codigosEmpleado')
+      .doc(value)
+      .get()
+      .then((doc) =>{
+        if(doc.exists)
+          error = 'Este código de empleado ya existe.';
+      })
+      .catch((error)=> console.log(error));  
+
+      setErrors({...log, [name]:error});
+       
+    } 
 
     const calcularSueldoNeto = () =>{
       let sueldoLiquido;
@@ -103,6 +120,7 @@ const FormularioEmpleado = (props) => {
           }
         } 
       }, [context.idSeleccionado]); 
+
      
     return (  
         <form onSubmit={handleSubmit} className="card card-body border-primary"> 
@@ -122,13 +140,15 @@ const FormularioEmpleado = (props) => {
                 placeholder="000" 
                 value={values.codigo} 
                 name="codigo" 
-                onChange={handleInputChange}
-                onBlur={handleBlur}
+                onChange={handleInputChange} 
+                onBlur={esUnicoCodigo}
                 required
-                /> 
+                readOnly={context.idSeleccionado}
+              />
                 
             </div>
             <span className='invalid-feedback' style={{display: log.codigo ? 'block' : 'none' }}>{log.codigo}</span>
+            <span className='invalid-feedback' style={{display: log.codigoUnico ? 'block' : 'none' }}>{log.codigoUnico}</span>
           </div>  
           
           <div className="form-group">
@@ -136,7 +156,7 @@ const FormularioEmpleado = (props) => {
             <input 
               type="text" 
               className="form-control" 
-              placeholder="Juan Perez" 
+              placeholder="Nombre" 
               value={values.nombre} 
               name="nombre" 
               onChange={handleInputChange}
