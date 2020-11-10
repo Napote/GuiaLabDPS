@@ -128,19 +128,19 @@ const Empleado = () => {
                                 <tr>
                                     <td className="left">ISSS</td>
                                     <td className="right">
-                                      -${ Math.round(datosReporte.sueldoLiquido*0.0525).toFixed(2) } 
+                                      -${datosReporte && (datosReporte.sueldoLiquido*0.0525).toFixed(2)} 
                                     </td>
                                 </tr>
                                 <tr>
                                     <td className="left">AFP</td>
                                     <td className="right">
-                                      -${ Math.round(datosReporte.sueldoLiquido*0.0688).toFixed(2) }  
+                                      -${datosReporte && (datosReporte.sueldoLiquido*0.0688).toFixed(2)}  
                                     </td>
                                 </tr>
                                 <tr>
                                     <td className="left">RENTA</td>
                                     <td className="right">
-                                      -${ Math.round(datosReporte.sueldoLiquido*0.1).toFixed(2) }  
+                                      -${datosReporte && (datosReporte.sueldoLiquido*0.1).toFixed(2)}  
                                     </td>
                                 </tr>
                                 <tr>
@@ -149,7 +149,7 @@ const Empleado = () => {
                                     </td>
                                     <td className="right">
                                       <strong>
-                                        ${ Math.round(datosReporte.sueldoNeto).toFixed(2) } 
+                                       ${datosReporte && (datosReporte.sueldoNeto).toFixed(2)} 
                                       </strong>
                                     </td>
                                 </tr>                                

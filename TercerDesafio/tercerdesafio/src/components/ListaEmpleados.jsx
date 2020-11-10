@@ -51,7 +51,7 @@ const ListaEmpleados = (props) => {
                       <td>E-{Empleado.codigo}</td>
                       <td>{Empleado.nombre}</td>
                       <td>{Empleado.horasMes} horas</td>
-                      <td>$ {(Math.round(Empleado.sueldoNeto * 100) / 100).toFixed(2)} </td> 
+                      <td>${(Empleado.sueldoNeto).toFixed(2)} </td> 
                       <td>  
                         <button 
                           className="btn btn-info" 
