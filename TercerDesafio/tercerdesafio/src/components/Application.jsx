@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { Router } from "@reach/router";
 
-import Home from './pages/Home';
-import SignIn from './pages/SignIn';
- 
+import Home from '../pages/Home';
+import SignIn from '../pages/SignIn';
+import SignUp from '../pages/SignUp';
+
 import { UserContext } from "../providers/UserProvider";
 
 
@@ -18,7 +19,8 @@ function Application() {
     user ? <Home/>  // true
       : // false
       <Router> 
-          <SignIn path="/" />     
+          <SignIn path="/" />      
+          <SignUp path="signUp" />
       </Router>
   );
 }

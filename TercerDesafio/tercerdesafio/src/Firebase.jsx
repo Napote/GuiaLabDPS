@@ -1,5 +1,6 @@
-import firebase from 'firebase/app'
+import firebase from 'firebase/app'  
 import 'firebase/firestore'
+import 'firebase/auth'
 
 const firebaseConfig = {
     apiKey: "AIzaSyBaeOWoByrvEM485RGJ60OIE-g0fW31FZs",
@@ -12,9 +13,12 @@ const firebaseConfig = {
     measurementId: "G-H4EV0DGMJS"
   };
 
-  const fb =  firebase.initializeApp(firebaseConfig);
-  export const db = fb.firestore();
-  export const auth = fb.auth();
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+export const auth = firebase.auth();
+export const db = firebase.firestore();
+
 
 // Representa el proveedor de autenticación de inicio de sesión de Google.
 // Utilice esta clase para obtener
@@ -30,7 +34,7 @@ export const generateUserDocument = async (user, additionalData) => {
   //En algunos casos, puede ser útil crear una referencia de documento con un ID 
   //generado automáticamente y, luego, usar la referencia más adelante. 
   //Para este caso práctico, puedes llamar a doc():
-  const userRef = firestore.doc(`users/${user.uid}`);
+  const userRef = db.doc(`users/${user.uid}`);
 
   // Para obetner el registro creado
   const snapshot = await userRef.get();
@@ -46,7 +50,7 @@ export const generateUserDocument = async (user, additionalData) => {
         ...additionalData
       });
     } catch (error) {
-      console.error("Error crear el usuario", error);
+      console.error("No se pudo crear el usuario", error);
     }
   }
   return getUserDocument(user.uid);
@@ -56,12 +60,12 @@ export const generateUserDocument = async (user, additionalData) => {
 const getUserDocument = async uid => {
   if (!uid) return null;
   try {
-    const userDocument = await firestore.doc(`users/${uid}`).get();
+    const userDocument = await db.doc(`users/${uid}`).get();
     return {
       uid,
       ...userDocument.data()
     };
   } catch (error) {
-    console.error("Error extraer usuario", error);
+    console.error("El usuario no ha podido recuperarse", error);
   }
 };

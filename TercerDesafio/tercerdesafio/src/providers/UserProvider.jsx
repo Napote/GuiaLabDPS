@@ -1,5 +1,5 @@
 import React, { Component, createContext } from "react";
-import { auth, generateUserDocument } from "../firebase";
+import { auth, generateUserDocument } from "../Firebase";
 
 // Context se usa principalmente cuando algunos datos tienen que ser accesibles
 // por muchos componentes en diferentes niveles de anidamiento. 

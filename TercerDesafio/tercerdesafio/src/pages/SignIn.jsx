@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "@reach/router";
-import { signInWithGoogle } from "../firebase";
-import { auth } from "../firebase";
+import { signInWithGoogle } from "../Firebase";
+import { auth } from "../Firebase";
+import Footer from '../components/Footer';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons'; 
 
 const SignIn = () => {
 
@@ -36,24 +40,28 @@ const SignIn = () => {
 
 
   return (
-    <div className="">
-      <nav className="navbar navbar-inverse">
-        <ul className="nav navbar-nav">
-        </ul>
-      </nav>
-      <div className="mt-8">
-        <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
-          <form>
-            {error !== null && (
-              <div className="py-4 bg-red-600 w-full text-white text-center mb-3">
-                {error}
+    <>
+    <div className="container"> 
+      <div className="row justify-content-center">
+         
+        <div className="col-md-6">
+          <br/>
+          <h4 className="text-center my-4"> 
+              INICIAR SESION
+          </h4>
+          <div className="border  mx-auto mt-4 rounded py-4 px-4 md:px-8 alert-light">            
+          <form >
+            {error && 
+              <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Algo ha fallado!</strong>  {error}.
               </div>
-            )}
+            }
             <div className="form-group">
               <label>Correo Electronico</label>
               <input type="email" className="form-control"
                 name="userEmail"
-                placeholder="Ingresar email"
+                placeholder="Ingresar correo electronico"
                 onChange={(event) => onChangeHandler(event)} />
             </div>
 
@@ -61,31 +69,41 @@ const SignIn = () => {
               <label>Contraseña</label>
               <input type="password" className="form-control"
                 name="userPassword"
-                placeholder="Ingresar password"
+                placeholder="Ingresar contraseña"
                 onChange={(event) => onChangeHandler(event)} />
             </div>
 
-            <button type="submit" className="btn btn-primary btn-block"
+            <button 
+              type="submit" 
+              className="btn btn-primary btn-block"
               onClick={(event) => { signInWithEmailAndPasswordHandler(event) }}
-            ><i className="fa fa-lock"></i>  Ingresar</button>
-            <p className="text-center my-3">
-              {" "}
-              <Link to="signUp" className="text-blue-500 hover:text-blue-600">
-                No tiene cuenta ?
-          </Link>{" "}
-              <br />{" "}
-              <Link to="passwordReset" className="text-blue-500 hover:text-blue-600">
-                Olvido la contraseña ?
-          </Link>
-            </p>
+            >
+              Ingresar
+            </button>            
+            <p className="text-center my-3">- O -</p>
           </form>
-          <button className="btn btn-info btn-block"
+          <button 
+            className="btn btn-info btn-block"
             onClick={() => { signInWithGoogle(); }}
-          ><i className="fa fa-google"></i>  Ingresar con Google
-          </button>   
+          >
+             <FontAwesomeIcon className="mr-2" icon={faGoogle}/> 
+              Ingresar con Google
+          </button>  
+         
         </div>   
-      </div>
+          
+          <p className="text-center my-3"> 
+            <Link to="signUp" className="text-blue-500 hover:text-blue-600">
+              ¿Aún no tienes una cuenta?
+            </Link> 
+          </p> 
+        </div> 
+      </div>       
     </div>
+    <Footer/>
+    
+    </>
+  
 
   );
 };
