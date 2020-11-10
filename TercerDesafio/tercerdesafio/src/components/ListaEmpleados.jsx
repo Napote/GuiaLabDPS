@@ -53,7 +53,14 @@ const ListaEmpleados = (props) => {
                       <td>{Empleado.horasMes} horas</td>
                       <td>$ {(Math.round(Empleado.sueldoNeto * 100) / 100).toFixed(2)} </td> 
                       <td>  
-                        <button className="btn btn-info" id="show-report-btn"> Reporte</button> 
+                        <button 
+                          className="btn btn-info" 
+                          id="show-report-btn"
+                          onClick={() => props.mostrarReporte(Empleado)}
+                        > 
+                          Reporte 
+                        </button> 
+
                         <button className="btn btn-primary mx-1" id="edit-btn" onClick={() => setIdSeleccionado(Empleado.id)}> 
                           <FontAwesomeIcon icon={faPenAlt}/>
                         </button>  

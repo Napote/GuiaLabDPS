@@ -15,6 +15,7 @@ const FormularioEmpleado = (props) => {
         codigo: "",
         nombre: "",
         horasMes: 1,
+        sueldoLiquido: 0,
         sueldoNeto: 0
     };  
 
@@ -86,12 +87,15 @@ const FormularioEmpleado = (props) => {
     const calcularSueldoNeto = () =>{
       let sueldoLiquido;
 
+      
       if(values.horasMes - 160 <= 0)
         sueldoLiquido= values.horasMes*(9.75);  
       else if (values.horasMes - 200 <= 0)
         sueldoLiquido= values.horasMes*(11.50) - 280; 
       else 
         sueldoLiquido= values.horasMes*(12.50) - 480; 
+
+      values.sueldoLiquido = sueldoLiquido;
 
       let descuentoISSS = sueldoLiquido*ISSS;
       let descuentoAFP = sueldoLiquido*AFP;

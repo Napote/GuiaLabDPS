@@ -13,7 +13,7 @@ class Navbar extends React.Component {
         return (
           <> 
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-                <a className="navbar-brand" href="#">Tercer desafio practico</a>
+                <a className="navbar-brand ml-3" href="#">Tercer desafio practico</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -26,10 +26,7 @@ class Navbar extends React.Component {
                                 <img src="https://placekitten.com/30/30" className="mr-2 img-circle" height="30px" width="30px"/>  
                                 Mi cuenta 
                             </a>
-                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a className="dropdown-item">
-                                    Mostrar información
-                                </a>
+                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> 
                                 <Link className="dropdown-item" to="/signin">
                                     Cerrar sesión
                                 </Link>            
