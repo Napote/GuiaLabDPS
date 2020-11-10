@@ -28,8 +28,7 @@ const Empleado = () => {
 
 
     const crearOActualizarEmpleado = (EmpleadoObjeto) => { 
-      if (idSeleccionado === "") 
-        
+      if (idSeleccionado === "")         
         crearEmpleado(EmpleadoObjeto);
       else 
         actualizarEmpleado(EmpleadoObjeto)
@@ -37,10 +36,7 @@ const Empleado = () => {
     }; 
 
     //Funcion que crea un empleado en firestore
-    const crearEmpleado = async (EmpleadoObjeto) => {
-
-       
-      /*
+    const crearEmpleado = async (EmpleadoObjeto) => { 
       try{                
         const querySnapshot = db.collection('Empleados').doc();             
         await db.collection("Empleados").doc(querySnapshot.id).set(EmpleadoObjeto);   
@@ -54,7 +50,7 @@ const Empleado = () => {
 
       }catch(error){
         console.log(error)
-      }*/
+      } 
     }
 
 
@@ -69,7 +65,6 @@ const Empleado = () => {
         console.log(error)
       } 
     } 
-
 
     const cancelarSeleccion = () => {
       setIdSeleccionado("");

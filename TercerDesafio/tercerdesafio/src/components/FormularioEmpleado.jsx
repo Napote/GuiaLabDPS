@@ -10,7 +10,6 @@ const FormularioEmpleado = (props) => {
     const AFP = 0.0688;
     const RENTA = 0.1;  
 
-    const idExiste = useState(false);
 
     const valoresPorDefecto = {
         codigo: "",
@@ -24,8 +23,7 @@ const FormularioEmpleado = (props) => {
       codigoUnico: '',
       nombre: '',
       horasMes: ''
-    };
-
+    }; 
 
     const context = React.useContext(IdContext);
     
@@ -49,8 +47,7 @@ const FormularioEmpleado = (props) => {
             break;
         }
         setErrors({...log, [name]:error}) 
-        setValues({ ...values, [name]: value });  
-      
+        setValues({ ...values, [name]: value });   
     };
  
 
@@ -71,7 +68,7 @@ const FormularioEmpleado = (props) => {
       
       if(!value)
         return;
-        
+
       let error;
       await db
       .collection('codigosEmpleado')
@@ -82,8 +79,7 @@ const FormularioEmpleado = (props) => {
           error = 'Este código de empleado ya existe.';
       })
       .catch((error)=> console.log(error));  
-
-      setErrors({...log, [name]:error});
+      setErrors({...log, codigoUnico:error});
        
     } 
 
@@ -109,6 +105,7 @@ const FormularioEmpleado = (props) => {
     const recuperarEmpleadoPorId = async (id) => {
         const doc = await db.collection("Empleados").doc(id).get();
         setValues({ ...doc.data() });
+        setErrors({...mensajesError})
     };
 
     useEffect(() => {
