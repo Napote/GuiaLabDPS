@@ -1,18 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import Route from 'react-router-dom/Route';
+ 
 import 'bootswatch/dist/minty/bootstrap.min.css';  
-
-import Home from './pages/Home';
-import Login from './pages/Login';
-
-import {Link} from 'react-router-dom'
+ 
+import Application from './components/Application';
+import UserProvider from './providers/UserProvider';
 
 function App() {
   return (
-    <>     
-      <Route path="/" component={Home}/>
-      <Route path="/signin" component={Login}/> 
-    </>
+    <UserProvider>
+      <Application/> 
+    </UserProvider>
   );
 }
 

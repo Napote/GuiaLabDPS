@@ -1,20 +1,22 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBaeOWoByrvEM485RGJ60OIE-g0fW31FZs",
-    authDomain: "tercerdesafio.firebaseapp.com",
-    databaseURL: "https://tercerdesafio.firebaseio.com",
-    projectId: "tercerdesafio",
-    storageBucket: "tercerdesafio.appspot.com",
-    messagingSenderId: "32160296469",
-    appId: "1:32160296469:web:80790017bd5d870e20e81c",
-    measurementId: "G-H4EV0DGMJS"
-  };
+  apiKey: "AIzaSyBseKfExcLjp4iM5c1zUaIRFHZka56n40c",
+  authDomain: "crudreactfirebase-e066d.firebaseapp.com",
+  databaseURL: "https://crudreactfirebase-e066d.firebaseio.com",
+  projectId: "crudreactfirebase-e066d",
+  storageBucket: "crudreactfirebase-e066d.appspot.com",
+  messagingSenderId: "351350702802",
+  appId: "1:351350702802:web:56f2cf48cd24fde54f630b",
+  measurementId: "G-C807T9RCY1"
+};
 
-  const fb =  firebase.initializeApp(firebaseConfig);
-  export const db = fb.firestore();
-  export const auth = fb.auth();
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
 
 // Representa el proveedor de autenticación de inicio de sesión de Google.
 // Utilice esta clase para obtener
