@@ -67,8 +67,9 @@ const FormularioEmpleado = (props) => {
     const esUnicoCodigo = async (e) => { 
       const { name, value } = e.target;     
       
-      if(!value)
+      if(!value || context.idSeleccionado)
         return;
+
 
       let error;
       await db

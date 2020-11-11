@@ -49,7 +49,7 @@ const Navbar = () =>  {
                                                             /> 
                                                         </div>
                                                         <div class="col-md-7">
-                                                            <span>{displayName}</span>
+                                                            <span>{displayName? displayName : "Mi cuenta"}</span>
                                                             <p class="text-muted small">
                                                                 {email}
                                                             </p>
