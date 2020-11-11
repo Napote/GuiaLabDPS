@@ -110,7 +110,12 @@ const FormularioEmpleado = (props) => {
     const recuperarEmpleadoPorId = async (id) => {
         const doc = await db.collection("Empleados").doc(id).get();
         setValues({ ...doc.data() });
-        setErrors({...mensajesError})
+        setErrors({...mensajesError});
+    };
+
+    const cancelarSeleccion = async () => {      
+      setErrors({...mensajesError});
+      props.cancelarSeleccion();
     };
 
     useEffect(() => {
@@ -191,7 +196,7 @@ const FormularioEmpleado = (props) => {
             <button 
               type="button" 
               className="btn btn-outline-secondary my-2 " 
-              onClick={() =>  props.cancelarSeleccion()} >            
+              onClick={cancelarSeleccion} >            
               Cancelar
             </button>
           }  
