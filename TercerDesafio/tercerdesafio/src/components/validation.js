@@ -53,8 +53,8 @@ class ValidacionCampos {
             return 'Información no valida.';
         else if (horas%1 !== 0)
             return 'Las horas no pueden contener decimales.';
-        else if (horas > 700  )
-            return 'El máximo de horas permitidas es 700.';
+        else if (horas > 300  )
+            return 'El máximo de horas permitidas es 300.';
         else if (horas <= 0)
             return 'El mínimo de horas debe ser 1'
     }
